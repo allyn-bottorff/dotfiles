@@ -1,0 +1,1 @@
+/home/allyn_bottorff@vuhl.root.mrc.local/.config/nvim/init.vim
