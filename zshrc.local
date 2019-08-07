@@ -1,1 +1,6 @@
-/home/allyn_bottorff@vuhl.root.mrc.local/.zshrc.local
+#
+
+alias vim='nvim'
+
+
+source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
