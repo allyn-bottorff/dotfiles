@@ -1,6 +1,9 @@
 #
-
+bindkey -v
 alias vim='nvim'
 
 
 source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+

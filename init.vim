@@ -32,7 +32,10 @@ nnoremap fd <ESC>
 nnoremap ; :Buffers<CR>
 tnoremap fd <C-\><C-n>
 
+command PrettyJson %!python -m json.tool
+
 set background=dark
 colorscheme solarized
 
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
