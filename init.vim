@@ -7,7 +7,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-
+Plug 'tmhedberg/SimpylFold'
+Plug 'dense-analysis/ale'
 
 call plug#end()
 
