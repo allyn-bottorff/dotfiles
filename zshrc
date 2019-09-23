@@ -12,6 +12,9 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+# ALIASES
 
 alias vim='nvim'
 alias l='ls -lh'
