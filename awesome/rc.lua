@@ -18,6 +18,51 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+
+-- MPD Widget
+--
+local mpc = require("mpc")
+local textbox = require("wibox.widget.textbox")
+local timer = require("gears.timer")
+local mpd_widget = textbox()
+local state, title, artist, file = "stop", "", "", ""
+local function update_widget()
+    local text = "[ "
+    text = text .. tostring(artist or "") .. " - " .. tostring(title or "")
+    if state == "pause" then
+        text = text .. " (paused)"
+    end
+    if state == "stop" then
+        text = text .. " (stopped)"
+    end
+    mpd_widget.text = text .. " ]"
+end
+local connection
+local function error_handler(err)
+    mpd_widget:set_text("Error: " .. tostring(err))
+    -- Try a reconnect soon-ish
+    timer.start_new(10, function()
+        connection:send("ping")
+    end)
+end
+connection = mpc.new(nil, nil, nil, error_handler,
+    "status", function(_, result)
+        state = result.state
+    end,
+    "currentsong", function(_, result)
+        title, artist, file = result.title, result.artist, result.file
+        pcall(update_widget)
+    end)
+
+
+mpd_widget:buttons(awful.button({}, 1, function() connection:toggle_play() end))
+--
+
+
+
+
+
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -212,7 +257,7 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
+            mpd_widget,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
