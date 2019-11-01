@@ -22,6 +22,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 alias vim='nvim'
 alias l='ls -lh'
 alias docker='sudo docker'
+alias docker-compose='sudo docker-compose'
 alias docker-stahp='sudo docker stop $(docker ps -a -q)'
 
 # PROMPT
