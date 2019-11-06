@@ -11,6 +11,7 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'dense-analysis/ale'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'airblade/vim-gitgutter'
+Plug 'mustache/vim-mustache-handlebars'
 
 call plug#end()
 
