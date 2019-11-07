@@ -12,6 +12,7 @@ Plug 'dense-analysis/ale'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'airblade/vim-gitgutter'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
@@ -45,4 +46,4 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
 let g:SimpylFold_docstring_preview = 1
-
+let g:mustache_abbreviations = 1
