@@ -41,7 +41,11 @@ PS1='%F{brwhite}[%f%F{blue}%n%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}][%f%F{blue
 # Colors
 eval `dircolors ~/.dircolors-solarized/dircolors.ansi-dark`
 
-
+#title
+# if [[ $TERM == xterm-termite ]]; then
+#     . /etc/profile.d/vte.sh
+#     __vte_osc7
+# fi
 
 
 source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

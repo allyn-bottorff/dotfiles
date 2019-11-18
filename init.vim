@@ -42,6 +42,8 @@ command PrettyJson %!python -m json.tool
 set background=dark
 colorscheme solarized
 
+let g:ale_lint_on_insert_leave = 1
+
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
