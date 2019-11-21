@@ -49,3 +49,13 @@ let g:airline#extensions#tabline#enabled = 1
 
 let g:SimpylFold_docstring_preview = 1
 let g:mustache_abbreviations = 1
+
+" Python virtualenv support
+python3 << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    acticate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
