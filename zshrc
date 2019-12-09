@@ -47,5 +47,6 @@ eval `dircolors ~/.dircolors-solarized/dircolors.ansi-dark`
 #     __vte_osc7
 # fi
 
+export EDITOR="/usr/sbin/nvim"
 
 source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
