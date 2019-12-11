@@ -38,8 +38,6 @@ setopt PROMPT_SUBST ; RPROMPT='$(__git_ps1 " (%s)")'
 
 PS1='%F{brwhite}[%f%F{blue}%n%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}][%f%F{blue}%~%f%F{brwhite}]%f%F{brwhite}%%%f '
 
-# Colors
-eval `dircolors ~/.dircolors-solarized/dircolors.ansi-dark`
 
 #title
 # if [[ $TERM == xterm-termite ]]; then
@@ -49,5 +47,8 @@ eval `dircolors ~/.dircolors-solarized/dircolors.ansi-dark`
 
 export EDITOR="/usr/sbin/nvim"
 export SHELL="/usr/sbin/zsh"
+
+# Colors
+eval `dircolors ~/.dircolors-solarized/dircolors.ansi-dark`
 
 source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
