@@ -13,6 +13,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'airblade/vim-gitgutter'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'tpope/vim-surround'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 call plug#end()
 
