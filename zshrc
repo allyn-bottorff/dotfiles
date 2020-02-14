@@ -20,7 +20,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # ALIASES
 
 alias vim='nvim'
-alias l='ls -lh'
+alias l='ls -lhF'
 alias docker='sudo docker'
 alias docker-compose='sudo docker-compose'
 alias docker-stahp='sudo docker stop $(docker ps -a -q)'
@@ -49,6 +49,6 @@ export EDITOR="/usr/sbin/nvim"
 export SHELL="/usr/sbin/zsh"
 
 # Colors
-eval `dircolors ~/.dircolors-solarized/dircolors.ansi-dark`
+# eval `dircolors ~/.dircolors-solarized/dircolors.ansi-dark`
 
 source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

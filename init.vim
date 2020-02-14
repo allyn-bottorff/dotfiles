@@ -2,36 +2,45 @@ call plug#begin()
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+"Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'sheerun/vim-polyglot'
-Plug 'ycm-core/YouCompleteMe'
+"Plug 'sheerun/vim-polyglot'
+"Plug 'ycm-core/YouCompleteMe'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'tmhedberg/SimpylFold'
+"Plug 'tmhedberg/SimpylFold'
 Plug 'dense-analysis/ale'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'airblade/vim-gitgutter'
-Plug 'mustache/vim-mustache-handlebars'
+"Plug 'mustache/vim-mustache-handlebars'
 Plug 'tpope/vim-surround'
+Plug 'davidhalter/jedi-vim'
+Plug 'ervandew/supertab'
+"Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-
+Plug 'PProvost/vim-ps1'
+Plug 'iamcco/markdown-preview.nvim'
 call plug#end()
+
+set shell=/bin/zsh
 
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
 set cc=80
-set tw=79
+"set tw=79
 set cursorline
 
+set mouse=a
+set clipboard=unnamed
 set number
 set ignorecase
 set smartcase
 
 set laststatus=2
 
-
+set updatetime=100
 
 inoremap fd <ESC>
 nnoremap fd <ESC>
@@ -49,8 +58,21 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
 let g:SimpylFold_docstring_preview = 1
-let g:mustache_abbreviations = 1
-
+" let g:mustache_abbreviations = 1
+" let g:lightline = {
+"       \ 'colorscheme': 'solarized',
+"       \ 'active': {
+"       \   'left': [ [ 'mode', 'paste' ],
+"       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+"       \ },
+"       \ 'component_function': {
+"       \   'gitbranch': 'fugitive#head'
+"       \ },
+"       \ }
+augroup custom_term
+    autocmd!
+    autocmd TermOpen * setlocal bufhidden=hide
+augroup END
 " Python virtualenv support
 python3 << EOF
 import os
