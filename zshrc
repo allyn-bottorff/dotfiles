@@ -16,6 +16,7 @@ compinit
 bindkey '^r' history-incremental-pattern-search-backward
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' menu select
 
 # ALIASES
 
@@ -24,6 +25,7 @@ alias l='ls -lhF'
 alias docker='sudo docker'
 alias docker-compose='sudo docker-compose'
 alias docker-stahp='sudo docker stop $(docker ps -a -q)'
+alias exip='dig @ns1.google.com +short o-o.myaddr.l.google.com txt'
 
 # PROMPT
 
