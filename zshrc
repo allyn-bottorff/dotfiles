@@ -50,7 +50,7 @@ PS1='%F{brwhite}[%f%F{blue}%n%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}][%f%F{blue
 export EDITOR="/usr/sbin/nvim"
 export SHELL="/usr/sbin/zsh"
 
-# Colors
-# eval `dircolors ~/.dircolors-solarized/dircolors.ansi-dark`
+# Colors (doesn't work on a mac. no dircolors)
+# eval `dircolors ~/.dircolors-solarized/dircolors-solarized/dircolors.ansi-dark`
 
 source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
