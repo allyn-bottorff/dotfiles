@@ -10,7 +10,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 "Plug 'tmhedberg/SimpylFold'
 Plug 'dense-analysis/ale'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 Plug 'airblade/vim-gitgutter'
 "Plug 'mustache/vim-mustache-handlebars'
 Plug 'tpope/vim-surround'
@@ -19,7 +19,6 @@ Plug 'ervandew/supertab'
 "Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'PProvost/vim-ps1'
-Plug 'iamcco/markdown-preview.nvim'
 call plug#end()
 
 set shell=/bin/zsh
@@ -50,14 +49,19 @@ tnoremap fd <C-\><C-n>
 command PrettyJson %!python -m json.tool
 
 set background=dark
+let g:solarized_contrast='high'
+"let g:solarized_termcolors=256
 colorscheme solarized
+
 
 let g:ale_lint_on_insert_leave = 1
 
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
+let g:mkdp_browser='firefox'
 let g:SimpylFold_docstring_preview = 1
+let g:gitgutter_set_sign_backgrounds = 1
 " let g:mustache_abbreviations = 1
 " let g:lightline = {
 "       \ 'colorscheme': 'solarized',

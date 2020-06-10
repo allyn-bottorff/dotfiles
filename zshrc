@@ -9,9 +9,17 @@ bindkey -v
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/allyn/.zshrc'
 
-autoload -Uz compinit
-compinit
+#autoload -Uz compinit
+#compinit
 # End of lines added by compinstall
+
+# third party completions
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
 
 bindkey '^r' history-incremental-pattern-search-backward
 
@@ -49,6 +57,8 @@ PS1='%F{brwhite}[%f%F{blue}%n%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}][%f%F{blue
 
 export EDITOR="/usr/sbin/nvim"
 export SHELL="/usr/sbin/zsh"
+
+
 
 # Colors (doesn't work on a mac. no dircolors)
 # eval `dircolors ~/.dircolors-solarized/dircolors-solarized/dircolors.ansi-dark`
