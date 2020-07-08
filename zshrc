@@ -20,7 +20,7 @@ if type brew &>/dev/null; then
   autoload -Uz compinit
   compinit
 fi
-
+setopt GLOB_COMPLETE
 bindkey '^r' history-incremental-pattern-search-backward
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -55,7 +55,7 @@ PS1='%F{brwhite}[%f%F{blue}%n%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}][%f%F{blue
 #     __vte_osc7
 # fi
 
-export EDITOR="/usr/sbin/nvim"
+export EDITOR="/usr/local/bin/nvim"
 export SHELL="/usr/sbin/zsh"
 
 
@@ -63,4 +63,7 @@ export SHELL="/usr/sbin/zsh"
 # Colors (doesn't work on a mac. no dircolors)
 # eval `dircolors ~/.dircolors-solarized/dircolors-solarized/dircolors.ansi-dark`
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#eval "$(starship init zsh)"
+
