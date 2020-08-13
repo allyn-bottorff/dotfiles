@@ -19,6 +19,7 @@ Plug 'ervandew/supertab'
 "Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'PProvost/vim-ps1'
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
 set shell=/bin/zsh
@@ -59,7 +60,7 @@ let g:ale_lint_on_insert_leave = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-let g:mkdp_browser='firefox'
+"let g:mkdp_browser='firefox'
 let g:SimpylFold_docstring_preview = 1
 let g:gitgutter_set_sign_backgrounds = 1
 " let g:mustache_abbreviations = 1

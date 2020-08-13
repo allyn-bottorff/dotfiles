@@ -26,10 +26,12 @@ bindkey '^r' history-incremental-pattern-search-backward
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select
 
+CASE_SENSITIVE="true"
+
 # ALIASES
 
 alias vim='nvim'
-alias l='ls -lhF'
+alias l='gls -lhF --color=auto'
 alias docker='sudo docker'
 alias docker-compose='sudo docker-compose'
 alias docker-stahp='sudo docker stop $(docker ps -a -q)'
@@ -57,11 +59,13 @@ PS1='%F{brwhite}[%f%F{blue}%n%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}][%f%F{blue
 
 export EDITOR="/usr/local/bin/nvim"
 export SHELL="/usr/sbin/zsh"
+export KUBECTX_IGNORE_FZF=1
 
-
+source <(kubectl completion zsh)
 
 # Colors (doesn't work on a mac. no dircolors)
-# eval `dircolors ~/.dircolors-solarized/dircolors-solarized/dircolors.ansi-dark`
+# eval `gdircolors ~/.dircolors-solarized/dircolors-solarized/dircolors.ansi-dark`
+source ~/.dircolors-solarized/zsh-dircolors-solarized.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
