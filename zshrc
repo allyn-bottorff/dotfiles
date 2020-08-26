@@ -46,9 +46,11 @@ setopt prompt_subst
 zstyle ':vcs_info:git*' formats '<%r - %b>'
 
 source ~/.git-prompt.sh
+source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
 setopt PROMPT_SUBST ; RPROMPT='$(__git_ps1 " (%s)")'
 
-PS1='%F{brwhite}[%f%F{blue}%n%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}][%f%F{blue}%~%f%F{brwhite}]%f%F{brwhite}%%%f '
+PS1='%F{brwhite}[%f%F{blue}%n%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}]$(kube_ps1)[%f%F{blue}%~%f%F{brwhite}]%f%F{brwhite}%%%f '
+#PS1='$(kube_ps1)'$PS1
 
 
 #title
@@ -58,8 +60,9 @@ PS1='%F{brwhite}[%f%F{blue}%n%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}][%f%F{blue
 # fi
 
 export EDITOR="/usr/local/bin/nvim"
-export SHELL="/usr/sbin/zsh"
-export KUBECTX_IGNORE_FZF=1
+#export SHELL="/usr/sbin/zsh"
+
+#export KUBECTX_IGNORE_FZF=1
 
 source <(kubectl completion zsh)
 

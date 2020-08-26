@@ -6,7 +6,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 "Plug 'sheerun/vim-polyglot'
 "Plug 'ycm-core/YouCompleteMe'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do' : { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "Plug 'tmhedberg/SimpylFold'
 Plug 'dense-analysis/ale'
@@ -84,6 +84,6 @@ import os
 import sys
 if 'VIRTUAL_ENV' in os.environ:
     project_base_dir = os.environ['VIRTUAL_ENV']
-    acticate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
     execfile(activate_this, dict(__file__=activate_this))
 EOF
