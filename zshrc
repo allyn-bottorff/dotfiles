@@ -49,7 +49,8 @@ source ~/.git-prompt.sh
 source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
 setopt PROMPT_SUBST ; RPROMPT='$(__git_ps1 " (%s)")'
 
-PS1='%F{brwhite}[%f%F{blue}%n%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}]$(kube_ps1)[%f%F{blue}%~%f%F{brwhite}]%f%F{brwhite}%%%f '
+NEWLINE=$'\n'
+PS1="%F{brwhite}[%f%F{blue}%n%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}]$(kube_ps1)[%f%F{blue}%~%f%F{brwhite}]%f%F{brwhite}${NEWLINE}%%%f "
 #PS1='$(kube_ps1)'$PS1
 
 
