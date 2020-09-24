@@ -2,17 +2,12 @@ call plug#begin()
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
-"Plug 'sheerun/vim-polyglot'
-"Plug 'ycm-core/YouCompleteMe'
 Plug 'junegunn/fzf', { 'do' : { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-"Plug 'tmhedberg/SimpylFold'
 Plug 'dense-analysis/ale'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 Plug 'airblade/vim-gitgutter'
-"Plug 'mustache/vim-mustache-handlebars'
 Plug 'tpope/vim-surround'
 Plug 'davidhalter/jedi-vim'
 Plug 'ervandew/supertab'

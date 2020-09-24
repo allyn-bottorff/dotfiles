@@ -29,7 +29,7 @@ zstyle ':completion:*' menu select
 CASE_SENSITIVE="true"
 
 # ALIASES
-
+alias alacritty='open -n /Applications/Alacritty.app'
 alias vim='nvim'
 alias l='gls -lhF --color=auto'
 alias docker='sudo docker'
@@ -47,10 +47,10 @@ zstyle ':vcs_info:git*' formats '<%r - %b>'
 
 source ~/.git-prompt.sh
 source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-setopt PROMPT_SUBST ; RPROMPT='$(__git_ps1 " (%s)")'
+setopt PROMPT_SUBST ; RPROMPT='$(__git_ps1 " (%s)")$(kube_ps1)'
 
-NEWLINE=$'\n'
-PS1="%F{brwhite}[%f%F{blue}%n%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}]$(kube_ps1)[%f%F{blue}%~%f%F{brwhite}]%f%F{brwhite}${NEWLINE}%%%f "
+#NEWLINE=$'\n'
+PS1="%F{brwhite}[%f%F{blue}%n%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}]$(kube_ps1)[%f%F{blue}%~%f%F{brwhite}]%f%F{brwhite}%%%f "
 #PS1='$(kube_ps1)'$PS1
 
 
