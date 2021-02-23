@@ -11,6 +11,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'davidhalter/jedi-vim'
 Plug 'ervandew/supertab'
+Plug 'preservim/nerdcommenter'
 "Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'PProvost/vim-ps1'
@@ -22,6 +23,9 @@ set shell=/bin/zsh
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+autocmd FileType yaml setlocal tabstop=2
+autocmd FileType yaml setlocal softtabstop=2
+autocmd FileType yaml setlocal shiftwidth=2
 set expandtab
 set cc=80
 "set tw=79

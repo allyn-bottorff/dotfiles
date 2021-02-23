@@ -32,10 +32,9 @@ CASE_SENSITIVE="true"
 alias alacritty='open -n /Applications/Alacritty.app'
 alias vim='nvim'
 alias l='gls -lhF --color=auto'
-alias docker='sudo docker'
-alias docker-compose='sudo docker-compose'
-alias docker-stahp='sudo docker stop $(docker ps -a -q)'
+alias docker-stahp='docker stop $(docker ps -a -q)'
 alias exip='dig @ns1.google.com +short o-o.myaddr.l.google.com txt'
+alias fixresolv='~/resolv-ansible/venv/bin/ansible-playbook -K ~/resolv-ansible/add-umbrella.yml'
 
 # PROMPT
 
@@ -50,7 +49,7 @@ source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
 setopt PROMPT_SUBST ; RPROMPT='$(__git_ps1 " (%s)")$(kube_ps1)'
 
 #NEWLINE=$'\n'
-PS1="%F{brwhite}[%f%F{blue}%n%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}]$(kube_ps1)[%f%F{blue}%~%f%F{brwhite}]%f%F{brwhite}%%%f "
+PS1="%F{brwhite}[%f%F{blue}allyn%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}]$(kube_ps1)[%f%F{blue}%~%f%F{brwhite}]%f%F{brwhite}%%%f "
 #PS1='$(kube_ps1)'$PS1
 
 
@@ -60,10 +59,16 @@ PS1="%F{brwhite}[%f%F{blue}%n%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}]$(kube_ps1
 #     __vte_osc7
 # fi
 
+export XDG_CONFIG_HOME="/Users/Allyn.Bottorff/.config/"
+
 export EDITOR="/usr/local/bin/nvim"
+export KUBECONFIG=~/.kube/rancher-dev:~/.kube/rancher-uat:~/.kube/rancher-prod:~/.kube/hedraios
 #export SHELL="/usr/sbin/zsh"
 
 #export KUBECTX_IGNORE_FZF=1
+
+#for ansible:
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 source <(kubectl completion zsh)
 
@@ -72,6 +77,9 @@ source <(kubectl completion zsh)
 source ~/.dircolors-solarized/zsh-dircolors-solarized.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+fortune | cowsay
+
 source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #eval "$(starship init zsh)"
 
