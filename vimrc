@@ -1,21 +1,27 @@
 set nocompatible
 
 call plug#begin()
+
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
-Plug 'sheerun/vim-polyglot'
-"Plug 'ycm-core/YouCompleteMe'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do' : { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'tmhedberg/SimpylFold'
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 Plug 'airblade/vim-gitgutter'
-Plug 'mustache/vim-mustache-handlebars'
 Plug 'tpope/vim-surround'
-Plug 'vim-python/python-syntax'
-
+Plug 'davidhalter/jedi-vim'
+Plug 'ervandew/supertab'
+Plug 'preservim/nerdcommenter'
+"Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+"Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'PProvost/vim-ps1'
+Plug 'rust-lang/rust.vim'
+Plug 'habamax/vim-asciidoctor'
+Plug 'lifepillar/vim-solarized8'
+Plug 'jparise/vim-graphql'
 call plug#end()
 
 set shell=/bin/zsh
@@ -24,8 +30,16 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
+
+autocmd FileType yaml setlocal tabstop=2
+autocmd FileType yaml setlocal softtabstop=2
+autocmd FileType yaml setlocal shiftwidth=2
+
+autocmd FileType asciidoc setlocal spell
+autocmd FileType asciidoc setlocal textwidth=79
+
 set cc=80
-set tw=79
+"set tw=79
 set cursorline
 
 set number

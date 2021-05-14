@@ -28,6 +28,8 @@ zstyle ':completion:*' menu select
 
 CASE_SENSITIVE="true"
 
+setopt inc_append_history_time
+
 # ALIASES
 alias alacritty='open -n /Applications/Alacritty.app'
 alias vim='nvim'
@@ -35,6 +37,7 @@ alias l='gls -lhF --color=auto'
 alias docker-stahp='docker stop $(docker ps -a -q)'
 alias exip='dig @ns1.google.com +short o-o.myaddr.l.google.com txt'
 alias fixresolv='~/resolv-ansible/venv/bin/ansible-playbook -K ~/resolv-ansible/add-umbrella.yml'
+#alias neovide='neovide --multiGrid'
 
 # PROMPT
 
@@ -62,7 +65,7 @@ PS1="%F{brwhite}[%f%F{blue}allyn%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}]$(kube_
 export XDG_CONFIG_HOME="/Users/Allyn.Bottorff/.config/"
 
 export EDITOR="/usr/local/bin/nvim"
-export KUBECONFIG=~/.kube/rancher-dev:~/.kube/rancher-uat:~/.kube/rancher-prod:~/.kube/hedraios
+export KUBECONFIG=~/.kube/rancher-dev:~/.kube/rancher-uat:~/.kube/rancher-prod:~/.kube/hedraios:~/.kube/rancher-infra
 #export SHELL="/usr/sbin/zsh"
 
 #export KUBECTX_IGNORE_FZF=1
@@ -80,6 +83,12 @@ source ~/.dircolors-solarized/zsh-dircolors-solarized.zsh
 
 fortune | cowsay
 
+# pipenv settings
+export PATH="$PATH:/Users/Allyn.Bottorff/Library/Python/3.9/bin"
+export PIPENV_VENV_IN_PROJECT=1
+
 source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #eval "$(starship init zsh)"
+
+
 
