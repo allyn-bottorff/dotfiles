@@ -31,9 +31,8 @@ CASE_SENSITIVE="true"
 setopt inc_append_history_time
 
 # ALIASES
-alias alacritty='open -n /Applications/Alacritty.app'
 alias vim='nvim'
-alias l='gls -lhF --color=auto'
+alias l='exa -lhF --git'
 alias docker-stahp='docker stop $(docker ps -a -q)'
 alias exip='dig @ns1.google.com +short o-o.myaddr.l.google.com txt'
 alias fixresolv='~/resolv-ansible/venv/bin/ansible-playbook -K ~/resolv-ansible/add-umbrella.yml'
@@ -69,6 +68,8 @@ export KUBECONFIG=~/.kube/rancher-dev:~/.kube/rancher-uat:~/.kube/rancher-prod:~
 #export SHELL="/usr/sbin/zsh"
 
 #export KUBECTX_IGNORE_FZF=1
+export FZF_DEFAULT_COMMAND='fd --type file'
+export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
 
 #for ansible:
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
