@@ -36,7 +36,7 @@ alias l='exa -lhF --git'
 alias docker-stahp='docker stop $(docker ps -a -q)'
 alias exip='dig @ns1.google.com +short o-o.myaddr.l.google.com txt'
 alias fixresolv='~/resolv-ansible/venv/bin/ansible-playbook -K ~/resolv-ansible/add-umbrella.yml'
-#alias neovide='neovide --multiGrid'
+alias neovide='neovide --multiGrid'
 
 # PROMPT
 

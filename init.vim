@@ -56,10 +56,12 @@ command PrettyJson %!python -m json.tool
 
 colorscheme gruvbox
 
+let g:airline_powerline_fonts = 1
+let g:airline_extensions#tabline = 1
 
 "GUI Config
 let g:neovide_cursor_animation_length=0.04
-set guifont=Source\ Code\ Pro:h16
+set guifont=Source\ Code\ Pro:h17
 
 
 " Treesitter Config
