@@ -5,6 +5,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'ervandew/supertab'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+"Plug 'neovim/nvim-lspconfig'
 
 Plug 'davidhalter/jedi-vim'
 
@@ -52,6 +53,9 @@ nnoremap fd <ESC>
 nnoremap ; :Buffers<CR>
 tnoremap fd <C-\><C-n>
 
+nnoremap <leader>d <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <leader>n <cmd>lua vim.lsp.buf.references()<CR>
+
 command PrettyJson %!python -m json.tool
 
 colorscheme gruvbox
@@ -60,8 +64,8 @@ let g:airline_powerline_fonts = 1
 let g:airline_extensions#tabline = 1
 
 "GUI Config
-let g:neovide_cursor_animation_length=0.04
-set guifont=Source\ Code\ Pro:h17
+let g:neovide_cursor_animation_length=0.03
+set guifont=Source\ Code\ Pro\ Medium:h16
 
 
 " Treesitter Config
@@ -77,13 +81,18 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
+"LSP config
+"lua <<EOF
+"require'lspconfig'.pyright.setup{}
+"require'lspconfig'.rust_analyzer.setup{}
+"EOF
 
 " Python virtualenv support
-python3 << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
-EOF
+"python3 << EOF
+"import os
+"import sys
+"if 'VIRTUAL_ENV' in os.environ:
+"    project_base_dir = os.environ['VIRTUAL_ENV']
+"    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+"    execfile(activate_this, dict(__file__=activate_this))
+"EOF
