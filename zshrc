@@ -7,7 +7,7 @@ setopt extendedglob
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/allyn/.zshrc'
+zstyle :compinstall filename '~/.zshrc'
 
 #autoload -Uz compinit
 #compinit
@@ -37,6 +37,39 @@ alias docker-stahp='docker stop $(docker ps -a -q)'
 alias exip='dig @ns1.google.com +short o-o.myaddr.l.google.com txt'
 alias fixresolv='~/resolv-ansible/venv/bin/ansible-playbook -K ~/resolv-ansible/add-umbrella.yml'
 alias neovide='neovide --multiGrid 1>/dev/null'
+
+# LOGZ function
+
+logz() {
+  if [[ $1 == "client" ]]
+  then
+     for i in `kubectl get pods|grep f5api|grep -v schema|awk {'print $1'}`; do echo $i; kubectl logs $i f5api; echo; done;
+  elif [[ $1 == "service" ]]
+  then
+    if [[ -z $2 ]]
+    then
+      for i in `kubectl get pods|grep svc|awk {'print $1'}`; do j=`echo $i|cut -d"-" -f1-6`;echo $i; kubectl logs $i $j;echo; done
+    else
+      for i in `kubectl get pods|grep svc|awk {'print $1'}|grep $2`; do j=`echo $i|cut -d"-" -f1-6`;echo $i; kubectl logs $i $j;echo; done
+    fi
+  fi
+  }
+
+logzf() {
+  if [[ $1 == "client" ]]
+  then
+     for i in `kubectl get pods|grep f5api|grep -v schema|awk {'print $1'}`; do echo $i; kubectl logs -f $i f5api; echo; done;
+  elif [[ $1 == "service" ]]
+  then
+    if [[ -z $2 ]]
+    then
+      for i in `kubectl get pods|grep svc|awk {'print $1'}`; do j=`echo $i|cut -d"-" -f1-6`;echo $i; kubectl logs -f $i $j;echo; done
+    else
+      for i in `kubectl get pods|grep svc|awk {'print $1'}|grep $2`; do j=`echo $i|cut -d"-" -f1-6`;echo $i; kubectl logs -f $i $j;echo; done
+    fi
+  fi
+  }
+
 
 # PROMPT
 
@@ -82,7 +115,7 @@ source ~/.dircolors-solarized/zsh-dircolors-solarized.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-fortune | cowsay
+fortune -s | cowsay
 
 # pipenv settings
 export PATH="$PATH:/Users/Allyn.Bottorff/Library/Python/3.9/bin"

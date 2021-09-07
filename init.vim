@@ -1,13 +1,14 @@
 call plug#begin()
-Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'do' : { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'ervandew/supertab'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 "Plug 'neovim/nvim-lspconfig'
+Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'davidhalter/jedi-vim'
+Plug 'tweekmonster/gofmt.vim'
 
 Plug 'habamax/vim-asciidoctor'
 
@@ -24,14 +25,15 @@ let g:python3_host_prog='/usr/local/bin/python3'
 set shell=/bin/zsh
 
 
-autocmd FileType python set tabstop=4
-autocmd FileType python set softtabstop=4
-autocmd FileType python set shiftwidth=4
+autocmd FileType python,go setlocal tabstop=4
+autocmd FileType python,go setlocal softtabstop=4
+autocmd FileType python,go setlocal shiftwidth=4
 autocmd FileType yaml setlocal tabstop=2
 autocmd FileType yaml setlocal softtabstop=2
 autocmd FileType yaml setlocal shiftwidth=2
 autocmd FileType asciidoc setlocal spell
 autocmd FileType asciidoc setlocal textwidth=79
+autocmd TermOpen * setlocal nonumber
 
 set expandtab
 set cc=80
@@ -53,8 +55,6 @@ nnoremap fd <ESC>
 nnoremap ; :Buffers<CR>
 tnoremap fd <C-\><C-n>
 
-nnoremap <leader>d <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <leader>n <cmd>lua vim.lsp.buf.references()<CR>
 
 command PrettyJson %!python -m json.tool
 
@@ -65,7 +65,8 @@ let g:airline_extensions#tabline = 1
 
 "GUI Config
 let g:neovide_cursor_animation_length=0.03
-set guifont=Source\ Code\ Pro\ Medium:h16
+"set guifont=Source\ Code\ Pro\ Medium:h16
+set guifont=Hack:h16
 
 
 " Treesitter Config
@@ -80,6 +81,11 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+
+" Local project settings support
+silent! so .vimlocal
+
+
 
 "LSP config
 "lua <<EOF
