@@ -2,6 +2,7 @@ call plug#begin()
 Plug 'junegunn/fzf', { 'do' : { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 Plug 'ervandew/supertab'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 "Plug 'neovim/nvim-lspconfig'

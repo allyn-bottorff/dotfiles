@@ -38,6 +38,9 @@ alias exip='dig @ns1.google.com +short o-o.myaddr.l.google.com txt'
 alias fixresolv='~/resolv-ansible/venv/bin/ansible-playbook -K ~/resolv-ansible/add-umbrella.yml'
 alias neovide='neovide --multiGrid 1>/dev/null'
 
+# change git origin from gitlab.veteransunited.com to gitlab.redchimney.com
+chgitorigin() { git remote set-url origin $(git remote get-url origin | sed 's/veteransunited/redchimney/') }
+
 # LOGZ function
 
 logz() {
