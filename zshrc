@@ -100,12 +100,25 @@ PS1="%F{brwhite}[%f%F{blue}allyn%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}]$(kube_
 export XDG_CONFIG_HOME="/Users/Allyn.Bottorff/.config/"
 
 export EDITOR="/usr/local/bin/nvim"
-export KUBECONFIG=~/.kube/rancher-dev:~/.kube/rancher-uat:~/.kube/rancher-prod:~/.kube/hedraios:~/.kube/rancher-infra
+export KUBECONFIG=~/.kube/rancher-dev:~/.kube/rancher-uat:~/.kube/rancher-prod:~/.kube/hedraios:~/.kube/rancher-infra:~/.kube/hashistack-test
 #export SHELL="/usr/sbin/zsh"
 
 #export KUBECTX_IGNORE_FZF=1
 export FZF_DEFAULT_COMMAND='fd --type file'
 export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
+
+#Named Directories
+hash -d code=/Users/Allyn.Bottorff/Documents/code
+
+
+# Fix for PIP MITM while on VU network
+HOME_NET='10.46'
+ifconfig | grep $HOME_NET > /dev/null
+GREP_RC=$?
+if test $GREP_RC -ne 0
+then
+        export REQUESTS_CA_BUNDLE='/Users/Allyn.Bottorff/Cisco_Umbrella_Root_CA.cer'
+fi
 
 #for ansible:
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
