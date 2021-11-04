@@ -3,7 +3,8 @@ Plug 'junegunn/fzf', { 'do' : { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
+Plug 'lifepillar/vim-mucomplete'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'ludovicchabant/vim-gutentags'
@@ -115,7 +116,7 @@ local on_attach = function(client, bufnr)
 end
 
 
-local servers = { 'pyright', 'gopls' }
+local servers = { 'jedi_language_server', 'gopls', 'tsserver' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -125,10 +126,21 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-
-
-
 EOF
+
+"MuComplete settings
+
+set completeopt+=menuone
+set completeopt+=noselect
+
+" Supertab use omnicomplete
+"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+"
+"autocmd FileType *
+"  \ if &omnifunc != '' |
+"  \   call SuperTabChain(&omnifunc, "<c-p>") |
+"  \ endif
+
 
 " Local project settings support
 silent! so .vimlocal
