@@ -72,6 +72,8 @@ let g:neovide_cursor_animation_length=0.03
 "set guifont=Source\ Code\ Pro\ Medium:h16
 set guifont=Hack:h16
 
+"Fugitive options
+set diffopt+=vertical
 
 "LUA config stuff
 lua <<EOF
