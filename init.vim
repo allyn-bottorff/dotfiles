@@ -27,14 +27,13 @@ let g:python3_host_prog='/usr/local/bin/python3'
 set shell=/bin/zsh
 
 
-autocmd FileType python,go setlocal tabstop=4
-autocmd FileType python,go setlocal softtabstop=4
-autocmd FileType python,go setlocal shiftwidth=4
-autocmd FileType python setlocal expandtab
+autocmd FileType python,go,zig setlocal tabstop=4
+autocmd FileType python,go,zig setlocal softtabstop=4
+autocmd FileType python,go,zig setlocal shiftwidth=4
+autocmd FileType python,yaml,zig setlocal expandtab
 autocmd FileType yaml setlocal tabstop=2
 autocmd FileType yaml setlocal softtabstop=2
 autocmd FileType yaml setlocal shiftwidth=2
-autocmd FileType yaml setlocal expandtab
 autocmd FileType asciidoc setlocal spell
 autocmd FileType asciidoc setlocal textwidth=79
 autocmd TermOpen * setlocal nonumber
@@ -118,7 +117,7 @@ local on_attach = function(client, bufnr)
 end
 
 
-local servers = { 'jedi_language_server', 'gopls', 'tsserver' }
+local servers = { 'jedi_language_server', 'gopls', 'tsserver', 'zls' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
