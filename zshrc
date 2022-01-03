@@ -137,8 +137,13 @@ fortune -s | cowsay
 export PATH="$PATH:/Users/Allyn.Bottorff/Library/Python/3.9/bin"
 export PIPENV_VENV_IN_PROJECT=1
 
+#minio auto-complete
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/mc mc
+
 source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #eval "$(starship init zsh)"
+
 
 
 
