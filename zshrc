@@ -134,8 +134,11 @@ source ~/.dircolors-solarized/zsh-dircolors-solarized.zsh
 fortune -s | cowsay
 
 # pipenv settings
-export PATH="$PATH:/Users/Allyn.Bottorff/Library/Python/3.9/bin"
-export PIPENV_VENV_IN_PROJECT=1
+#export PATH="$PATH:/Users/Allyn.Bottorff/Library/Python/3.9/bin"
+#export PIPENV_VENV_IN_PROJECT=1
+
+# Kubectl Krew
+export PATH="${PATH}:${HOME}/.krew/bin"
 
 #minio auto-complete
 autoload -U +X bashcompinit && bashcompinit
@@ -143,7 +146,5 @@ complete -o nospace -C /usr/local/bin/mc mc
 
 source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #eval "$(starship init zsh)"
-
-
 
 

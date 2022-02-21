@@ -8,9 +8,13 @@ Plug 'lifepillar/vim-mucomplete'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'ludovicchabant/vim-gutentags'
+"Plug 'zhaozg/vim-diagram'
+"Plug 'vim-test/vim-test'
 
 "Plug 'davidhalter/jedi-vim'
+"Plug 'HallerPatrick/py_lsp.nvim'
 Plug 'tweekmonster/gofmt.vim'
+Plug 'ziglang/zig.vim'
 
 Plug 'habamax/vim-asciidoctor'
 
@@ -26,6 +30,8 @@ let g:python3_host_prog='/usr/local/bin/python3'
 
 set shell=/bin/zsh
 
+set tabstop=4
+set shiftwidth=4
 
 autocmd FileType python,go,zig setlocal tabstop=4
 autocmd FileType python,go,zig setlocal softtabstop=4
@@ -58,6 +64,9 @@ nnoremap fd <ESC>
 nnoremap ; :Buffers<CR>
 tnoremap fd <C-\><C-n>
 
+"augroup ON_ASCIIDOCTOR_SAVE | au!
+"	au BufWritePost *.adoc :Asciidoctor2HTML
+"augroup end
 
 command PrettyJson %!python -m json.tool
 
@@ -90,7 +99,7 @@ require'nvim-treesitter.configs'.setup {
 }
 
 --LSP Config
-
+--require'py_lsp'.setup {}
 local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
         local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -119,7 +128,8 @@ local on_attach = function(client, bufnr)
 end
 
 
-local servers = { 'jedi_language_server', 'gopls', 'tsserver', 'zls' }
+local servers = { 'jedi_language_server', 'gopls', 'tsserver', 'zls', 'ccls' }
+--local servers = { 'pyright', 'gopls', 'tsserver', 'zls' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
