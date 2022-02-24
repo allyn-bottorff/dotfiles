@@ -4,6 +4,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 "Plug 'ervandew/supertab'
+"
 Plug 'lifepillar/vim-mucomplete'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
@@ -68,7 +69,10 @@ tnoremap fd <C-\><C-n>
 "	au BufWritePost *.adoc :Asciidoctor2HTML
 "augroup end
 
-command PrettyJson %!python -m json.tool
+"command PrettyJson %!python -m json.tool
+command PrettyJson set syntax=json | %!jq "."
+command Gfiles GFiles
+command Gf GFiles
 
 set termguicolors
 colorscheme gruvbox

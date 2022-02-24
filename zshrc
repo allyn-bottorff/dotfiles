@@ -100,7 +100,7 @@ PS1="%F{brwhite}[%f%F{blue}allyn%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}]$(kube_
 export XDG_CONFIG_HOME="/Users/Allyn.Bottorff/.config/"
 
 export EDITOR="/usr/local/bin/nvim"
-export KUBECONFIG=~/.kube/rancher-dev:~/.kube/rancher-uat:~/.kube/rancher-prod:~/.kube/hedraios:~/.kube/rancher-infra:~/.kube/hashistack-test:~/.kube/rancher-prod-kdc:~/.kube/kdc-dev:~/.kube/kdc-uat
+export KUBECONFIG=~/.kube/rancher-dev:~/.kube/rancher-uat:~/.kube/rancher-prod:~/.kube/hedraios:~/.kube/rancher-infra:~/.kube/hashistack-test:~/.kube/rancher-prod-kdc:~/.kube/kdc-dev:~/.kube/kdc-uat:~/.kube/multicluster-frontend.yaml:~/.kube/multicluster-backend.yaml
 #export SHELL="/usr/sbin/zsh"
 
 #export KUBECTX_IGNORE_FZF=1
