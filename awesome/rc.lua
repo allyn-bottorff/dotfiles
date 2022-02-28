@@ -95,7 +95,7 @@ beautiful.init("/home/allyn/.config/awesome/themes/default/theme.lua")
 -- beautiful.init("/home/allyn/.config/awesome/themes/powerarrow-dark/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "termite"
+terminal = "alacritty"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -539,7 +539,7 @@ awful.rules.rules = {
     { rule_any = {type = { "normal", "dialog" }
       }, properties = { titlebars_enabled = true }
     },
-    { rule = { class = "Termite" },
+    { rule = { class = "Alacritty" },
        properties = { titlebars_enabled = false }
     },
 

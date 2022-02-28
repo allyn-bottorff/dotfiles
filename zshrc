@@ -9,8 +9,8 @@ bindkey -v
 # The following lines were added by compinstall
 zstyle :compinstall filename '~/.zshrc'
 
-#autoload -Uz compinit
-#compinit
+autoload -Uz compinit
+compinit
 # End of lines added by compinstall
 
 # third party completions
@@ -37,6 +37,8 @@ alias docker-stahp='docker stop $(docker ps -a -q)'
 alias exip='dig @ns1.google.com +short o-o.myaddr.l.google.com txt'
 alias fixresolv='~/resolv-ansible/venv/bin/ansible-playbook -K ~/resolv-ansible/add-umbrella.yml'
 alias neovide='neovide --multiGrid 1>/dev/null'
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
 
 # change git origin from gitlab.veteransunited.com to gitlab.redchimney.com
 chgitorigin() { git remote set-url origin $(git remote get-url origin | sed 's/veteransunited/redchimney/') }
@@ -83,7 +85,8 @@ setopt prompt_subst
 zstyle ':vcs_info:git*' formats '<%r - %b>'
 
 source ~/.git-prompt.sh
-source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+#source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+source "/opt/kube-ps1/kube-ps1.sh"
 setopt PROMPT_SUBST ; RPROMPT='$(__git_ps1 " (%s)")$(kube_ps1)'
 
 #NEWLINE=$'\n'
@@ -97,9 +100,7 @@ PS1="%F{brwhite}[%f%F{blue}allyn%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}]$(kube_
 #     __vte_osc7
 # fi
 
-export XDG_CONFIG_HOME="/Users/Allyn.Bottorff/.config/"
 
-export EDITOR="/usr/local/bin/nvim"
 export KUBECONFIG=~/.kube/rancher-dev:~/.kube/rancher-uat:~/.kube/rancher-prod:~/.kube/hedraios:~/.kube/rancher-infra:~/.kube/hashistack-test:~/.kube/rancher-prod-kdc:~/.kube/kdc-dev:~/.kube/kdc-uat:~/.kube/multicluster-frontend.yaml:~/.kube/multicluster-backend.yaml
 #export SHELL="/usr/sbin/zsh"
 
@@ -112,26 +113,26 @@ hash -d code=/Users/Allyn.Bottorff/Documents/code
 
 
 # Fix for PIP MITM while on VU network
-HOME_NET='10.46'
-ifconfig | grep $HOME_NET > /dev/null
-GREP_RC=$?
-if test $GREP_RC -ne 0
-then
-        export REQUESTS_CA_BUNDLE='/Users/Allyn.Bottorff/Cisco_Umbrella_Root_CA.cer'
-fi
+#HOME_NET='10.46'
+#ifconfig | grep $HOME_NET > /dev/null
+#GREP_RC=$?
+#if test $GREP_RC -ne 0
+#then
+#        export REQUESTS_CA_BUNDLE='/Users/Allyn.Bottorff/Cisco_Umbrella_Root_CA.cer'
+#fi
 
 #for ansible:
-export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+#export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 source <(kubectl completion zsh)
 
 # Colors (doesn't work on a mac. no dircolors)
 # eval `gdircolors ~/.dircolors-solarized/dircolors-solarized/dircolors.ansi-dark`
-source ~/.dircolors-solarized/zsh-dircolors-solarized.zsh
+#source ~/.dircolors-solarized/zsh-dircolors-solarized.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-fortune -s | cowsay
+#fortune -s | cowsay
 
 # pipenv settings
 #export PATH="$PATH:/Users/Allyn.Bottorff/Library/Python/3.9/bin"
@@ -142,9 +143,9 @@ export PATH="${PATH}:${HOME}/.krew/bin"
 
 #minio auto-complete
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/mc mc
 
-source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #eval "$(starship init zsh)"
 
 

@@ -132,7 +132,8 @@ local on_attach = function(client, bufnr)
 end
 
 
-local servers = { 'jedi_language_server', 'gopls', 'tsserver', 'zls', 'ccls' }
+--local servers = { 'jedi_language_server', 'gopls', 'tsserver', 'zls', 'ccls' }
+local servers = { 'pyright', 'gopls', 'tsserver', 'zls', 'ccls' }
 --local servers = { 'pyright', 'gopls', 'tsserver', 'zls' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
