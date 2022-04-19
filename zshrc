@@ -39,6 +39,10 @@ alias fixresolv='~/resolv-ansible/venv/bin/ansible-playbook -K ~/resolv-ansible/
 alias neovide='neovide --multiGrid 1>/dev/null'
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
+alias step='step-cli'
+alias dig='dig +search'
+alias fixres='xrandr --output Virtual-1 --auto'
+
 
 # change git origin from gitlab.veteransunited.com to gitlab.redchimney.com
 chgitorigin() { git remote set-url origin $(git remote get-url origin | sed 's/veteransunited/redchimney/') }
@@ -101,12 +105,16 @@ PS1="%F{brwhite}[%f%F{blue}allyn%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}]$(kube_
 # fi
 
 
-export KUBECONFIG=~/.kube/rancher-dev:~/.kube/rancher-uat:~/.kube/rancher-prod:~/.kube/hedraios:~/.kube/rancher-infra:~/.kube/hashistack-test:~/.kube/rancher-prod-kdc:~/.kube/kdc-dev:~/.kube/kdc-uat:~/.kube/multicluster-frontend.yaml:~/.kube/multicluster-backend.yaml
+export KUBECONFIG=~/.kube/rancher-dev:~/.kube/rancher-uat:~/.kube/rancher-prod:~/.kube/hedraios:~/.kube/rancher-infra:~/.kube/hashistack-test:~/.kube/rancher-prod-kdc:~/.kube/kdc-dev:~/.kube/kdc-uat:~/.kube/east.yaml:~/.kube/west.yaml:~/.kube/kdc-prod.yaml
 #export SHELL="/usr/sbin/zsh"
+export EDITOR=nvim
 
 #export KUBECTX_IGNORE_FZF=1
 export FZF_DEFAULT_COMMAND='fd --type file'
 export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
+
+
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 #Named Directories
 hash -d code=/Users/Allyn.Bottorff/Documents/code
@@ -120,6 +128,7 @@ hash -d code=/Users/Allyn.Bottorff/Documents/code
 #then
 #        export REQUESTS_CA_BUNDLE='/Users/Allyn.Bottorff/Cisco_Umbrella_Root_CA.cer'
 #fi
+#export REQUESTS_CA_BUNDLE='/home/allyn/CA/CiscoRoot.cer'
 
 #for ansible:
 #export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
@@ -130,7 +139,9 @@ source <(kubectl completion zsh)
 # eval `gdircolors ~/.dircolors-solarized/dircolors-solarized/dircolors.ansi-dark`
 #source ~/.dircolors-solarized/zsh-dircolors-solarized.zsh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
 #fortune -s | cowsay
 

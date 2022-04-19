@@ -95,7 +95,7 @@ beautiful.init("/home/allyn/.config/awesome/themes/default/theme.lua")
 -- beautiful.init("/home/allyn/.config/awesome/themes/powerarrow-dark/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "alacritty"
+terminal = "st"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -108,10 +108,9 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.fair,
-    awful.layout.suit.floating,
     awful.layout.suit.tile,
     awful.layout.suit.tile.left,
+    awful.layout.suit.fair,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
     awful.layout.suit.fair.horizontal,
@@ -121,6 +120,7 @@ awful.layout.layouts = {
     awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier,
     awful.layout.suit.corner.nw,
+    awful.layout.suit.floating,
     -- awful.layout.suit.corner.ne,
     -- awful.layout.suit.corner.sw,
     -- awful.layout.suit.corner.se,
@@ -540,6 +540,9 @@ awful.rules.rules = {
       }, properties = { titlebars_enabled = true }
     },
     { rule = { class = "Alacritty" },
+       properties = { titlebars_enabled = false }
+    },
+    { rule = { class = "st" },
        properties = { titlebars_enabled = false }
     },
 

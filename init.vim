@@ -27,9 +27,13 @@ Plug 'altercation/vim-colors-solarized'
 call plug#end()
 
 
-let g:python3_host_prog='/usr/local/bin/python3'
+"let g:python3_host_prog='/usr/local/bin/python3'
 
-set shell=/bin/zsh
+"set shell=/bin/zsh
+
+set nohidden
+set list
+set listchars=eol:¬,trail:·,tab:>\ ,lead:·
 
 set tabstop=4
 set shiftwidth=4
@@ -82,7 +86,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_extensions#tabline = 1
 
 "GUI Config
-let g:neovide_cursor_animation_length=0.03
+"let g:neovide_cursor_animation_length=0.03
 "set guifont=Source\ Code\ Pro\ Medium:h16
 set guifont=Hack:h15
 
@@ -127,7 +131,6 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
 	buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
 	buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-	buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 	buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
