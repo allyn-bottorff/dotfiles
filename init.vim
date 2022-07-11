@@ -16,6 +16,8 @@ Plug 'ludovicchabant/vim-gutentags'
 "Plug 'HallerPatrick/py_lsp.nvim'
 Plug 'tweekmonster/gofmt.vim'
 Plug 'ziglang/zig.vim'
+Plug 'mfussenegger/nvim-dap'
+Plug 'leoluz/nvim-dap-go'
 
 Plug 'habamax/vim-asciidoctor'
 
@@ -24,6 +26,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'lifepillar/vim-solarized8'
 Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
+Plug 'marko-cerovac/material.nvim'
 call plug#end()
 
 
@@ -73,18 +76,26 @@ tnoremap fd <C-\><C-n>
 command PrettyJson set syntax=json | %!jq "."
 command Gfiles GFiles
 command Gf GFiles
+command Bd bp\|bd \#
 
 set termguicolors
 colorscheme gruvbox
 set winblend=20
 
+"colorscheme material
+"let g:material_style = "darker"
+
+
+
 let g:airline_powerline_fonts = 1
 let g:airline_extensions#tabline = 1
+"let g:airline_theme='base16_material'
 
 "GUI Config
 let g:neovide_cursor_animation_length=0.03
 "set guifont=Source\ Code\ Pro\ Medium:h16
-set guifont=Hack:h15
+"set guifont=Hack:h15
+set guifont=Noto\ Mono\ for\ Powerline:h14
 
 "Fugitive options
 set diffopt+=vertical
@@ -132,7 +143,7 @@ local on_attach = function(client, bufnr)
 end
 
 
-local servers = { 'jedi_language_server', 'gopls', 'tsserver', 'zls', 'ccls' }
+local servers = { 'jedi_language_server', 'gopls', 'tsserver', 'zls', 'ccls', 'rls' }
 --local servers = { 'pyright', 'gopls', 'tsserver', 'zls' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {

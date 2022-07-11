@@ -36,7 +36,10 @@ alias l='exa -lhF --git'
 alias docker-stahp='docker stop $(docker ps -a -q)'
 alias exip='dig @ns1.google.com +short o-o.myaddr.l.google.com txt'
 alias fixresolv='~/resolv-ansible/venv/bin/ansible-playbook -K ~/resolv-ansible/add-umbrella.yml'
-alias neovide='neovide --multiGrid 1>/dev/null'
+#alias neovide='neovide --multiGrid 1>/dev/null'
+alias neovide='open -b com.neovide.neovide'
+alias curll='/usr/local/opt/curl/bin/curl'
+alias k='kubectl'
 
 # change git origin from gitlab.veteransunited.com to gitlab.redchimney.com
 chgitorigin() { git remote set-url origin $(git remote get-url origin | sed 's/veteransunited/redchimney/') }
@@ -107,18 +110,20 @@ export KUBECONFIG=~/.kube/rancher-dev:~/.kube/rancher-uat:~/.kube/rancher-prod:~
 export FZF_DEFAULT_COMMAND='fd --type file'
 export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
 
+export NEOVIDE_MULTIGRID=1
+
 #Named Directories
 hash -d code=/Users/Allyn.Bottorff/Documents/code
 
 
 # Fix for PIP MITM while on VU network
-HOME_NET='10.46'
-ifconfig | grep $HOME_NET > /dev/null
-GREP_RC=$?
-if test $GREP_RC -ne 0
-then
-        export REQUESTS_CA_BUNDLE='/Users/Allyn.Bottorff/Cisco_Umbrella_Root_CA.cer'
-fi
+#HOME_NET='10.46'
+#ifconfig | grep $HOME_NET > /dev/null
+#GREP_RC=$?
+#if test $GREP_RC -ne 0
+#then
+#        export REQUESTS_CA_BUNDLE='/Users/Allyn.Bottorff/Cisco_Umbrella_Root_CA.cer'
+#fi
 
 #for ansible:
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
