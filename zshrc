@@ -36,10 +36,11 @@ alias l='exa -lhF --git'
 alias docker-stahp='docker stop $(docker ps -a -q)'
 alias exip='dig @ns1.google.com +short o-o.myaddr.l.google.com txt'
 alias fixresolv='~/resolv-ansible/venv/bin/ansible-playbook -K ~/resolv-ansible/add-umbrella.yml'
-#alias neovide='neovide --multiGrid 1>/dev/null'
-alias neovide='open -b com.neovide.neovide'
+alias neovide='neovide --multigrid 1>/dev/null'
+#alias neovide='open -b com.neovide.neovide'
 alias curll='/usr/local/opt/curl/bin/curl'
 alias k='kubectl'
+alias python3.10='/opt/homebrew/opt/python@3.10/bin/python3'
 
 # change git origin from gitlab.veteransunited.com to gitlab.redchimney.com
 chgitorigin() { git remote set-url origin $(git remote get-url origin | sed 's/veteransunited/redchimney/') }
@@ -86,7 +87,8 @@ setopt prompt_subst
 zstyle ':vcs_info:git*' formats '<%r - %b>'
 
 source ~/.git-prompt.sh
-source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+#source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+source "/opt/homebrew/opt/kube-ps1/share/kube-ps1.sh"
 setopt PROMPT_SUBST ; RPROMPT='$(__git_ps1 " (%s)")$(kube_ps1)'
 
 #NEWLINE=$'\n'
@@ -102,8 +104,8 @@ PS1="%F{brwhite}[%f%F{blue}allyn%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}]$(kube_
 
 export XDG_CONFIG_HOME="/Users/Allyn.Bottorff/.config/"
 
-export EDITOR="/usr/local/bin/nvim"
-export KUBECONFIG=~/.kube/rancher-dev:~/.kube/rancher-uat:~/.kube/rancher-prod:~/.kube/hedraios:~/.kube/rancher-infra:~/.kube/hashistack-test:~/.kube/rancher-prod-kdc:~/.kube/kdc-dev:~/.kube/kdc-uat:~/.kube/multicluster-frontend.yaml:~/.kube/multicluster-backend.yaml
+export EDITOR=nvim
+export KUBECONFIG=~/.kube/ch3-dev.yaml:~/.kube/ch3-uat.yaml:~/.kube/ch3-prod.yaml:~/.kube/da11-prod.yaml:~/.kube/da11-dev.yaml:~/.kube/da11-uat.yaml:~/.kube/primary-dmz-backend.yaml:~/.kube/primary-dmz.yaml
 #export SHELL="/usr/sbin/zsh"
 
 #export KUBECTX_IGNORE_FZF=1
@@ -132,7 +134,7 @@ source <(kubectl completion zsh)
 
 # Colors (doesn't work on a mac. no dircolors)
 # eval `gdircolors ~/.dircolors-solarized/dircolors-solarized/dircolors.ansi-dark`
-source ~/.dircolors-solarized/zsh-dircolors-solarized.zsh
+#source ~/.dircolors-solarized/zsh-dircolors-solarized.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -144,12 +146,15 @@ fortune -s | cowsay
 
 # Kubectl Krew
 export PATH="${PATH}:${HOME}/.krew/bin"
+export PATH="${PATH}:${HOME}/go/bin"
 
 #minio auto-complete
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/mc mc
 
-source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #eval "$(starship init zsh)"
 
 
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"

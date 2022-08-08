@@ -18,6 +18,8 @@ Plug 'tweekmonster/gofmt.vim'
 Plug 'ziglang/zig.vim'
 Plug 'mfussenegger/nvim-dap'
 Plug 'leoluz/nvim-dap-go'
+Plug 'sebdah/vim-delve'
+Plug 'simrat39/rust-tools.nvim'
 
 Plug 'habamax/vim-asciidoctor'
 
@@ -77,6 +79,7 @@ command PrettyJson set syntax=json | %!jq "."
 command Gfiles GFiles
 command Gf GFiles
 command Bd bp\|bd \#
+command InspectCert %!step certificate inspect
 
 set termguicolors
 colorscheme gruvbox
@@ -111,6 +114,12 @@ require'nvim-treesitter.configs'.setup {
       ["foo.bar"] = "Identifier",
     },
   },
+  incremental_selection = {
+	  enable = true,
+  },
+  indent = {
+	  enable = true,
+  },
 }
 
 --LSP Config
@@ -143,8 +152,9 @@ local on_attach = function(client, bufnr)
 end
 
 
-local servers = { 'jedi_language_server', 'gopls', 'tsserver', 'zls', 'ccls', 'rls' }
+local servers = { 'pyright', 'gopls', 'tsserver', 'zls', 'ccls' }
 --local servers = { 'pyright', 'gopls', 'tsserver', 'zls' }
+require('rust-tools').setup({})
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -171,7 +181,11 @@ set completeopt+=noselect
 
 
 " Local project settings support
-silent! so .vimlocal
+" silent! so .vimlocal
+
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set nofoldenable
 
 
 
