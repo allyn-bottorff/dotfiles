@@ -21,6 +21,7 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'leoluz/nvim-dap-go'
 Plug 'sebdah/vim-delve'
 Plug 'simrat39/rust-tools.nvim'
+Plug 'rust-lang/rust.vim'
 
 Plug 'habamax/vim-asciidoctor'
 
@@ -34,6 +35,8 @@ call plug#end()
 
 
 let g:python3_host_prog='/usr/local/bin/python3'
+
+let g:rustfmt_autosave = 1
 
 set shell=/bin/zsh
 
@@ -100,10 +103,12 @@ let g:airline_extensions#tabline = 1
 "let g:airline_theme='base16_material'
 
 "GUI Config
-let g:neovide_cursor_animation_length=0.03
+let g:neovide_cursor_animation_length=0
+"let g:neovide_cursor_trail_size=0.8
 "set guifont=Source\ Code\ Pro\ Medium:h16
 "set guifont=Hack:h15
-set guifont=Noto\ Mono\ for\ Powerline:h14
+"set guifont=Noto\ Mono\ for\ Powerline:h14
+set guifont=Berkeley\ Mono\ Variable:h14
 
 "Fugitive options
 set diffopt+=vertical
