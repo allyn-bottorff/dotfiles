@@ -1,0 +1,27 @@
+format = """$directory$fill$all$character"""
+# format = """$directory\n$character"""
+# right_format = """$all"""
+
+[fill]
+symbol = " "
+
+[directory]
+truncate_to_repo = false
+truncation_length = 5
+
+
+[character]
+success_symbol = "[➜](bold green)"
+
+[kubernetes]
+disabled = false
+style = "blue bold"
+format = '[$symbol$context( \($namespace\))]($style) '
+
+[git_branch]
+style = "bold yellow"
+format = " [$symbol$branch(:$remote_branch)]($style) "
+
+[docker_context]
+format = " [$symbol$context]($style) "
+
