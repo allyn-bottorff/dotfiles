@@ -8,7 +8,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
-Plug 'ludovicchabant/vim-gutentags'
+"Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-commentary'
 "Plug 'zhaozg/vim-diagram'
 "Plug 'vim-test/vim-test'
@@ -17,20 +17,20 @@ Plug 'tpope/vim-commentary'
 "Plug 'HallerPatrick/py_lsp.nvim'
 Plug 'tweekmonster/gofmt.vim'
 Plug 'ziglang/zig.vim'
-Plug 'mfussenegger/nvim-dap'
-Plug 'leoluz/nvim-dap-go'
+" Plug 'mfussenegger/nvim-dap'
+" Plug 'leoluz/nvim-dap-go'
 Plug 'sebdah/vim-delve'
-Plug 'simrat39/rust-tools.nvim'
+" Plug 'simrat39/rust-tools.nvim'
 Plug 'rust-lang/rust.vim'
 
 Plug 'habamax/vim-asciidoctor'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'lifepillar/vim-solarized8'
+" Plug 'lifepillar/vim-solarized8'
 Plug 'morhetz/gruvbox'
-Plug 'altercation/vim-colors-solarized'
-Plug 'marko-cerovac/material.nvim'
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'marko-cerovac/material.nvim'
 call plug#end()
 
 
@@ -46,6 +46,7 @@ set shiftwidth=4
 set nohidden
 set list
 set listchars=eol:¬,trail:·,tab:>\ ,lead:·
+set nohlsearch
 
 autocmd FileType python,go,zig setlocal tabstop=4
 autocmd FileType python,go,zig setlocal softtabstop=4
@@ -76,6 +77,10 @@ set updatetime=100
 inoremap fd <ESC>
 nnoremap fd <ESC>
 nnoremap ; :Buffers<CR>
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>b :Buffers<CR>
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
 tnoremap fd <C-\><C-n>
 
 "augroup ON_ASCIIDOCTOR_SAVE | au!
@@ -104,11 +109,12 @@ let g:airline_extensions#tabline = 1
 
 "GUI Config
 let g:neovide_cursor_animation_length=0
+let g:neovide_scroll_animation_length=0.25
 "let g:neovide_cursor_trail_size=0.8
 "set guifont=Source\ Code\ Pro\ Medium:h16
 "set guifont=Hack:h15
 "set guifont=Noto\ Mono\ for\ Powerline:h14
-set guifont=Berkeley\ Mono\ Variable:h14
+set guifont=Berkeley\ Mono\ Variable:h12.5
 
 "Fugitive options
 set diffopt+=vertical

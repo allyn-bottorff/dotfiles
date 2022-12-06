@@ -101,7 +101,7 @@ source <(kubectl completion zsh)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-fortune -s | cowsay
+# fortune -s | cowsay
 
 # pipenv settings
 #export PATH="$PATH:/Users/Allyn.Bottorff/Library/Python/3.9/bin"
