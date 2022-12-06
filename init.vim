@@ -8,7 +8,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
-Plug 'ludovicchabant/vim-gutentags'
+"Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-commentary'
 "Plug 'zhaozg/vim-diagram'
 "Plug 'vim-test/vim-test'
@@ -108,7 +108,7 @@ let g:neovide_cursor_animation_length=0
 "set guifont=Source\ Code\ Pro\ Medium:h16
 "set guifont=Hack:h15
 "set guifont=Noto\ Mono\ for\ Powerline:h14
-set guifont=Berkeley\ Mono\ Variable:h14
+set guifont=Berkeley\ Mono\ Variable:h13
 
 "Fugitive options
 set diffopt+=vertical
