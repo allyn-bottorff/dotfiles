@@ -52,7 +52,7 @@ require('packer').startup(function(use)
   use 'morhetz/gruvbox'
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
       
-  use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
+  -- use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
   use {'junegunn/fzf', run = ":call fzf#install()"}
@@ -130,12 +130,11 @@ vim.o.colorcolumn = 80
 vim.o.cursorline = true
 vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal nonumber" })
 vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal signcolumn=no" })
-vim.o.listchars = "eol:¬,trail:·,tab:>\\ ,lead:·"
+-- vim.o.listchars = "eol:¬,trail:·,tab:\>,lead:·"
+-- vim.opt.listchars = { eol = '¬', trail = '·', tab = '>', lead = '·'}
+vim.opt.listchars = { eol = '¬', trail = '·', tab = '> ', lead = '·'}
 vim.o.list = true
 
--- Custom keymaps
-vim.keymap.set({'n','i'}, 'fd', '<ESC>')
-vim.keymap.set('t','fd', '<C-\\><C-n>')
 
 
 
@@ -152,6 +151,11 @@ vim.g.maplocalleader = ' '
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+-- Custom keymaps
+vim.keymap.set({'n','i'}, 'fd', '<ESC>')
+vim.keymap.set('t','fd', '<C-\\><C-n>')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -184,10 +188,10 @@ require('Comment').setup()
 
 -- Enable `lukas-reineke/indent-blankline.nvim`
 -- See `:help indent_blankline.txt`
-require('indent_blankline').setup {
-  char = '|',
-  show_trailing_blankline_indent = false,
-}
+-- require('indent_blankline').setup {
+--   char = '|',
+--   show_trailing_blankline_indent = false,
+-- }
 
 -- Gitsigns
 -- See `:help gitsigns.txt`
@@ -241,7 +245,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'bash', 'vim' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'bash', 'vim', 'dockerfile', 'css', 'gitignore', 'graphql', 'hcl', 'html', 'json', 'latex', 'make', 'markdown', 'sql', 'toml', 'yaml', 'zig' },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
