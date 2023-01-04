@@ -54,7 +54,7 @@ require('packer').startup(function(use)
       
   -- use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
-  use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
+  -- use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
   use {'junegunn/fzf', run = ":call fzf#install()"}
   use 'junegunn/fzf.vim'
 
@@ -63,6 +63,7 @@ require('packer').startup(function(use)
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
+  -- use 'nathom/filetype.nvim'
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
@@ -134,6 +135,43 @@ vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal signcolumn=no" })
 -- vim.opt.listchars = { eol = '¬', trail = '·', tab = '>', lead = '·'}
 vim.opt.listchars = { eol = '¬', trail = '·', tab = '> ', lead = '·'}
 vim.o.list = true
+
+-- tabstop stuff
+
+local function settabspace4()
+  vim.o.tabstop = 4
+  vim.o.softtabstop = 4
+  vim.o.shiftwidth = 4
+end
+
+local function settabspace2()
+  vim.o.tabstop = 2
+  vim.o.softtabstop = 2
+  vim.o.shiftwidth = 2
+end
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {"python", "go", "zig", "terraform"},
+  callback = settabspace4,
+  })
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {"python", "yaml", "zig"},
+  command = "setlocal expandtab",
+  })
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {"yaml"},
+  callback = settabspace2,
+ })
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {"asciidoc"},
+  command = "setlocal spell",
+ })
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {"asciidoc"},
+  command = "setlocal tw=79",
+ })
+
+
 
 
 
@@ -245,7 +283,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'bash', 'vim', 'dockerfile', 'css', 'gitignore', 'graphql', 'hcl', 'html', 'json', 'latex', 'make', 'markdown', 'sql', 'toml', 'yaml', 'zig' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'bash', 'vim', 'dockerfile', 'css', 'gitignore', 'graphql', 'hcl', 'html', 'json', 'latex', 'make', 'markdown', 'sql', 'toml', 'yaml', 'zig', 'terraform' },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },

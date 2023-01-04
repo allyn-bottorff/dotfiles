@@ -79,6 +79,8 @@ export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
 
 export NEOVIDE_MULTIGRID=1
 
+export GITLAB_HOST=https://gitlab.redchimney.com
+
 
 
 # Fix for PIP MITM while on VU network
@@ -129,3 +131,5 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 eval "$(starship init zsh)"
+
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
