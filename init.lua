@@ -51,10 +51,10 @@ require('packer').startup(function(use)
   -- use 'navarasu/onedark.nvim' -- Theme inspired by Atom
   use 'morhetz/gruvbox'
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
-      
+
   -- use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
-  -- use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
+  use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
   use {'junegunn/fzf', run = ":call fzf#install()"}
   use 'junegunn/fzf.vim'
 
@@ -127,7 +127,7 @@ vim.wo.signcolumn = 'yes'
 vim.o.termguicolors = true
 vim.cmd [[colorscheme gruvbox]]
 vim.o.winblend = 20
-vim.o.colorcolumn = 80
+vim.o.cc = "80"
 vim.o.cursorline = true
 vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal nonumber" })
 vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal signcolumn=no" })
@@ -136,7 +136,14 @@ vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal signcolumn=no" })
 vim.opt.listchars = { eol = '¬', trail = '·', tab = '> ', lead = '·'}
 vim.o.list = true
 
+-- Neovide settings
+vim.o.guifont = "Berkeley Mono Variable:h11"
+vim.g.neovide_scroll_animation_length = 0.5
+vim.g.neovide_cursor_animation_length = 0.01
+
+
 -- tabstop stuff
+
 
 local function settabspace4()
   vim.o.tabstop = 4
@@ -155,11 +162,11 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = settabspace4,
   })
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = {"python", "yaml", "zig"},
+  pattern = {"python", "yaml", "zig", "terraform"},
   command = "setlocal expandtab",
   })
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = {"yaml"},
+  pattern = {"yaml", "terraform"},
   callback = settabspace2,
  })
 vim.api.nvim_create_autocmd("FileType", {
@@ -192,8 +199,8 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Custom keymaps
 vim.keymap.set({'n','i'}, 'fd', '<ESC>')
 vim.keymap.set('t','fd', '<C-\\><C-n>')
-vim.keymap.set('n', '<C-u>', '<C-u>zz')
-vim.keymap.set('n', '<C-d>', '<C-d>zz')
+-- vim.keymap.set('n', '<C-u>', '<C-u>zz')
+-- vim.keymap.set('n', '<C-d>', '<C-d>zz')
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
