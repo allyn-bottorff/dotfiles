@@ -65,6 +65,9 @@ require('packer').startup(function(use)
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
   -- use 'nathom/filetype.nvim'
 
+  -- Go dev tools
+  use 'sebdah/vim-delve'
+
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
@@ -137,7 +140,8 @@ vim.opt.listchars = { eol = '¬', trail = '·', tab = '> ', lead = '·'}
 vim.o.list = true
 
 -- Neovide settings
-vim.o.guifont = "Berkeley Mono Variable:h11"
+vim.o.guifont = "Berkeley Mono Variable:h13:#e-subpixelantialias:#h-slight"
+-- vim.o.guifont = "Berkeley Mono Variable:h12"
 vim.g.neovide_scroll_animation_length = 0.5
 vim.g.neovide_cursor_animation_length = 0.01
 
@@ -197,7 +201,7 @@ vim.g.maplocalleader = ' '
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Custom keymaps
-vim.keymap.set({'n','i'}, 'fd', '<ESC>')
+vim.keymap.set({'n','i','v'}, 'fd', '<ESC>')
 vim.keymap.set('t','fd', '<C-\\><C-n>')
 -- vim.keymap.set('n', '<C-u>', '<C-u>zz')
 -- vim.keymap.set('n', '<C-d>', '<C-d>zz')
@@ -290,7 +294,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'bash', 'vim', 'dockerfile', 'css', 'gitignore', 'graphql', 'hcl', 'html', 'json', 'latex', 'make', 'markdown', 'sql', 'toml', 'yaml', 'zig', 'terraform' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'bash', 'vim', 'dockerfile', 'css', 'gitignore', 'graphql', 'hcl', 'html', 'json', 'latex', 'make', 'markdown', 'sql', 'toml', 'yaml', 'zig', 'terraform', 'proto' },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
