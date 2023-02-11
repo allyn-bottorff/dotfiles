@@ -70,7 +70,7 @@ alias k='kubectl'
 export XDG_CONFIG_HOME="/Users/Allyn.Bottorff/.config/"
 
 export EDITOR=nvim
-export KUBECONFIG=~/.kube/ch3-dev.yaml:~/.kube/ch3-uat.yaml:~/.kube/ch3-prod.yaml:~/.kube/da11-prod.yaml:~/.kube/da11-dev.yaml:~/.kube/da11-uat.yaml:~/.kube/primary-dmz-backend.yaml:~/.kube/primary-dmz.yaml
+export KUBECONFIG=~/.kube/ch3-dev.yaml:~/.kube/ch3-uat.yaml:~/.kube/ch3-prod.yaml:~/.kube/da11-prod.yaml:~/.kube/da11-dev.yaml:~/.kube/da11-uat.yaml:~/.kube/primary-dmz-backend.yaml:~/.kube/primary-dmz.yaml:~/.kube/da11-dev-lan.yaml
 #export SHELL="/usr/sbin/zsh"
 
 #export KUBECTX_IGNORE_FZF=1
@@ -78,6 +78,8 @@ export FZF_DEFAULT_COMMAND='fd --type file'
 export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
 
 export NEOVIDE_MULTIGRID=1
+
+export GITLAB_HOST=https://gitlab.redchimney.com
 
 
 
@@ -129,3 +131,5 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 eval "$(starship init zsh)"
+
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
