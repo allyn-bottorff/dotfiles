@@ -38,10 +38,10 @@ require('packer').startup(function(use)
     end,
   }
 
-  use { -- Additional text objects via treesitter
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    after = 'nvim-treesitter',
-  }
+  -- use { -- Additional text objects via treesitter
+  --   'nvim-treesitter/nvim-treesitter-textobjects',
+  --   after = 'nvim-treesitter',
+  -- }
 
   -- Git related plugins
   use 'tpope/vim-fugitive'
@@ -140,7 +140,7 @@ vim.opt.listchars = { eol = '¬', trail = '·', tab = '> ', lead = '·'}
 vim.o.list = true
 
 -- Neovide settings
-vim.o.guifont = "Berkeley Mono Variable:h13:#e-subpixelantialias:#h-slight"
+vim.o.guifont = "Berkeley Mono Variable:h12:#e-subpixelantialias:#h-slight"
 -- vim.o.guifont = "Berkeley Mono Variable:h12"
 vim.g.neovide_scroll_animation_length = 0.5
 vim.g.neovide_cursor_animation_length = 0.01
@@ -297,7 +297,7 @@ require('nvim-treesitter.configs').setup {
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'bash', 'vim', 'dockerfile', 'css', 'gitignore', 'graphql', 'hcl', 'html', 'json', 'latex', 'make', 'markdown', 'sql', 'toml', 'yaml', 'zig', 'terraform', 'proto' },
 
   highlight = { enable = true },
-  indent = { enable = true, disable = { 'python' } },
+  -- indent = { enable = true, disable = { 'python' } },
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -307,50 +307,50 @@ require('nvim-treesitter.configs').setup {
       node_decremental = '<c-backspace>',
     },
   },
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ['aa'] = '@parameter.outer',
-        ['ia'] = '@parameter.inner',
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
-      },
-    },
-    move = {
-      enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
-      goto_next_start = {
-        [']m'] = '@function.outer',
-        [']]'] = '@class.outer',
-      },
-      goto_next_end = {
-        [']M'] = '@function.outer',
-        [']['] = '@class.outer',
-      },
-      goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[['] = '@class.outer',
-      },
-      goto_previous_end = {
-        ['[M'] = '@function.outer',
-        ['[]'] = '@class.outer',
-      },
-    },
-    swap = {
-      enable = true,
-      swap_next = {
-        ['<leader>a'] = '@parameter.inner',
-      },
-      swap_previous = {
-        ['<leader>A'] = '@parameter.inner',
-      },
-    },
-  },
+  -- textobjects = {
+  --   select = {
+  --     enable = true,
+  --     lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+  --     keymaps = {
+  --       -- You can use the capture groups defined in textobjects.scm
+  --       ['aa'] = '@parameter.outer',
+  --       ['ia'] = '@parameter.inner',
+  --       ['af'] = '@function.outer',
+  --       ['if'] = '@function.inner',
+  --       ['ac'] = '@class.outer',
+  --       ['ic'] = '@class.inner',
+  --     },
+  --   },
+  --   move = {
+  --     enable = true,
+  --     set_jumps = true, -- whether to set jumps in the jumplist
+  --     goto_next_start = {
+  --       [']m'] = '@function.outer',
+  --       [']]'] = '@class.outer',
+  --     },
+  --     goto_next_end = {
+  --       [']M'] = '@function.outer',
+  --       [']['] = '@class.outer',
+  --     },
+  --     goto_previous_start = {
+  --       ['[m'] = '@function.outer',
+  --       ['[['] = '@class.outer',
+  --     },
+  --     goto_previous_end = {
+  --       ['[M'] = '@function.outer',
+  --       ['[]'] = '@class.outer',
+  --     },
+  --   },
+  --   swap = {
+  --     enable = true,
+  --     swap_next = {
+  --       ['<leader>a'] = '@parameter.inner',
+  --     },
+  --     swap_previous = {
+  --       ['<leader>A'] = '@parameter.inner',
+  --     },
+  --   },
+  -- },
 }
 
 -- Diagnostic keymaps
@@ -416,12 +416,12 @@ local servers = {
   -- rust_analyzer = {},
   -- tsserver = {},
 
-  sumneko_lua = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-    },
-  },
+  -- sumneko_lua = {
+  --   Lua = {
+  --     workspace = { checkThirdParty = false },
+  --     telemetry = { enable = false },
+  --   },
+  -- },
 }
 
 -- Setup neovim lua configuration

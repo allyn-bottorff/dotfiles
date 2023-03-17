@@ -37,6 +37,7 @@ alias exip='dig @ns1.google.com +short o-o.myaddr.l.google.com txt'
 alias neovide='neovide --multigrid 1>/dev/null'
 #alias neovide='open -b com.neovide.neovide'
 alias k='kubectl'
+alias cat='bat'
 
 # change git origin from gitlab.veteransunited.com to gitlab.redchimney.com
 #chgitorigin() { git remote set-url origin $(git remote get-url origin | sed 's/veteransunited/redchimney/') }
@@ -133,3 +134,5 @@ export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 eval "$(starship init zsh)"
 
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
+
+complete -o nospace -C /opt/homebrew/bin/mc mc
