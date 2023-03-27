@@ -31,6 +31,9 @@ require('packer').startup(function(use)
     requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   }
 
+  -- Github copilot
+  use 'github/copilot.vim'
+
   use { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     run = function()
@@ -140,8 +143,8 @@ vim.opt.listchars = { eol = '¬', trail = '·', tab = '> ', lead = '·'}
 vim.o.list = true
 
 -- Neovide settings
-vim.o.guifont = "Berkeley Mono Variable:h12:#e-subpixelantialias:#h-slight"
--- vim.o.guifont = "Berkeley Mono Variable:h12"
+-- vim.o.guifont = "Berkeley Mono Variable:h12:#e-subpixelantialias:#h-slight"
+vim.o.guifont = "Berkeley Mono Variable:h12"
 vim.g.neovide_scroll_animation_length = 0.5
 vim.g.neovide_cursor_animation_length = 0.01
 
@@ -475,8 +478,8 @@ cmp.setup {
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
+      -- elseif luasnip.expand_or_jumpable() then
+      --   luasnip.expand_or_jump()
       else
         fallback()
       end
@@ -484,8 +487,8 @@ cmp.setup {
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
+      -- elseif luasnip.jumpable(-1) then
+      --   luasnip.jump(-1)
       else
         fallback()
       end
