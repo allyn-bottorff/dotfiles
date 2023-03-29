@@ -1,6 +1,4 @@
 theme = "gruvbox"
-
-# vim config stuff
 [keys.normal]
 # Quick iteration on config changes
 C-o = ":config-open"
@@ -90,7 +88,6 @@ g = { g = ["select_mode", "extend_to_line_bounds", "goto_file_start", "extend_to
 
 [keys.insert]
 # Escape the madness! No more fighting with the cursor! Or with multiple cursors!
-# fd = ["normal_mode"]
 esc = ["collapse_selection", "normal_mode"]
 
 [keys.select]
@@ -105,6 +102,8 @@ D = ["extend_to_line_bounds", "delete_selection", "normal_mode"]
 C = ["goto_line_start", "extend_to_line_bounds", "change_selection"]
 "%" = "match_brackets"
 S = "surround_add" # Basically 99% of what I use vim-surround for
+u = ["switch_to_lowercase", "collapse_selection", "normal_mode"]
+U = ["switch_to_uppercase", "collapse_selection", "normal_mode"]
 
 # Visual-mode specific muscle memory
 i = "select_textobject_inner"
