@@ -72,7 +72,7 @@ require('packer').startup(function(use)
     end,
     config = function()
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'bash', 'vim', 'dockerfile', 'css', 'gitignore', 'graphql', 'hcl', 'html', 'json', 'latex', 'make', 'markdown', 'sql', 'toml', 'yaml', 'zig', 'terraform', 'proto' },
+        ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'bash', 'vim', 'dockerfile', 'css', 'gitignore', 'graphql', 'hcl', 'html', 'json', 'latex', 'make', 'markdown', 'sql', 'toml', 'yaml', 'zig', 'terraform', 'proto' },
       highlight = { enable = true },
       incremental_selection = {
           enable = true,
@@ -102,7 +102,7 @@ require('packer').startup(function(use)
   -- FZF
   use {
     'junegunn/fzf',
-    run = ":call fzf#install()",
+    -- run = ":call fzf#install()",
     requires = {"junegunn/fzf.vim"}
   }
 
