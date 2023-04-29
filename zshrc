@@ -33,7 +33,6 @@ setopt inc_append_history_time
 # ALIASES
 alias vim='nvim'
 alias l='exa -lhF --git'
-alias docker-stahp='docker stop $(docker ps -a -q)'
 alias exip='dig @ns1.google.com +short o-o.myaddr.l.google.com txt'
 alias fixresolv='~/resolv-ansible/venv/bin/ansible-playbook -K ~/resolv-ansible/add-umbrella.yml'
 alias neovide='neovide --multiGrid 1>/dev/null'
@@ -43,59 +42,30 @@ alias step='step-cli'
 alias dig='dig +search'
 alias fixres='xrandr --output Virtual-1 --auto'
 
+alias k='kubectl'
+alias cat='bat'
 
 # change git origin from gitlab.veteransunited.com to gitlab.redchimney.com
-chgitorigin() { git remote set-url origin $(git remote get-url origin | sed 's/veteransunited/redchimney/') }
+#chgitorigin() { git remote set-url origin $(git remote get-url origin | sed 's/veteransunited/redchimney/') }
 
 # LOGZ function
 
-logz() {
-  if [[ $1 == "client" ]]
-  then
-     for i in `kubectl get pods|grep f5api|grep -v schema|awk {'print $1'}`; do echo $i; kubectl logs $i f5api; echo; done;
-  elif [[ $1 == "service" ]]
-  then
-    if [[ -z $2 ]]
-    then
-      for i in `kubectl get pods|grep svc|awk {'print $1'}`; do j=`echo $i|cut -d"-" -f1-6`;echo $i; kubectl logs $i $j;echo; done
-    else
-      for i in `kubectl get pods|grep svc|awk {'print $1'}|grep $2`; do j=`echo $i|cut -d"-" -f1-6`;echo $i; kubectl logs $i $j;echo; done
-    fi
-  fi
-  }
-
-logzf() {
-  if [[ $1 == "client" ]]
-  then
-     for i in `kubectl get pods|grep f5api|grep -v schema|awk {'print $1'}`; do echo $i; kubectl logs -f $i f5api; echo; done;
-  elif [[ $1 == "service" ]]
-  then
-    if [[ -z $2 ]]
-    then
-      for i in `kubectl get pods|grep svc|awk {'print $1'}`; do j=`echo $i|cut -d"-" -f1-6`;echo $i; kubectl logs -f $i $j;echo; done
-    else
-      for i in `kubectl get pods|grep svc|awk {'print $1'}|grep $2`; do j=`echo $i|cut -d"-" -f1-6`;echo $i; kubectl logs -f $i $j;echo; done
-    fi
-  fi
-  }
-
-
 # PROMPT
 
-autoload -Uz vcs_info
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
-setopt prompt_subst
-zstyle ':vcs_info:git*' formats '<%r - %b>'
+#autoload -Uz vcs_info
+#precmd_vcs_info() { vcs_info }
+#precmd_functions+=( precmd_vcs_info )
+#setopt prompt_subst
+#zstyle ':vcs_info:git*' formats '<%r - %b>'
 
-source ~/.git-prompt.sh
-#source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-source "/opt/kube-ps1/kube-ps1.sh"
-setopt PROMPT_SUBST ; RPROMPT='$(__git_ps1 " (%s)")$(kube_ps1)'
+#source ~/.git-prompt.sh
+##source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+#source "/opt/homebrew/opt/kube-ps1/share/kube-ps1.sh"
+#setopt PROMPT_SUBST ; RPROMPT='$(__git_ps1 " (%s)")$(kube_ps1)'
 
-#NEWLINE=$'\n'
-PS1="%F{brwhite}[%f%F{blue}allyn%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}]$(kube_ps1)[%f%F{blue}%~%f%F{brwhite}]%f%F{brwhite}%%%f "
-#PS1='$(kube_ps1)'$PS1
+##NEWLINE=$'\n'
+#PS1="%F{brwhite}[%f%F{blue}allyn%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}]$(kube_ps1)[%f%F{blue}%~%f%F{brwhite}]%f%F{brwhite}%%%f "
+##PS1='$(kube_ps1)'$PS1
 
 
 #title
@@ -105,19 +75,16 @@ PS1="%F{brwhite}[%f%F{blue}allyn%f%F{brwhite}@%f%F{green}%m%f%F{brwhite}]$(kube_
 # fi
 
 
-export KUBECONFIG=~/.kube/rancher-dev:~/.kube/rancher-uat:~/.kube/rancher-prod:~/.kube/hedraios:~/.kube/rancher-infra:~/.kube/hashistack-test:~/.kube/rancher-prod-kdc:~/.kube/kdc-dev:~/.kube/kdc-uat:~/.kube/east.yaml:~/.kube/west.yaml:~/.kube/kdc-prod.yaml
-#export SHELL="/usr/sbin/zsh"
 export EDITOR=nvim
+#export SHELL="/usr/sbin/zsh"
 
 #export KUBECTX_IGNORE_FZF=1
 export FZF_DEFAULT_COMMAND='fd --type file'
 export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
 
-
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
-#Named Directories
-hash -d code=/Users/Allyn.Bottorff/Documents/code
+
 
 
 # Fix for PIP MITM while on VU network
@@ -128,7 +95,6 @@ hash -d code=/Users/Allyn.Bottorff/Documents/code
 #then
 #        export REQUESTS_CA_BUNDLE='/Users/Allyn.Bottorff/Cisco_Umbrella_Root_CA.cer'
 #fi
-#export REQUESTS_CA_BUNDLE='/home/allyn/CA/CiscoRoot.cer'
 
 #for ansible:
 #export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
@@ -143,7 +109,6 @@ source <(kubectl completion zsh)
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
-#fortune -s | cowsay
 
 # pipenv settings
 #export PATH="$PATH:/Users/Allyn.Bottorff/Library/Python/3.9/bin"
@@ -151,12 +116,21 @@ source /usr/share/fzf/completion.zsh
 
 # Kubectl Krew
 export PATH="${PATH}:${HOME}/.krew/bin"
+export PATH="${PATH}:${HOME}/go/bin"
+export PATH="${PATH}:${HOME}/.cargo/bin"
+
+# NVM GARBAGE
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 #minio auto-complete
 autoload -U +X bashcompinit && bashcompinit
 
 #source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#eval "$(starship init zsh)"
 
+
+
+eval "$(starship init zsh)"
 
