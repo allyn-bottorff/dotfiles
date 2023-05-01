@@ -22,6 +22,9 @@ require('packer').startup(function(use)
   -- Status Line
   use 'nvim-lualine/lualine.nvim'
 
+  -- Undo Tree
+  use 'mbbill/undotree'
+
   -- LSP Configuration
   use {
     'neovim/nvim-lspconfig',
@@ -45,24 +48,24 @@ require('packer').startup(function(use)
 
       },
     }
-  use {
-    'zbirenbaum/copilot.lua',
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function()
-      require("copilot").setup({
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-      })
-    end,
-  }
-  use {
-    'zbirenbaum/copilot-cmp',
-    after = { 'copilot.lua' },
-    config = function ()
-      require('copilot_cmp').setup()
-    end
-  }
+  -- use {
+  --   'zbirenbaum/copilot.lua',
+  --   cmd = "Copilot",
+  --   event = "InsertEnter",
+  --   config = function()
+  --     require("copilot").setup({
+  --       suggestion = { enabled = false },
+  --       panel = { enabled = false },
+  --     })
+  --   end,
+  -- }
+  -- use {
+  --   'zbirenbaum/copilot-cmp',
+  --   after = { 'copilot.lua' },
+  --   config = function ()
+  --     require('copilot_cmp').setup()
+  --   end
+  -- }
 
   -- Treesitter
   use {
@@ -72,7 +75,7 @@ require('packer').startup(function(use)
     end,
     config = function()
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'bash', 'vim', 'dockerfile', 'css', 'gitignore', 'graphql', 'hcl', 'html', 'json', 'latex', 'make', 'markdown', 'sql', 'toml', 'yaml', 'zig', 'terraform', 'proto' },
+        ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'bash', 'vim', 'dockerfile', 'css', 'gitignore', 'graphql', 'hcl', 'html', 'json', 'latex', 'make', 'markdown', 'sql', 'toml', 'yaml', 'zig', 'terraform', 'proto' },
       highlight = { enable = true },
       incremental_selection = {
           enable = true,
@@ -90,6 +93,7 @@ require('packer').startup(function(use)
   -- Git
   use 'tpope/vim-fugitive'
   use 'airblade/vim-gitgutter'
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   -- Comment 
   use {
@@ -170,7 +174,7 @@ vim.o.list = true
 -- Neovide settings
 -- vim.o.guifont = "Berkeley Mono Variable:h12:#e-subpixelantialias:#h-slight"
 vim.o.guifont = "Berkeley Mono Variable:h12"
-vim.g.neovide_scroll_animation_length = 0.5
+vim.g.neovide_scroll_animation_length = 0.25
 vim.g.neovide_cursor_animation_length = 0.01
 
 
