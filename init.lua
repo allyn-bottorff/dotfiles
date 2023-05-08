@@ -20,10 +20,10 @@ require('packer').startup(function(use)
   use 'morhetz/gruvbox'
 
   -- Status Line
-  use 'nvim-lualine/lualine.nvim'
+  -- use 'nvim-lualine/lualine.nvim'
 
   -- Undo Tree
-  use 'mbbill/undotree'
+  -- use 'mbbill/undotree'
 
   -- LSP Configuration
   use {
@@ -91,9 +91,9 @@ require('packer').startup(function(use)
   }
 
   -- Git
-  use 'tpope/vim-fugitive'
+  -- use 'tpope/vim-fugitive'
   use 'airblade/vim-gitgutter'
-  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+  -- use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   -- Comment 
   use {
