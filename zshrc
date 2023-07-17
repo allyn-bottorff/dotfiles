@@ -1,3 +1,4 @@
+# zmodload zsh/zprof
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=100000
@@ -38,6 +39,9 @@ alias neovide='neovide --multigrid 1>/dev/null'
 #alias neovide='open -b com.neovide.neovide'
 alias k='kubectl'
 alias cat='bat'
+alias tsk='task'
+
+alias bangcopy='op read op://work/bang/password | pbcopy'
 
 # change git origin from gitlab.veteransunited.com to gitlab.redchimney.com
 #chgitorigin() { git remote set-url origin $(git remote get-url origin | sed 's/veteransunited/redchimney/') }
@@ -71,7 +75,7 @@ alias cat='bat'
 export XDG_CONFIG_HOME="/Users/Allyn.Bottorff/.config/"
 
 export EDITOR=nvim
-export KUBECONFIG=~/.kube/ch3-dev.yaml:~/.kube/ch3-uat.yaml:~/.kube/ch3-prod.yaml:~/.kube/da11-prod.yaml:~/.kube/da11-dev.yaml:~/.kube/da11-uat.yaml:~/.kube/primary-dmz-backend.yaml:~/.kube/primary-dmz.yaml:~/.kube/da11-dev-lan.yaml:~/.kube/ch3-prod-lan.yaml
+export KUBECONFIG=~/.kube/ch3-dev.yaml:~/.kube/ch3-uat.yaml:~/.kube/ch3-prod.yaml:~/.kube/da11-prod.yaml:~/.kube/da11-dev.yaml:~/.kube/da11-uat.yaml:~/.kube/primary-dmz-backend.yaml:~/.kube/primary-dmz.yaml:~/.kube/da11-dev-lan.yaml:~/.kube/ch3-prod-lan.yaml:~/.kube/ch3-prod-dmz.yaml:~/.kube/udl02swaggerh01.yaml:~/.kube/plateng_cicd_d_da11.yaml:~/.kube/config
 #export SHELL="/usr/sbin/zsh"
 
 #export KUBECTX_IGNORE_FZF=1
@@ -82,8 +86,7 @@ export NEOVIDE_MULTIGRID=1
 
 export GITLAB_HOST=https://gitlab.redchimney.com
 
-
-
+export KIND_EXPERIMENTAL_PROVIDER=podman
 # Fix for PIP MITM while on VU network
 #HOME_NET='10.46'
 #ifconfig | grep $HOME_NET > /dev/null
@@ -116,9 +119,9 @@ export PATH="${PATH}:${HOME}/go/bin"
 export PATH="${PATH}:${HOME}/.cargo/bin"
 
 # NVM GARBAGE
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+# [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 #minio auto-complete
 autoload -U +X bashcompinit && bashcompinit
@@ -136,3 +139,6 @@ eval "$(starship init zsh)"
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
 
 complete -o nospace -C /opt/homebrew/bin/mc mc
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+
+# zprof
