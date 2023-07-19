@@ -17,7 +17,9 @@ require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- Theme Plugins
-  use 'morhetz/gruvbox'
+  -- use 'morhetz/gruvbox'
+  use 'vim-scripts/Spacegray.vim'
+  use 'abra/vim-obsidian'
 
   -- Status Line
   -- use 'nvim-lualine/lualine.nvim'
@@ -164,7 +166,9 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme and visuals
 vim.o.termguicolors = true
-vim.cmd [[colorscheme gruvbox]]
+-- vim.cmd [[colorscheme gruvbox]]
+vim.cmd [[colorscheme spacegray]]
+-- vim.cmd [[colorscheme obsidian]]
 vim.o.winblend = 20
 vim.o.cc = "80"
 vim.o.cursorline = true

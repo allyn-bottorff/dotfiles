@@ -73,6 +73,7 @@ alias bangcopy='op read op://work/bang/password | pbcopy'
 # fi
 
 export XDG_CONFIG_HOME="/Users/Allyn.Bottorff/.config/"
+export KITTY_CONFIG_DIRECTORY="/Users/Allyn.Bottorff/.config/kitty/kitty.conf"
 
 export EDITOR=nvim
 export KUBECONFIG=~/.kube/ch3-dev.yaml:~/.kube/ch3-uat.yaml:~/.kube/ch3-prod.yaml:~/.kube/da11-prod.yaml:~/.kube/da11-dev.yaml:~/.kube/da11-uat.yaml:~/.kube/primary-dmz-backend.yaml:~/.kube/primary-dmz.yaml:~/.kube/da11-dev-lan.yaml:~/.kube/ch3-prod-lan.yaml:~/.kube/ch3-prod-dmz.yaml:~/.kube/udl02swaggerh01.yaml:~/.kube/plateng_cicd_d_da11.yaml:~/.kube/config
