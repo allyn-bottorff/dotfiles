@@ -17,10 +17,15 @@ require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- Theme Plugins
-  use 'morhetz/gruvbox'
+  -- use 'morhetz/gruvbox'
+  use 'vim-scripts/Spacegray.vim'
+  use 'abra/vim-obsidian'
 
   -- Status Line
-  use 'nvim-lualine/lualine.nvim'
+  -- use 'nvim-lualine/lualine.nvim'
+
+  -- Undo Tree
+  -- use 'mbbill/undotree'
 
   -- LSP Configuration
   use {
@@ -45,6 +50,9 @@ require('packer').startup(function(use)
 
       },
     }
+  -- use {
+  --   'github/copilot.vim'
+  -- }
   use {
     'zbirenbaum/copilot.lua',
     cmd = "Copilot",
@@ -72,7 +80,8 @@ require('packer').startup(function(use)
     end,
     config = function()
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'bash', 'vim', 'dockerfile', 'css', 'gitignore', 'graphql', 'hcl', 'html', 'json', 'latex', 'make', 'markdown', 'sql', 'toml', 'yaml', 'zig', 'terraform', 'proto' },
+        -- ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'bash', 'vim', 'dockerfile', 'css', 'gitignore', 'graphql', 'hcl', 'html', 'json', 'latex', 'make', 'markdown', 'sql', 'toml', 'yaml', 'zig', 'terraform', 'proto' },
+        ensure_installed = { 'go', 'lua', 'python', 'rust', 'typescript', 'bash', 'vim', 'dockerfile', 'css', 'gitignore', 'graphql', 'hcl', 'html', 'json', 'latex', 'make', 'markdown', 'sql', 'toml', 'yaml', 'zig', 'terraform', 'proto' },
       highlight = { enable = true },
       incremental_selection = {
           enable = true,
@@ -90,6 +99,7 @@ require('packer').startup(function(use)
   -- Git
   use 'tpope/vim-fugitive'
   use 'airblade/vim-gitgutter'
+  -- use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   -- Comment 
   use {
@@ -156,7 +166,9 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme and visuals
 vim.o.termguicolors = true
-vim.cmd [[colorscheme gruvbox]]
+-- vim.cmd [[colorscheme gruvbox]]
+vim.cmd [[colorscheme spacegray]]
+-- vim.cmd [[colorscheme obsidian]]
 vim.o.winblend = 20
 vim.o.cc = "80"
 vim.o.cursorline = true
@@ -169,8 +181,8 @@ vim.o.list = true
 
 -- Neovide settings
 -- vim.o.guifont = "Berkeley Mono Variable:h12:#e-subpixelantialias:#h-slight"
-vim.o.guifont = "Berkeley Mono Variable:h12"
-vim.g.neovide_scroll_animation_length = 0.5
+vim.o.guifont = "Berkeley Mono Variable:h13"
+vim.g.neovide_scroll_animation_length = 0.25
 vim.g.neovide_cursor_animation_length = 0.01
 
 
@@ -307,7 +319,11 @@ mason_lspconfig.setup_handlers {
 }
 
 -- Turn on lsp status information
-require('fidget').setup()
+require('fidget').setup{
+  text = {
+    spinner = "dots",
+  },
+}
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
@@ -350,6 +366,7 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'copilot' },
   },
 }
 
