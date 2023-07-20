@@ -18,11 +18,12 @@ require('packer').startup(function(use)
 
   -- Theme Plugins
   -- use 'morhetz/gruvbox'
-  use 'vim-scripts/Spacegray.vim'
-  use 'abra/vim-obsidian'
-  use { "bluz71/vim-nightfly-colors", as = "nightfly" }
-  use "rebelot/kanagawa.nvim"
-  use "nordtheme/vim"
+  -- use 'vim-scripts/Spacegray.vim'
+  -- use 'abra/vim-obsidian'
+  -- use { "bluz71/vim-nightfly-colors", as = "nightfly" }
+  -- use "rebelot/kanagawa.nvim"
+  -- use "nordtheme/vim"
+  use "shaunsingh/nord.nvim"
 
   -- Status Line
   -- use 'nvim-lualine/lualine.nvim'
@@ -173,7 +174,11 @@ vim.o.termguicolors = true
 -- vim.cmd [[colorscheme spacegray]]
 -- vim.cmd [[colorscheme obsidian]]
 -- vim.cmd [[colorscheme kanagawa]]
-vim.cmd [[colorscheme nord]]
+-- vim.cmd [[colorscheme nord]]
+vim.g.nord_italic = false
+vim.g.nord_borders = true
+require('nord').set()
+
 vim.o.winblend = 20
 vim.o.cc = "80"
 vim.o.cursorline = true
