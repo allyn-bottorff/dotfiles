@@ -45,6 +45,14 @@ require('packer').startup(function(use)
     },
   }
 
+  -- Debugger
+  use {
+    'puremourning/vimspector'
+  }
+  -- use {
+  --   'sebdah/vim-delve'
+  -- }
+
   -- Autocompletion
   use {
     'hrsh7th/nvim-cmp',
@@ -58,24 +66,24 @@ require('packer').startup(function(use)
   -- use {
   --   'github/copilot.vim'
   -- }
-  use {
-    'zbirenbaum/copilot.lua',
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function()
-      require("copilot").setup({
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-      })
-    end,
-  }
-  use {
-    'zbirenbaum/copilot-cmp',
-    after = { 'copilot.lua' },
-    config = function ()
-      require('copilot_cmp').setup()
-    end
-  }
+  -- use {
+  --   'zbirenbaum/copilot.lua',
+  --   cmd = "Copilot",
+  --   event = "InsertEnter",
+  --   config = function()
+  --     require("copilot").setup({
+  --       suggestion = { enabled = false },
+  --       panel = { enabled = false },
+  --     })
+  --   end,
+  -- }
+  -- use {
+  --   'zbirenbaum/copilot-cmp',
+  --   after = { 'copilot.lua' },
+  --   config = function ()
+  --     require('copilot_cmp').setup()
+  --   end
+  -- }
 
   -- Treesitter
   use {
@@ -378,9 +386,15 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-    { name = 'copilot' },
+    -- { name = 'copilot' },
   },
 }
+
+-------------------
+--Debugger Settings
+-------------------
+vim.g.vimspector_enable_mappings = 'HUMAN'
+vim.g.python3_host_prod = 'python3'
 
 
 -- The line beneath this is called `modeline`. See `:help modeline`
