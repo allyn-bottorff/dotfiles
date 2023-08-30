@@ -1,30 +1,33 @@
 ---------------------------------------------------
--- Install Packer (bootstrap)
+-- Install Package Manager
 ---------------------------------------------------
-local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
-local is_bootstrap = false
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  is_bootstrap = true
-  vim.fn.system { 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path }
-  vim.cmd [[packadd packer.nvim]]
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system {
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable',
+    lazypath,
+  }
 end
+vim.opt.rtp:prepend(lazypath)
 
 ---------------------------------------------------
 -- Manage Plugins
 ---------------------------------------------------
-require('packer').startup(function(use)
-  -- Package manager
-  use 'wbthomason/packer.nvim'
+require('lazy').setup({
 
   -- Theme Plugins
-  use 'morhetz/gruvbox'
-  -- use 'vim-scripts/Spacegray.vim'
-  -- use 'abra/vim-obsidian'
-  -- use { "bluz71/vim-nightfly-colors", as = "nightfly" }
-  -- use "rebelot/kanagawa.nvim"
-  -- use "nordtheme/vim"
-  -- use "shaunsingh/nord.nvim"
-  use "EdenEast/nightfox.nvim"
+  -- 'morhetz/gruvbox',
+  -- 'vim-scripts/Spacegray.vim'
+  -- 'abra/vim-obsidian'
+  -- { "bluz71/vim-nightfly-colors", as = "nightfly" }
+  -- "rebelot/kanagawa.nvim"
+  -- "nordtheme/vim"
+  -- "shaunsingh/nord.nvim"
+  'EdenEast/nightfox.nvim',
 
   -- Status Line
   -- use 'nvim-lualine/lualine.nvim'
@@ -33,36 +36,30 @@ require('packer').startup(function(use)
   -- use 'mbbill/undotree'
 
   -- LSP Configuration
-  use {
+  {
     'neovim/nvim-lspconfig',
-    requires = {
+    dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      'williamboman/mason.nvim',
+      { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
-      'j-hui/fidget.nvim',
-    },
-  }
+      'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+  },
 
   -- Debugger
-  use {
-    'puremourning/vimspector'
-  }
-  -- use {
-  --   'sebdah/vim-delve'
-  -- }
+  'puremourning/vimspector',
+  -- 'sebdah/vim-delve',
 
   -- Autocompletion
-  use {
+  {
     'hrsh7th/nvim-cmp',
-    requires = {
+    dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
-
       },
-    }
+    },
   -- use {
   --   'github/copilot.vim'
   -- }
@@ -86,66 +83,27 @@ require('packer').startup(function(use)
   -- }
 
   -- Treesitter
-  use {
+  {
     'nvim-treesitter/nvim-treesitter',
-    run = function()
-      pcall(require('nvim-treesitter.install').update { with_sync = true })
-    end,
-    config = function()
-      require('nvim-treesitter.configs').setup {
-        -- ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'bash', 'vim', 'dockerfile', 'css', 'gitignore', 'graphql', 'hcl', 'html', 'json', 'latex', 'make', 'markdown', 'sql', 'toml', 'yaml', 'zig', 'terraform', 'proto' },
-        ensure_installed = { 'go', 'lua', 'python', 'rust', 'typescript', 'bash', 'vim', 'dockerfile', 'css', 'gitignore', 'graphql', 'hcl', 'html', 'json', 'latex', 'make', 'markdown', 'sql', 'toml', 'yaml', 'zig', 'terraform', 'proto' },
-      highlight = { enable = true },
-      incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = '<c-space>',
-            node_incremental = '<c-space>',
-            scope_incremental = '<c-s>',
-            node_decremental = '<c-backspace>',
-            },
-          },
-        }
-      end
-  }
+    build = ':TSUpdate',
+  },
 
   -- Git
-  use 'tpope/vim-fugitive'
-  use 'airblade/vim-gitgutter'
+  'tpope/vim-fugitive',
+  'airblade/vim-gitgutter',
   -- use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   -- Comment 
-  use {
-      'numToStr/Comment.nvim', -- "gc" to comment visual regions/lines
-      config = function()
-          require('Comment').setup()
-      end
-  }
+  'numToStr/Comment.nvim', -- "gc" to comment visual regions/lines
 
   -- FZF
-  use {
+  {
     'junegunn/fzf',
-    run = ":call fzf#install()",
-    requires = {"junegunn/fzf.vim"}
-  }
+    dependencies = {"junegunn/fzf.vim"},
+    build = ":call fzf#install()",
+  },
+}, {})
 
-  -- Go tools
-  use 'sebdah/vim-delve'
-
-end)
-
--- When we are bootstrapping a configuration, it doesn't
--- make sense to execute the rest of the init.lua.
---
--- You'll need to restart nvim, and then it will work.
-if is_bootstrap then
-  print '=================================='
-  print '    Plugins are being installed'
-  print '    Wait until Packer completes,'
-  print '       then restart nvim'
-  print '=================================='
-  return
-end
 
 
 ---------------------------------------------------
@@ -264,6 +222,8 @@ vim.keymap.set('n', '<leader>f', ":Files<CR>")
 vim.keymap.set('n', '<leader>g', ":GitFiles<CR>")
 vim.keymap.set('n', '<leader>b', ":Buffers<CR>")
 
+-- Comment config
+require('Comment').setup()
 
 ---------------------------------------------------
 -- LSP Settings
@@ -344,6 +304,23 @@ require('fidget').setup{
     spinner = "dots",
   },
 }
+
+
+-- Treesitter setup
+require('nvim-treesitter.configs').setup {
+  -- ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'bash', 'vim', 'dockerfile', 'css', 'gitignore', 'graphql', 'hcl', 'html', 'json', 'latex', 'make', 'markdown', 'sql', 'toml', 'yaml', 'zig', 'terraform', 'proto' },
+  ensure_installed = { 'go', 'lua', 'python', 'rust', 'typescript', 'bash', 'vim', 'dockerfile', 'css', 'gitignore', 'graphql', 'hcl', 'html', 'json', 'latex', 'make', 'markdown', 'sql', 'toml', 'yaml', 'zig', 'terraform', 'proto' },
+highlight = { enable = true },
+incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = '<c-space>',
+      node_incremental = '<c-space>',
+      scope_incremental = '<c-s>',
+      node_decremental = '<c-backspace>',
+      },
+    },
+  }
 
 -- nvim-cmp setup
 local cmp = require 'cmp'

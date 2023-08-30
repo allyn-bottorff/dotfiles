@@ -76,7 +76,7 @@ export XDG_CONFIG_HOME="/Users/Allyn.Bottorff/.config/"
 export KITTY_CONFIG_DIRECTORY="/Users/Allyn.Bottorff/.config/kitty/kitty.conf"
 
 export EDITOR=nvim
-export KUBECONFIG=~/.kube/ch3-dev.yaml:~/.kube/ch3-uat.yaml:~/.kube/ch3-prod.yaml:~/.kube/da11-prod.yaml:~/.kube/da11-dev.yaml:~/.kube/da11-uat.yaml:~/.kube/primary-dmz-backend.yaml:~/.kube/primary-dmz.yaml:~/.kube/da11-dev-lan.yaml:~/.kube/ch3-prod-lan.yaml:~/.kube/ch3-prod-dmz.yaml:~/.kube/udl02swaggerh01.yaml:~/.kube/plateng_cicd_d_da11.yaml:~/.kube/config:~/.kube/mia-poc.yaml
+export KUBECONFIG=~/.kube/ch3-dev.yaml:~/.kube/ch3-uat.yaml:~/.kube/ch3-prod.yaml:~/.kube/da11-prod.yaml:~/.kube/da11-dev.yaml:~/.kube/da11-uat.yaml:~/.kube/primary-dmz-backend.yaml:~/.kube/primary-dmz.yaml:~/.kube/da11-dev-lan.yaml:~/.kube/da11-dev-dmz.yaml:~/.kube/ch3-prod-lan.yaml:~/.kube/ch3-prod-dmz.yaml:~/.kube/udl02swaggerh01.yaml:~/.kube/plateng_cicd_d_da11.yaml:~/.kube/config:~/.kube/mia-poc.yaml
 #export SHELL="/usr/sbin/zsh"
 
 #export KUBECTX_IGNORE_FZF=1
@@ -116,6 +116,8 @@ source <(kubectl completion zsh)
 
 # Kubectl Krew
 export PATH="${PATH}:${HOME}/.krew/bin"
+
+
 export PATH="${PATH}:${HOME}/go/bin"
 export PATH="${PATH}:${HOME}/.cargo/bin"
 
@@ -141,5 +143,4 @@ complete -o nospace -C /opt/homebrew/bin/terraform terraform
 
 complete -o nospace -C /opt/homebrew/bin/mc mc
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
-
-# zprof
+export PATH="${HOME}/.local/bin:${PATH}"
