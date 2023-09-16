@@ -96,6 +96,7 @@ require('lazy').setup({
   -- Comment 
   'numToStr/Comment.nvim', -- "gc" to comment visual regions/lines
 
+  -- Neorg 
   {
     "nvim-neorg/neorg",
     build = ":Neorg sync-parsers",
@@ -107,6 +108,7 @@ require('lazy').setup({
           ["core.concealer"] = {}, -- Adds pretty icons to your documents
           ["core.dirman"] = { -- Manages Neorg workspaces
             config = {
+              default_workspace = "notes",
               workspaces = {
                 notes = "~/Documents/norg",
               },
@@ -216,11 +218,11 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = settabspace2,
  })
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = {"asciidoc"},
+  pattern = {"asciidoc", "norg"},
   command = "setlocal spell",
  })
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = {"asciidoc"},
+  pattern = {"asciidoc", "norg"},
   command = "setlocal tw=79",
  })
 
