@@ -221,7 +221,7 @@ vim.api.nvim_create_autocmd("FileType", {
   command = "setlocal spell",
  })
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = {"asciidoc", "norg"},
+  pattern = {"asciidoc"},
   command = "setlocal tw=79",
  })
 
