@@ -118,6 +118,7 @@ require('lazy').setup({
       }
     end,
   },
+
   -- FZF
   {
     'junegunn/fzf',
