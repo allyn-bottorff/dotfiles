@@ -44,7 +44,9 @@ require('lazy').setup({
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
-      'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+      {'j-hui/fidget.nvim',
+      opts = {} },
+    },
   },
 
   -- Debugger
@@ -321,18 +323,11 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
--- Turn on lsp status information
-require('fidget').setup{
-  text = {
-    spinner = "dots",
-  },
-}
-
 
 -- Treesitter setup
 require('nvim-treesitter.configs').setup {
   -- ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'bash', 'vim', 'dockerfile', 'css', 'gitignore', 'graphql', 'hcl', 'html', 'json', 'latex', 'make', 'markdown', 'sql', 'toml', 'yaml', 'zig', 'terraform', 'proto' },
-  ensure_installed = { 'go', 'lua', 'python', 'rust', 'typescript', 'bash', 'vim', 'dockerfile', 'css', 'gitignore', 'graphql', 'hcl', 'html', 'json', 'latex', 'make', 'markdown', 'sql', 'toml', 'yaml', 'zig', 'terraform', 'proto' },
+  ensure_installed = { 'go', 'lua', 'python', 'rust', 'typescript', 'bash', 'vim', 'dockerfile', 'css', 'gitignore', 'graphql', 'hcl', 'html', 'json', 'latex', 'make', 'markdown', 'sql', 'toml', 'yaml', 'zig', 'terraform', 'proto', 'kdl' },
 highlight = { enable = true },
 incremental_selection = {
     enable = true,
