@@ -76,7 +76,7 @@ export XDG_CONFIG_HOME="/Users/Allyn.Bottorff/.config/"
 export KITTY_CONFIG_DIRECTORY="/Users/Allyn.Bottorff/.config/kitty"
 
 export EDITOR=nvim
-export KUBECONFIG=~/.kube/ch3-dev.yaml:~/.kube/ch3-uat.yaml:~/.kube/ch3-prod.yaml:~/.kube/da11-prod.yaml:~/.kube/da11-dev.yaml:~/.kube/da11-uat.yaml:~/.kube/primary-dmz-backend.yaml:~/.kube/primary-dmz.yaml:~/.kube/da11-dev-lan.yaml:~/.kube/da11-dev-dmz.yaml:~/.kube/ch3-prod-lan.yaml:~/.kube/ch3-prod-dmz.yaml:~/.kube/udl02swaggerh01.yaml:~/.kube/plateng_cicd_d_da11.yaml:~/.kube/config:~/.kube/mia-poc.yaml
+export KUBECONFIG=~/.kube/ch3-dev.yaml:~/.kube/ch3-uat.yaml:~/.kube/ch3-prod.yaml:~/.kube/da11-prod.yaml:~/.kube/da11-dev.yaml:~/.kube/da11-uat.yaml:~/.kube/primary-dmz-backend.yaml:~/.kube/primary-dmz.yaml:~/.kube/da11-dev-lan.yaml:~/.kube/da11-dev-dmz.yaml:~/.kube/ch3-prod-lan.yaml:~/.kube/ch3-prod-dmz.yaml:~/.kube/udl02swaggerh01.yaml:~/.kube/plateng_cicd_d_da11.yaml:~/.kube/config:~/.kube/mia-poc.yaml:~/.kube/ch3-infra.yaml:~/.kube/data-engineering.yaml
 #export SHELL="/usr/sbin/zsh"
 
 #export KUBECTX_IGNORE_FZF=1
@@ -87,7 +87,7 @@ export NEOVIDE_MULTIGRID=1
 
 export GITLAB_HOST=https://gitlab.redchimney.com
 
-export KIND_EXPERIMENTAL_PROVIDER=podman
+# export KIND_EXPERIMENTAL_PROVIDER=podman
 # Fix for PIP MITM while on VU network
 #HOME_NET='10.46'
 #ifconfig | grep $HOME_NET > /dev/null
@@ -126,9 +126,6 @@ export PATH="${PATH}:${HOME}/.cargo/bin"
 # [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 # [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-#minio auto-complete
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/mc mc
 
 #source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -139,8 +136,5 @@ export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 eval "$(starship init zsh)"
 
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
-
-complete -o nospace -C /opt/homebrew/bin/mc mc
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 export PATH="${HOME}/.local/bin:${PATH}"
