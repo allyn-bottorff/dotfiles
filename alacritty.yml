@@ -3,6 +3,9 @@ font:
     family: Berkeley Mono Variable
   size: 13
   builtin_box_drawing: true
+  offset:
+    x: 1
+    y: 0
 
 
 cursor:
@@ -13,8 +16,10 @@ live_config_reload: true
 
 window:
   option_as_alt: "Both"
+  dynamic_padding: true
 
 
+# Nord colors
 colors:
   primary:
     background: "#2e3440"
