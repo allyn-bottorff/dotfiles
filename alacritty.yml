@@ -3,9 +3,9 @@ font:
     family: Berkeley Mono Variable
   size: 13
   builtin_box_drawing: true
-  offset:
-    x: 1
-    y: 0
+  # offset:
+  #   x: 1
+  #   y: 0
 
 
 cursor:
