@@ -247,6 +247,11 @@ vim.keymap.set('n', '<leader>f', ":Files<CR>")
 vim.keymap.set('n', '<leader>g', ":GitFiles<CR>")
 vim.keymap.set('n', '<leader>b', ":Buffers<CR>")
 
+-- Folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.api.nvim_create_autocmd({"BufReadPost","FileReadPost"}, {pattern="*", command="normal zR"} )
+
 -- Comment config
 require('Comment').setup()
 
