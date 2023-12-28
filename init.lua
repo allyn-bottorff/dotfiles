@@ -50,7 +50,7 @@ require('lazy').setup({
   },
 
   -- Debugger
-  'puremourning/vimspector',
+  -- 'puremourning/vimspector',
   -- 'sebdah/vim-delve',
 
   -- Autocompletion

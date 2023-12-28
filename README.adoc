@@ -1,0 +1,5 @@
+= Dotfiles storage repo
+
+Contains various configuration files. The main branch is for macos because that
+is what I use at work, but the linux branch should relatively closely track the
+main albeit with a few changes.
