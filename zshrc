@@ -43,6 +43,9 @@ alias tsk='task'
 
 alias bangcopy='op read op://work/bang/password | pbcopy'
 
+alias ssh='TERM=xterm-256color ssh'
+alias zellij-rust='zellij action new-tab -l ~/.config/zellij/layouts/test-new.kdl'
+
 # change git origin from gitlab.veteransunited.com to gitlab.redchimney.com
 #chgitorigin() { git remote set-url origin $(git remote get-url origin | sed 's/veteransunited/redchimney/') }
 
@@ -77,7 +80,7 @@ export KITTY_CONFIG_DIRECTORY="/Users/Allyn.Bottorff/.config/kitty"
 export ZELLIJ_CONFIG_DIR="/Users/Allyn.Bottorff/.config/zellij"
 
 export EDITOR=nvim
-export KUBECONFIG=~/.kube/ch3-dev.yaml:~/.kube/ch3-uat.yaml:~/.kube/ch3-prod.yaml:~/.kube/da11-prod.yaml:~/.kube/da11-dev.yaml:~/.kube/da11-uat.yaml:~/.kube/primary-dmz-backend.yaml:~/.kube/primary-dmz.yaml:~/.kube/da11-dev-lan.yaml:~/.kube/da11-dev-dmz.yaml:~/.kube/ch3-prod-lan.yaml:~/.kube/ch3-prod-dmz.yaml:~/.kube/udl02swaggerh01.yaml:~/.kube/plateng_cicd_d_da11.yaml:~/.kube/config:~/.kube/mia-poc.yaml:~/.kube/ch3-infra.yaml:~/.kube/data-engineering.yaml
+export KUBECONFIG=~/.kube/ch3-dev.yaml:~/.kube/ch3-uat.yaml:~/.kube/ch3-prod.yaml:~/.kube/da11-prod.yaml:~/.kube/da11-dev.yaml:~/.kube/da11-uat.yaml:~/.kube/primary-dmz-backend.yaml:~/.kube/primary-dmz.yaml:~/.kube/da11-dev-lan.yaml:~/.kube/da11-dev-dmz.yaml:~/.kube/ch3-prod-lan.yaml:~/.kube/ch3-prod-dmz.yaml:~/.kube/udl02swaggerh01.yaml:~/.kube/plateng_cicd_d_da11.yaml:~/.kube/config:~/.kube/mia-poc.yaml:~/.kube/ch3-infra.yaml:~/.kube/data-engineering.yaml:~/.kube/infrastructure.yaml
 #export SHELL="/usr/sbin/zsh"
 
 #export KUBECTX_IGNORE_FZF=1
@@ -139,3 +142,5 @@ eval "$(starship init zsh)"
 
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 export PATH="${HOME}/.local/bin:${PATH}"
+
+# zprof

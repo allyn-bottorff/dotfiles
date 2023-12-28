@@ -228,7 +228,7 @@ plugins {
 theme "nord"
 
 // The name of the default layout to load on startup
-// Default: "default"
+Default: "new-test"
 //
 // default_layout "compact"
 
@@ -292,7 +292,7 @@ theme "nord"
 
 // The folder in which Zellij will look for layouts
 //
-// layout_dir "/path/to/my/layout_dir"
+layout_dir "~/.config/zellij/layouts"
 
 // The folder in which Zellij will look for themes
 //

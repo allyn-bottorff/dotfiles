@@ -1,7 +1,7 @@
 font:
   normal:
     family: Berkeley Mono Variable
-  size: 14
+  size: 13
   builtin_box_drawing: true
   # offset:
   #   x: 1

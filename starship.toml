@@ -25,3 +25,21 @@ format = " [$symbol$branch(:$remote_branch)]($style) "
 [docker_context]
 format = " [$symbol$context]($style) "
 
+[golang]
+disabled = true
+
+[rust]
+disabled = true
+
+[helm]
+disabled = true
+
+[zig]
+disabled = true
+
+[package]
+disabled = true
+
+[nodejs]
+disabled = true
+
