@@ -43,3 +43,5 @@ disabled = true
 [nodejs]
 disabled = true
 
+[lua]
+disabled = true
