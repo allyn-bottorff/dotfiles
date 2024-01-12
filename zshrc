@@ -35,7 +35,7 @@ setopt inc_append_history_time
 alias vim='nvim'
 alias l='exa -lhF --git'
 alias exip='dig @ns1.google.com +short o-o.myaddr.l.google.com txt'
-alias neovide='neovide --multigrid 1>/dev/null'
+# alias neovide='neovide --multigrid 1>/dev/null'
 #alias neovide='open -b com.neovide.neovide'
 alias k='kubectl'
 alias cat='bat'
