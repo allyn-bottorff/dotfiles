@@ -95,6 +95,7 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
+    ZSH_SYNTAX_HIGHLIGHTING_PATH = "${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
   };
 
   # nixpkgs.overlays = [
