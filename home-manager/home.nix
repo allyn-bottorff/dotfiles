@@ -97,6 +97,21 @@
     # EDITOR = "emacs";
   };
 
+  # nixpkgs.overlays = [
+  #   (self: super: {
+  #     kubectl = super.kubectl.overrideAttrs (oldAttrs: {
+  #       src = super.fetchurl {
+  #         url = "https://dl.k8s.io/v1.26.12/kubernetes-client-linux-amd64.tar.gz";
+  #         sha256 = "sha256-CzU1l0C1W/Cr1i5qdhU/XCCKZMdnUkOTOAXOHOhjRwg=";  # Use the actual SHA256 hash
+  #       };
+  #     });
+  #   })
+  # ];
+  nix = {
+  package = pkgs.nix;
+  settings.experimental-features = [ "nix-command" "flakes" ];
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
