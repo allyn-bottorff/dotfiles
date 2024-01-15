@@ -31,7 +31,7 @@ export EDITOR='nvim'
 export ZELLIJ_CONFIG_DIR="~/.config/zellij"
 export GITLAB_HOST=https://gitlab.redchimney.com
 
-export KUBECONFIG=~/.kube/ch3-dev.yaml:~/.kube/ch3-uat.yaml:~/.kube/ch3-prod.yaml:~/.kube/da11-prod.yaml:~/.kube/da11-dev.yaml:~/.kube/da11-uat.yaml:~/.kube/primary-dmz-backend.yaml:~/.kube/primary-dmz.yaml:~/.kube/da11-dev-lan.yaml:~/.kube/da11-dev-dmz.yaml:~/.kube/ch3-prod-lan.yaml:~/.kube/ch3-prod-dmz.yaml:~/.kube/udl02swaggerh01.yaml:~/.kube/plateng_cicd_d_da11.yaml:~/.kube/config:~/.kube/mia-poc.yaml:~/.kube/ch3-infra.yaml:~/.kube/data-engineering.yaml:~/.kube/infrastructure.yaml
+# export KUBECONFIG=~/.kube/ch3-dev.yaml:~/.kube/ch3-uat.yaml:~/.kube/ch3-prod.yaml:~/.kube/da11-prod.yaml:~/.kube/da11-dev.yaml:~/.kube/da11-uat.yaml:~/.kube/primary-dmz-backend.yaml:~/.kube/primary-dmz.yaml:~/.kube/da11-dev-lan.yaml:~/.kube/da11-dev-dmz.yaml:~/.kube/ch3-prod-lan.yaml:~/.kube/ch3-prod-dmz.yaml:~/.kube/udl02swaggerh01.yaml:~/.kube/plateng_cicd_d_da11.yaml:~/.kube/config:~/.kube/mia-poc.yaml:~/.kube/ch3-infra.yaml:~/.kube/data-engineering.yaml:~/.kube/infrastructure.yaml
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
