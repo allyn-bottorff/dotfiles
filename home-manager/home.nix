@@ -3,8 +3,8 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "allyn";
-  home.homeDirectory = "/Users/allyn";
+  home.username = "allyn.bottorff";
+  home.homeDirectory = "/Users/allyn.bottorff";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -45,6 +45,7 @@
     pkgs.zellij
     pkgs.fd
     pkgs.zsh-syntax-highlighting
+    pkgs.ipcalc
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
