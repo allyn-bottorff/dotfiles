@@ -1,5 +1,15 @@
 { config, pkgs, ... }:
 
+let 
+    customLima = pkgs.lima.overrideAttrs (oldAttrs: {
+        src = pkgs.fetchFromGitHub {
+            owner = "lima-vm";
+            repo = "lima";
+            rev = "v0.19.1";
+            sha256 = "sha256-0EKVWXNxOnz7j+f1ExkwQW69khhazj2Uz7RBAvwSjmQ=";
+            };
+        });
+in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -25,7 +35,7 @@
 	pkgs.kubernetes-helm
 	pkgs.kubectl
 	pkgs.eza
-	pkgs.colima
+	# pkgs.colima
 	pkgs.entr
 	pkgs.fzf
 	pkgs.neovim
@@ -46,6 +56,8 @@
     pkgs.fd
     pkgs.zsh-syntax-highlighting
     pkgs.ipcalc
+    # pkgs.lima
+    customLima
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -97,18 +109,11 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
     ZSH_SYNTAX_HIGHLIGHTING_PATH = "${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
+    LIMA_PATH = "${customLima}";
   };
 
-  # nixpkgs.overlays = [
-  #   (self: super: {
-  #     kubectl = super.kubectl.overrideAttrs (oldAttrs: {
-  #       src = super.fetchurl {
-  #         url = "https://dl.k8s.io/v1.26.12/kubernetes-client-linux-amd64.tar.gz";
-  #         sha256 = "sha256-CzU1l0C1W/Cr1i5qdhU/XCCKZMdnUkOTOAXOHOhjRwg=";  # Use the actual SHA256 hash
-  #       };
-  #     });
-  #   })
-  # ];
+
+
   nix = {
   package = pkgs.nix;
   settings.experimental-features = [ "nix-command" "flakes" ];
