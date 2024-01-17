@@ -24,7 +24,6 @@ alias vim='nvim'
 alias l='eza -lhF --git'
 alias k='kubectl'
 alias cat='bat'
-alias neovide='neovide --multigrid'
 alias bangcopy='op read op://work/bang/password | pbcopy'
 alias ssh='TERM=xterm-256color ssh'
 
