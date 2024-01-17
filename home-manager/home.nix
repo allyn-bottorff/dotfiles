@@ -31,7 +31,6 @@
 	pkgs.neovim
 	pkgs.jq
 	pkgs.rustup
-	pkgs.inetutils
 	pkgs.dig
 	pkgs.step-cli
 	pkgs.starship
