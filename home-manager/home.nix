@@ -1,15 +1,5 @@
 { config, pkgs, ... }:
 
-let 
-    customLima = pkgs.lima.overrideAttrs (oldAttrs: {
-        src = pkgs.fetchFromGitHub {
-            owner = "lima-vm";
-            repo = "lima";
-            rev = "v0.19.1";
-            sha256 = "sha256-0EKVWXNxOnz7j+f1ExkwQW69khhazj2Uz7RBAvwSjmQ=";
-            };
-        });
-in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -35,7 +25,7 @@ in
 	pkgs.kubernetes-helm
 	pkgs.kubectl
 	pkgs.eza
-	# pkgs.colima
+	pkgs.colima
 	pkgs.entr
 	pkgs.fzf
 	pkgs.neovim
@@ -56,8 +46,8 @@ in
     pkgs.fd
     pkgs.zsh-syntax-highlighting
     pkgs.ipcalc
-    # pkgs.lima
-    customLima
+    pkgs.lima
+    pkgs.neovide
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -109,7 +99,6 @@ in
   home.sessionVariables = {
     # EDITOR = "emacs";
     ZSH_SYNTAX_HIGHLIGHTING_PATH = "${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
-    LIMA_PATH = "${customLima}";
   };
 
 
