@@ -38,6 +38,7 @@
 	pkgs.alacritty
 	pkgs.taskwarrior
 	pkgs.docker
+    pkgs.docker-compose
 	pkgs.texliveMedium
 	pkgs.zig
 	pkgs.flyctl
