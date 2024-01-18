@@ -60,7 +60,7 @@ blinking = "On"
 
 [font]
 builtin_box_drawing = true
-size = 13
+size = 12
 
 [font.normal]
 family = "Berkeley Mono Variable"
