@@ -45,6 +45,7 @@
     pkgs.zellij
     pkgs.fd
     pkgs.zsh-syntax-highlighting
+    pkgs._1password
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -108,6 +109,7 @@
   #     });
   #   })
   # ];
+  nixpkgs.config.allowUnfree = true;
   nix = {
   package = pkgs.nix;
   settings.experimental-features = [ "nix-command" "flakes" ];
