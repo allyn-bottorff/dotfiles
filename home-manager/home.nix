@@ -31,13 +31,13 @@
 	pkgs.neovim
 	pkgs.jq
 	pkgs.rustup
-	pkgs.inetutils
 	pkgs.dig
 	pkgs.step-cli
 	pkgs.starship
 	pkgs.alacritty
 	pkgs.taskwarrior
 	pkgs.docker
+    pkgs.docker-compose
 	pkgs.texliveMedium
 	pkgs.zig
 	pkgs.flyctl
@@ -45,7 +45,10 @@
     pkgs.zellij
     pkgs.fd
     pkgs.zsh-syntax-highlighting
-    pkgs._1password
+    pkgs.ipcalc
+    pkgs.lima
+    pkgs.neovide
+    pkgs.bacon
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -99,17 +102,6 @@
     ZSH_SYNTAX_HIGHLIGHTING_PATH = "${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
   };
 
-  # nixpkgs.overlays = [
-  #   (self: super: {
-  #     kubectl = super.kubectl.overrideAttrs (oldAttrs: {
-  #       src = super.fetchurl {
-  #         url = "https://dl.k8s.io/v1.26.12/kubernetes-client-linux-amd64.tar.gz";
-  #         sha256 = "sha256-CzU1l0C1W/Cr1i5qdhU/XCCKZMdnUkOTOAXOHOhjRwg=";  # Use the actual SHA256 hash
-  #       };
-  #     });
-  #   })
-  # ];
-  nixpkgs.config.allowUnfree = true;
   nix = {
   package = pkgs.nix;
   settings.experimental-features = [ "nix-command" "flakes" ];
