@@ -184,7 +184,7 @@ vim.o.list = true
 
 -- Neovide settings
 -- vim.o.guifont = "Berkeley Mono Variable:h12:#e-subpixelantialias:#h-slight"
-vim.o.guifont = "Berkeley Mono Variable:h13"
+vim.o.guifont = "Berkeley Mono Variable:h12"
 vim.g.neovide_scroll_animation_length = 0.10
 vim.g.neovide_cursor_animation_length = 0.01
 
