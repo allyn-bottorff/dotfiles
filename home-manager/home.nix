@@ -5,6 +5,7 @@
   # manage.
   home.username = "allyn.bottorff";
   home.homeDirectory = "/Users/allyn.bottorff";
+  nixpkgs.config.allowUnfree = true;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -49,6 +50,9 @@
     pkgs.lima
     pkgs.neovide
     pkgs.bacon
+    pkgs.tart
+    pkgs.ripgrep
+    pkgs._1password
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
