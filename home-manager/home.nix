@@ -38,6 +38,7 @@
 	pkgs.alacritty
 	pkgs.taskwarrior
 	pkgs.docker
+    pkgs.docker-buildx
     pkgs.docker-compose
 	pkgs.texliveMedium
 	pkgs.zig
@@ -53,6 +54,9 @@
     pkgs.tart
     pkgs.ripgrep
     pkgs._1password
+    pkgs.qmk
+    pkgs.opentofu
+    pkgs.glab
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
