@@ -43,7 +43,7 @@
 	pkgs.texliveMedium
 	pkgs.zig
 	pkgs.flyctl
-	pkgs.yq
+	pkgs.yq-go
     pkgs.zellij
     pkgs.fd
     pkgs.zsh-syntax-highlighting
