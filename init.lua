@@ -127,6 +127,14 @@ require('lazy').setup({
     dependencies = {"junegunn/fzf.vim"},
     build = ":call fzf#install()",
   },
+  {
+    'robitx/gp.nvim',
+    config = function()
+      require("gp").setup {
+        openai_api_key = { "cat", "/Users/allyn.bottorff/openai_key.txt" }
+      }
+    end
+  }
 }, {})
 
 
@@ -184,7 +192,7 @@ vim.o.list = true
 
 -- Neovide settings
 -- vim.o.guifont = "Berkeley Mono Variable:h12:#e-subpixelantialias:#h-slight"
-vim.o.guifont = "Berkeley Mono Variable:h13"
+vim.o.guifont = "Berkeley Mono Variable:h12"
 vim.g.neovide_scroll_animation_length = 0.10
 vim.g.neovide_cursor_animation_length = 0.01
 

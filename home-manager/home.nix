@@ -48,7 +48,7 @@
     pkgs.fd
     pkgs.zsh-syntax-highlighting
     pkgs.ipcalc
-    pkgs.lima
+    pkgs.lima-bin
     pkgs.neovide
     pkgs.bacon
     pkgs.tart
@@ -57,6 +57,8 @@
     pkgs.qmk
     pkgs.opentofu
     pkgs.glab
+    pkgs.tmux
+    pkgs.multimark
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
