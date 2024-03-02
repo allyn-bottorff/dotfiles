@@ -45,10 +45,11 @@
     pkgs.zellij
     pkgs.fd
     pkgs.zsh-syntax-highlighting
-    pkgs.ipcalc
+    # pkgs.ipcalc
     pkgs.lima
     pkgs.neovide
     pkgs.bacon
+    pkgs.qmk
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
