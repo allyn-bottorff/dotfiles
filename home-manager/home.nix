@@ -58,7 +58,6 @@
     pkgs.opentofu
     pkgs.glab
     pkgs.tmux
-    pkgs.multimark
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
