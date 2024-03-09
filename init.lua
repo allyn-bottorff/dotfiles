@@ -127,6 +127,14 @@ require('lazy').setup({
     dependencies = {"junegunn/fzf.vim"},
     build = ":call fzf#install()",
   },
+  {
+    'robitx/gp.nvim',
+    config = function()
+      require("gp").setup {
+        openai_api_key = { "cat", "/Users/allyn.bottorff/openai_key.txt" }
+      }
+    end
+  }
 }, {})
 
 

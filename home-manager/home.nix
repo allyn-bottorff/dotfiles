@@ -5,6 +5,7 @@
   # manage.
   home.username = "allyn";
   home.homeDirectory = "/home/allyn";
+  nixpkgs.config.allowUnfree = true;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -37,18 +38,27 @@
 	pkgs.alacritty
 	pkgs.taskwarrior
 	pkgs.docker
+    pkgs.docker-buildx
     pkgs.docker-compose
 	pkgs.texliveMedium
 	pkgs.zig
 	pkgs.flyctl
-	pkgs.yq
+	pkgs.yq-go
     pkgs.zellij
     pkgs.fd
     pkgs.zsh-syntax-highlighting
     pkgs.ipcalc
-    pkgs.lima
+    pkgs.lima-bin
     pkgs.neovide
     pkgs.bacon
+    pkgs.tart
+    pkgs.ripgrep
+    pkgs._1password
+    pkgs.qmk
+    pkgs.opentofu
+    pkgs.glab
+    pkgs.tmux
+    pkgs.zk
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
