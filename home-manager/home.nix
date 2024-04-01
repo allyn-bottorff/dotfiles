@@ -68,6 +68,7 @@
     pkgs.cmake
     pkgs.fossil
     pkgs.bat-extras.batman
+    pkgs.xplr
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
