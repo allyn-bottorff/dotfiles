@@ -51,7 +51,6 @@
     pkgs.lima-bin
     pkgs.neovide
     pkgs.bacon
-    pkgs.tart
     pkgs.ripgrep
     pkgs._1password
     pkgs.qmk

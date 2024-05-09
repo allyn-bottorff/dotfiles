@@ -67,4 +67,4 @@ family = "Berkeley Mono Variable"
 
 [window]
 dynamic_padding = true
-option_as_alt = "Both"
+# option_as_alt = "Both"
