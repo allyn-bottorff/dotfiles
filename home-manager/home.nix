@@ -3,8 +3,8 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "allyn";
-  home.homeDirectory = "/home/allyn";
+  home.username = "allyn.bottorff";
+  home.homeDirectory = "/Users/allyn.bottorff";
   nixpkgs.config.allowUnfree = true;
 
   # This value determines the Home Manager release that your configuration is
@@ -60,14 +60,18 @@
     pkgs.zk
     pkgs.krew
     pkgs.unzip
-    pkgs.gcc
+    # pkgs.gcc
     pkgs.gnumake
     pkgs.python3
-    pkgs.netcat-openbsd
+    # pkgs.netcat-openbsd
+    pkgs.tart
     pkgs.ansible
     pkgs.cmake
     pkgs.fossil
     pkgs.bat-extras.batman
+    pkgs.jujutsu
+    pkgs.luajit
+    # pkgs.darwin.libiconv
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
