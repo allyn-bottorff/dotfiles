@@ -58,6 +58,21 @@
     pkgs.glab
     pkgs.tmux
     pkgs.zk
+    pkgs.krew
+    pkgs.unzip
+    # pkgs.gcc
+    pkgs.gnumake
+    pkgs.python3
+    # pkgs.netcat-openbsd
+    pkgs.tart
+    pkgs.ansible
+    pkgs.cmake
+    pkgs.fossil
+    pkgs.bat-extras.batman
+    pkgs.jujutsu
+    pkgs.luajit
+    # pkgs.darwin.libiconv
+    pkgs.xplr
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
