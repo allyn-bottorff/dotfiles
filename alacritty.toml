@@ -59,11 +59,10 @@ text = "#2e3440"
 blinking = "On"
 
 [font]
-builtin_box_drawing = true
 size = 12
 
 [font.normal]
-family = "Berkeley Mono Variable"
+family = "Berkeley Mono"
 
 [window]
 dynamic_padding = true

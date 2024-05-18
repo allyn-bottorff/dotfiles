@@ -4,7 +4,7 @@
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "allyn";
-  home.homeDirectory = "/home/allyn";
+  home.homeDirectory = "/Users/allyn";
   nixpkgs.config.allowUnfree = true;
 
   # This value determines the Home Manager release that your configuration is
@@ -47,7 +47,7 @@
     pkgs.zellij
     pkgs.fd
     pkgs.zsh-syntax-highlighting
-    pkgs.ipcalc
+    # pkgs.ipcalc
     pkgs.lima-bin
     pkgs.neovide
     pkgs.bacon
@@ -60,10 +60,10 @@
     pkgs.zk
     pkgs.krew
     pkgs.unzip
-    pkgs.gcc
+    # pkgs.gcc
     pkgs.gnumake
     pkgs.python3
-    pkgs.netcat-openbsd
+    # pkgs.netcat-openbsd
     pkgs.ansible
     pkgs.cmake
     pkgs.fossil
