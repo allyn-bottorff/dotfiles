@@ -14,7 +14,7 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "23.11"; # Please read the comment before changing.
+  home.stateVersion = "24.05"; # Please read the comment before changing.
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -62,15 +62,17 @@
     pkgs.unzip
     # pkgs.gcc
     pkgs.gnumake
-    pkgs.python3
+    # pkgs.python3
     # pkgs.netcat-openbsd
     pkgs.tart
-    pkgs.ansible
+    # pkgs.ansible
     pkgs.cmake
     pkgs.fossil
     pkgs.bat-extras.batman
     pkgs.jujutsu
     pkgs.luajit
+    pkgs.wezterm
+    pkgs.fastfetch
     # pkgs.darwin.libiconv
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
