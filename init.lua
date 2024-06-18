@@ -18,7 +18,7 @@ vim.opt.scrolloff = 10
 vim.opt.hlsearch = false
 
 vim.o.termguicolors = true
-vim.o.windblend = 20
+vim.o.winblend = 20
 vim.o.cc = '80'
 vim.o.expandtab = true
 vim.o.tabstop = 4
@@ -63,7 +63,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 -- LOCAL USER COMMAND
-vim.api.nvim_buf_create_user_command(0, 'Format', vim.lsp.buf.format)
+-- vim.api.nvim_buf_create_user_command(0, 'Format', vim.lsp.buf.format, {})
 
 -- KEYMAPS
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
@@ -76,16 +76,16 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, 'Show diagnostic error messages')
-vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-vim.keymap.set('n', '<leader>ca', vim.lsp.buf.rename, '[C]ode [A]ction')
-vim.keymap.set('n', 'gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-vim.keymap.set('n', 'gr', vim.lsp.buf.references, '[G]oto [R]eferences')
-vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-vim.keymap.set('n', 'K', vim.lsp.hover, 'Hover Definition')
-vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, 'Goto Declaration')
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, {desc = 'Show diagnostic error messages'})
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {desc = '[R]e[n]ame'})
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {desc='[C]ode [A]ction'})
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.rename, {desc = '[C]ode [A]ction'})
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {desc = '[G]oto [D]efinition'})
+vim.keymap.set('n', 'gr', vim.lsp.buf.references, {desc = '[G]oto [R]eferences'})
+vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, {desc = 'Type [D]efinition'})
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, {desc='Hover Definition'})
+vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, {desc='Signature Documentation'})
+vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {desc= 'Goto Declaration'})
 
 -- PLUGINS
 -- INSTALL LAZY
@@ -100,8 +100,10 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup {
   { 'numToStr/Comment.nvim', opts = {} }, -- 'gc' to auto comment
   'lewis6991/gitsigns.nvim',
-  'junegunn/fzf',
-  'junegunn/fzf.vim',
+  {
+    'junegunn/fzf.vim',
+    dependencies = { 'junegunn/fzf' },
+  },
   'tpope/vim-fugitive',
   {
     'AlexvZyl/nordic.nvim',
@@ -115,7 +117,7 @@ require('lazy').setup {
     'folke/todo-comments.nvim',
     event = 'VimEnter',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    opts = { sign = false },
+    opts = { signs = false },
   },
   {
     'echasnovski/mini.nvim',
@@ -137,8 +139,8 @@ require('lazy').setup {
       { 'j-hui/fidget.nvim', opts = {} },
     },
     config = function()
-      local capabilities = vim.lsp.protocol.make_client_capabilites()
-      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilites())
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
       local servers = {
         gopls = {},
         pyright = {},
