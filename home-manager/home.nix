@@ -26,7 +26,7 @@
 	pkgs.kubernetes-helm
 	pkgs.kubectl
 	pkgs.eza
-	pkgs.colima
+	# pkgs.colima
 	pkgs.entr
 	pkgs.fzf
 	pkgs.neovim
@@ -48,7 +48,7 @@
     pkgs.fd
     pkgs.zsh-syntax-highlighting
     pkgs.ipcalc
-    pkgs.lima-bin
+    # pkgs.lima-bin
     pkgs.neovide
     pkgs.bacon
     pkgs.ripgrep
@@ -64,7 +64,7 @@
     pkgs.gnumake
     pkgs.python3
     # pkgs.netcat-openbsd
-    pkgs.tart
+    # pkgs.tart
     pkgs.ansible
     pkgs.cmake
     pkgs.fossil
