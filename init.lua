@@ -86,6 +86,9 @@ vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, {desc = 'Type [D]e
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, {desc='Hover Definition'})
 vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, {desc='Signature Documentation'})
 vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {desc= 'Goto Declaration'})
+vim.keymap.set('n', '<leader>f', ':Files<CR>',  { silent = true, desc = 'FZF Files' })
+vim.keymap.set('n', '<leader>b', ':Buffers<CR>',  { silent = true, desc = 'FZF Buffers' })
+vim.keymap.set('n', '<leader>g', ':GitFiles<CR>',  { silent = true, desc = 'FZF GitFiles' })
 
 -- PLUGINS
 -- INSTALL LAZY
