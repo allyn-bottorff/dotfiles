@@ -25,6 +25,8 @@ vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 
+vim.g.zig_fmt_autosave = false
+
 -- LOCAL FUNCTIONS
 local function settabspace4()
 	vim.o.tabstop = 4
@@ -166,6 +168,7 @@ require("lazy").setup({
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua",
+				"zls",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 			require("mason-lspconfig").setup({
@@ -300,15 +303,15 @@ require("lazy").setup({
 					"sql",
 					"toml",
 					"yaml",
-					"zig",
 					"terraform",
 					"proto",
 					"kdl",
 					"javascript",
 					"typescript",
+					"zig",
 				},
 				-- Autoinstall languages that are not installed
-				auto_install = true,
+				-- auto_install = true,
 				highlight = { enable = true },
 				indent = { enable = true },
 			})
