@@ -45,3 +45,6 @@ disabled = true
 
 [lua]
 disabled = true
+
+[os]
+disabled = false
