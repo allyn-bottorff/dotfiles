@@ -1,4 +1,4 @@
-format = """$directory$fill$all$character"""
+format = """$os$directory$fill$all$character"""
 # format = """$directory\n$character"""
 # right_format = """$all"""
 
@@ -8,7 +8,6 @@ symbol = " "
 [directory]
 truncate_to_repo = false
 truncation_length = 5
-
 
 [character]
 success_symbol = "[➜](bold green)"
@@ -45,3 +44,8 @@ disabled = true
 
 [lua]
 disabled = true
+
+[os]
+disabled = false
+format  = " [($name) ]($style)"
+style = "bold white"
