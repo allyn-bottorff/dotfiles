@@ -1,4 +1,4 @@
-format = """$os$directory$fill$all$character"""
+format = """$hostname$directory$fill$all$character"""
 # format = """$directory\n$character"""
 # right_format = """$all"""
 
@@ -46,6 +46,9 @@ disabled = true
 disabled = true
 
 [os]
-disabled = false
+disabled = true
 format  = " [($name) ]($style)"
 style = "bold white"
+
+[hostname]
+ssh_only = false
