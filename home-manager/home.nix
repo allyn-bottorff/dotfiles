@@ -60,7 +60,7 @@
     pkgs.zk
     pkgs.krew
     pkgs.unzip
-    # pkgs.gcc
+    pkgs.gcc
     pkgs.gnumake
     # pkgs.python3
     # pkgs.netcat-openbsd
