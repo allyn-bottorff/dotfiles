@@ -1,4 +1,5 @@
 font-family = "Berkeley Mono"
 font-size = 14
-#font-thicken = true
+font-thicken = false
 cursor-style-blink = true
+window-padding-balance = true
