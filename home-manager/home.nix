@@ -77,6 +77,8 @@
     pkgs.nodejs_22
     # pkgs.darwin.libiconv
     pkgs.xplr
+    pkgs.kind
+    pkgs.nerdctl
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
