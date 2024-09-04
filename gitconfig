@@ -5,8 +5,6 @@
 # Please adapt and uncomment the following lines:
 #	name = Allyn Bottorff
 #	email = Allyn.Bottorff@vuhl-6sllvdl.vuhl.root.mrc.local
-[core]
-	editor = /usr/local/bin/nvim
 [alias]
 	lg = log --pretty --oneline --graph
     co = checkout
