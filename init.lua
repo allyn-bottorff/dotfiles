@@ -104,7 +104,19 @@ vim.opt.rtp:prepend(lazypath)
 -- PLUGIN LIST
 require("lazy").setup({
 	{ "numToStr/Comment.nvim", opts = {} }, -- 'gc' to auto comment
-	"lewis6991/gitsigns.nvim",
+	"sebdah/vim-delve",
+	{
+		"lewis6991/gitsigns.nvim",
+		opts = {
+			signs = {
+				add = { text = "+" },
+				change = { text = "~" },
+				delete = { text = "_" },
+				topdelete = { text = "‾" },
+				changedelete = { text = "~" },
+			},
+		},
+	},
 	{
 		"junegunn/fzf.vim",
 		dependencies = { "junegunn/fzf" },
