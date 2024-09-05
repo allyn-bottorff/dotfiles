@@ -71,7 +71,7 @@
     pkgs.bat-extras.batman
     pkgs.jujutsu
     pkgs.luajit
-    pkgs.wezterm
+    # pkgs.wezterm
     pkgs.fastfetch
     pkgs.tree-sitter
     pkgs.nodejs_22
