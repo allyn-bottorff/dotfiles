@@ -97,7 +97,7 @@ blinking = "On"
 size = 12
 
 [font.normal]
-family = "Berkeley Mono"
+family = "Berkeley Mono Variable"
 # [font.bold]
 # family = "Berkeley Mono"
 # [font.italic]
@@ -107,4 +107,4 @@ family = "Berkeley Mono"
 
 [window]
 dynamic_padding = true
-option_as_alt = "Both"
+# option_as_alt = "Both"
