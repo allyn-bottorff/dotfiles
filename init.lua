@@ -122,12 +122,20 @@ require("lazy").setup({
 		dependencies = { "junegunn/fzf" },
 	},
 	"tpope/vim-fugitive",
+	-- {
+	-- 	"AlexvZyl/nordic.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.cmd.colorscheme("nordic")
+	-- 	end,
+	-- },
 	{
-		"AlexvZyl/nordic.nvim",
+		"scebai/glacier.vim",
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd.colorscheme("nordic")
+			vim.cmd.colorscheme("glacier")
 		end,
 	},
 	{
