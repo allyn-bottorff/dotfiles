@@ -26,7 +26,7 @@
 	pkgs.kubernetes-helm
 	pkgs.kubectl
 	pkgs.eza
-	pkgs.colima
+	# pkgs.colima
 	pkgs.entr
 	pkgs.fzf
 	pkgs.neovim
@@ -60,7 +60,7 @@
     pkgs.zk
     pkgs.krew
     pkgs.unzip
-    # pkgs.gcc
+    pkgs.gcc
     pkgs.gnumake
     # pkgs.python3
     # pkgs.netcat-openbsd
@@ -76,6 +76,7 @@
     pkgs.fastfetch
     pkgs.tree-sitter
     pkgs.nodejs_22
+    pkgs.kind
     # pkgs.darwin.libiconv
     pkgs.xplr
     # # Adds the 'hello' command to your environment. It prints a friendly

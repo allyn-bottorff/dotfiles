@@ -93,24 +93,18 @@ background = '#F0DFAF'
 blinking = "On"
 
 [font]
-<<<<<<< HEAD
-=======
 # builtin_box_drawing = true
->>>>>>> refs/remotes/origin/master
 size = 12
 
 [font.normal]
 family = "Berkeley Mono"
-<<<<<<< HEAD
-=======
 # [font.bold]
 # family = "Berkeley Mono"
 # [font.italic]
 # family = "Berkeley Mono"
 # [font.bold_italic]
 # family = "Berkeley Mono"
->>>>>>> refs/remotes/origin/master
 
 [window]
 dynamic_padding = true
-option_as_alt = "Both"
+# option_as_alt = "Both"
