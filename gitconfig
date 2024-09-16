@@ -5,6 +5,19 @@
 # Please adapt and uncomment the following lines:
 #	name = Allyn Bottorff
 #	email = Allyn.Bottorff@vuhl-6sllvdl.vuhl.root.mrc.local
+
+[diff]
+    tool = difftastic
+
+[difftool]
+    prompt = false
+
+[difftool "difftastic"]
+    cmd = difft "$LOCAL" "$REMOTE"
+
+[pager]
+    difftool = true
+
 [alias]
 	lg = log --pretty --oneline --graph
     co = checkout

@@ -68,6 +68,9 @@
     pkgs.delve
     pkgs.protobuf3_20
     pkgs.protoc-gen-go
+    pkgs.difftastic
+    pkgs.btop
+    pkgs.scc
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello

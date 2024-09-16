@@ -122,22 +122,46 @@ require("lazy").setup({
 		dependencies = { "junegunn/fzf" },
 	},
 	"tpope/vim-fugitive",
-	-- {
-	-- 	"AlexvZyl/nordic.nvim",
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	config = function()
-	-- 		vim.cmd.colorscheme("nordic")
-	-- 	end,
-	-- },
 	{
-		"scebai/glacier.vim",
+		"AlexvZyl/nordic.nvim",
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd.colorscheme("glacier")
+			vim.cmd.colorscheme("nordic")
 		end,
 	},
+	-- {
+	-- 	"scebai/glacier.vim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.cmd.colorscheme("glacier")
+	-- 	end,
+	-- },
+	-- {
+	-- 	"rebelot/kanagawa.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.cmd.colorscheme("kanagawa-lotus")
+	-- 	end,
+	-- },
+	-- {
+	-- 	"sainnhe/sonokai",
+	-- 	-- lazy = false,
+	-- 	-- priority = 1000,
+	-- 	-- config = function()
+	-- 	-- 	vim.cmd.colorscheme("sonokai")
+	-- 	-- end,
+	-- },
+	-- {
+	-- 	"navarasu/onedark.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.cmd.colorscheme("onedark")
+	-- 	end,
+	-- },
 	{
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
@@ -147,6 +171,9 @@ require("lazy").setup({
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {
+			theme = "nordic",
+		},
 	},
 	{
 		"neovim/nvim-lspconfig",
