@@ -3,8 +3,8 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "allyn";
-  home.homeDirectory = "/home/allyn";
+  home.username = "allyn.bottorf";
+  home.homeDirectory = "/Users/allyn.bottorf";
   nixpkgs.config.allowUnfree = true;
 
   # This value determines the Home Manager release that your configuration is
@@ -26,7 +26,6 @@
 	pkgs.kubernetes-helm
 	pkgs.kubectl
 	pkgs.eza
-	# pkgs.colima
 	pkgs.entr
 	pkgs.fzf
 	pkgs.neovim
@@ -35,8 +34,6 @@
 	pkgs.dig
 	pkgs.step-cli
 	pkgs.starship
-	pkgs.alacritty
-	pkgs.taskwarrior
 	pkgs.docker
     pkgs.docker-buildx
     pkgs.docker-compose
@@ -44,12 +41,8 @@
 	pkgs.zig
 	pkgs.flyctl
 	pkgs.yq-go
-    pkgs.zellij
     pkgs.fd
     pkgs.zsh-syntax-highlighting
-    pkgs.ipcalc
-    # pkgs.lima-bin
-    pkgs.neovide
     pkgs.bacon
     pkgs.ripgrep
     pkgs._1password
@@ -57,27 +50,25 @@
     pkgs.opentofu
     pkgs.glab
     pkgs.tmux
-    pkgs.zk
     pkgs.krew
     pkgs.unzip
     pkgs.gcc
     pkgs.gnumake
-    # pkgs.python3
-    # pkgs.netcat-openbsd
-    # pkgs.tart
+    pkgs.netcat-openbsd
     pkgs.ansible
     pkgs.cmake
-    pkgs.fossil
     pkgs.bat-extras.batman
-    pkgs.jujutsu
     pkgs.luajit
-    pkgs.wezterm
     pkgs.fastfetch
     pkgs.tree-sitter
     pkgs.nodejs_22
     pkgs.kind
-    # pkgs.darwin.libiconv
     pkgs.xplr
+    pkgs.kind
+    pkgs.nerdctl
+    pkgs.delve
+    pkgs.protobuf3_20
+    pkgs.protoc-gen-go
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
