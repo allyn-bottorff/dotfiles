@@ -79,6 +79,7 @@
     pkgs.kind
     # pkgs.darwin.libiconv
     pkgs.xplr
+    pkgs.hledger
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
