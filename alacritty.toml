@@ -97,7 +97,7 @@ blinking = "On"
 size = 12
 
 [font.normal]
-family = "Berkeley Mono Variable"
+family = "Berkeley Mono"
 # [font.bold]
 # family = "Berkeley Mono"
 # [font.italic]
