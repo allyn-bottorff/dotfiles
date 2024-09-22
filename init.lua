@@ -146,6 +146,7 @@ require('lazy').setup {
         pyright = {},
         rust_analyzer = {},
         tsserver = {},
+        zls = {},
         lua_ls = {
           settings = {
             Lua = {
