@@ -71,6 +71,10 @@
     pkgs.difftastic
     pkgs.btop
     pkgs.scc
+    pkgs.hledger
+    pkgs.ledger
+    pkgs.asciidoctor-with-extensions
+    pkgs.gollum
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello

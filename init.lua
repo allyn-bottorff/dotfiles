@@ -27,6 +27,8 @@ vim.o.shiftwidth = 4
 
 vim.g.zig_fmt_autosave = false
 
+vim.g.tex_flavor = "latex"
+
 -- LOCAL FUNCTIONS
 local function settabspace4()
 	vim.o.tabstop = 4
@@ -52,7 +54,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	command = "setlocal expandtab",
 })
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "yaml", "terraform", "lua" },
+	pattern = { "yaml", "terraform", "lua", "json" },
 	callback = settabspace2,
 })
 vim.api.nvim_create_autocmd("FileType", {
@@ -60,7 +62,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	command = "setlocal spell",
 })
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "asciidoc" },
+	pattern = { "asciidoc", "tex" },
 	command = "setlocal tw=79",
 })
 
