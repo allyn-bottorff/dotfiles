@@ -27,6 +27,8 @@ vim.o.shiftwidth = 4
 
 vim.g.zig_fmt_autosave = false
 
+vim.g.tex_flavor = "latex"
+
 -- LOCAL FUNCTIONS
 local function settabspace4()
 	vim.o.tabstop = 4
@@ -52,7 +54,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	command = "setlocal expandtab",
 })
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "yaml", "terraform", "lua" },
+	pattern = { "yaml", "terraform", "lua", "json" },
 	callback = settabspace2,
 })
 vim.api.nvim_create_autocmd("FileType", {
@@ -60,7 +62,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	command = "setlocal spell",
 })
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "asciidoc" },
+	pattern = { "asciidoc", "tex" },
 	command = "setlocal tw=79",
 })
 
@@ -104,7 +106,19 @@ vim.opt.rtp:prepend(lazypath)
 -- PLUGIN LIST
 require("lazy").setup({
 	{ "numToStr/Comment.nvim", opts = {} }, -- 'gc' to auto comment
-	"lewis6991/gitsigns.nvim",
+	"sebdah/vim-delve",
+	{
+		"lewis6991/gitsigns.nvim",
+		opts = {
+			signs = {
+				add = { text = "+" },
+				change = { text = "~" },
+				delete = { text = "_" },
+				topdelete = { text = "‾" },
+				changedelete = { text = "~" },
+			},
+		},
+	},
 	{
 		"junegunn/fzf.vim",
 		dependencies = { "junegunn/fzf" },
@@ -118,6 +132,38 @@ require("lazy").setup({
 			vim.cmd.colorscheme("nordic")
 		end,
 	},
+	-- {
+	-- 	"scebai/glacier.vim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.cmd.colorscheme("glacier")
+	-- 	end,
+	-- },
+	-- {
+	-- 	"rebelot/kanagawa.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.cmd.colorscheme("kanagawa-lotus")
+	-- 	end,
+	-- },
+	-- {
+	-- 	"sainnhe/sonokai",
+	-- 	-- lazy = false,
+	-- 	-- priority = 1000,
+	-- 	-- config = function()
+	-- 	-- 	vim.cmd.colorscheme("sonokai")
+	-- 	-- end,
+	-- },
+	-- {
+	-- 	"navarasu/onedark.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.cmd.colorscheme("onedark")
+	-- 	end,
+	-- },
 	{
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
@@ -127,6 +173,9 @@ require("lazy").setup({
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {
+			theme = "nordic",
+		},
 	},
 	{
 		"neovim/nvim-lspconfig",
