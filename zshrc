@@ -31,6 +31,7 @@ alias k='kubectl'
 alias cat='bat'
 alias bangcopy='op read op://work/bang/password | pbcopy'
 alias ssh='TERM=xterm-256color ssh'
+alias hl='hledger'
 
 export EDITOR='nvim'
 export ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
