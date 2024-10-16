@@ -3,8 +3,8 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "allyn.bottorf";
-  home.homeDirectory = "/Users/allyn.bottorf";
+  home.username = "allyn.bottorff";
+  home.homeDirectory = "/Users/allyn.bottorff";
   nixpkgs.config.allowUnfree = true;
 
   # This value determines the Home Manager release that your configuration is
@@ -67,7 +67,7 @@
     pkgs.xplr
     pkgs.hledger
     pkgs.kind
-    pkgs.nerdctl
+    # pkgs.nerdctl
     pkgs.delve
     pkgs.protobuf3_20
     pkgs.protoc-gen-go
@@ -76,7 +76,7 @@
     pkgs.scc
     pkgs.hledger
     pkgs.ledger
-    pkgs.asciidoctor-with-extensions
+    pkgs.asciidoctor
     pkgs.gollum
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
