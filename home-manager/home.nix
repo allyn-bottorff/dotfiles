@@ -54,7 +54,7 @@
     pkgs.unzip
     pkgs.gcc
     pkgs.gnumake
-    pkgs.netcat-openbsd
+    # pkgs.netcat-openbsd
     pkgs.ansible
     pkgs.cmake
     pkgs.bat-extras.batman
