@@ -54,8 +54,9 @@
     pkgs.unzip
     pkgs.gcc
     pkgs.gnumake
-    # pkgs.netcat-openbsd
     pkgs.ansible
+    pkgs.tart
+    # pkgs.ansible
     pkgs.cmake
     pkgs.bat-extras.batman
     pkgs.luajit
@@ -64,6 +65,7 @@
     pkgs.nodejs_22
     pkgs.kind
     pkgs.xplr
+    pkgs.hledger
     pkgs.kind
     pkgs.nerdctl
     pkgs.delve

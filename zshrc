@@ -31,11 +31,13 @@ alias k='kubectl'
 alias cat='bat'
 alias bangcopy='op read op://work/bang/password | pbcopy'
 alias ssh='TERM=xterm-256color ssh'
+alias hl='hledger'
 alias weather="curl 'wttr.in/columbia+missouri?1'"
 
 export EDITOR='nvim'
 export ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
 export GITLAB_HOST=https://gitlab.redchimney.com
+export LEDGER_FILE="$HOME/finance/2024.journal"
 
 export KUBECONFIG=~/.kube/config-prod:~/.kube/config-non-prod
 
