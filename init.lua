@@ -11,7 +11,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 250
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-vim.opt.list = true
+-- vim.opt.list = true
 vim.opt.listchars = { tab = "> ", trail = "·", nbsp = "␣", lead = "·", eol = "¬" }
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
@@ -132,6 +132,12 @@ require("lazy").setup({
 			vim.cmd.colorscheme("nordic")
 		end,
 	},
+	-- {
+	-- 	"ellisonleao/gruvbox.nvim",
+	-- 	priority = 1000,
+	-- 	config = true,
+	-- 	opts = ...,
+	-- },
 	-- {
 	-- 	"scebai/glacier.vim",
 	-- 	lazy = false,
