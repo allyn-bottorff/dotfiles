@@ -89,7 +89,7 @@ in
     pkgs.ledger
     pkgs.asciidoctor
     pkgs.gollum
-    pkgs.lima
+    pkgs.lima-bin
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
