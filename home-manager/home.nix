@@ -90,6 +90,8 @@ in
     pkgs.asciidoctor
     pkgs.gollum
     pkgs.lima
+    pkgs.lua54Packages.luarocks
+    pkgs.yazi
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello

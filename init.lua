@@ -105,6 +105,16 @@ vim.opt.rtp:prepend(lazypath)
 
 -- PLUGIN LIST
 require("lazy").setup({
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+			"3rd/image.nvim",
+		},
+	},
 	{ "numToStr/Comment.nvim", opts = {} }, -- 'gc' to auto comment
 	"sebdah/vim-delve",
 	{
@@ -180,7 +190,7 @@ require("lazy").setup({
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {
-			theme = "nordic",
+			theme = "auto",
 		},
 	},
 	{
@@ -391,11 +401,5 @@ require("lazy").setup({
 				lua = { "stylua" },
 			},
 		},
-	},
-})
-
-require("lualine").setup({
-	options = {
-		component_separators = "",
 	},
 })
