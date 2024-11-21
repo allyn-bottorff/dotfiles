@@ -39,7 +39,7 @@ alias bangcopy='op read op://work/bang/password | pbcopy'
 alias ssh='TERM=xterm-256color ssh'
 alias hl='hledger'
 alias weather="curl 'wttr.in/columbia+missouri?1'"
-alias vm="ssh lima"
+alias vm="/usr/bin/ssh lima"
 
 export EDITOR='nvim'
 export ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
