@@ -15,7 +15,7 @@ in
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "allyn";
-  home.homeDirectory = "/Users/allyn";
+  home.homeDirectory = "/home/allyn";
   nixpkgs.config.allowUnfree = true;
 
   # This value determines the Home Manager release that your configuration is
