@@ -93,6 +93,7 @@ in
     pkgs.lua54Packages.luarocks
     pkgs.yazi
     pkgs.azure-cli
+    pkgsUnstable.hugo
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
