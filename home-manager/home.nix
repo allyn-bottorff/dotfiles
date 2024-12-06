@@ -1,5 +1,16 @@
 { config, pkgs, ... }:
 
+
+
+# nix-channels:
+# home-manager https://github.com/nix-community/home-manager/archive/release-24.05.tar.gz
+# nixpkgs https://nixos.org/channels/nixos-24.05
+# nixpkgs-unstable https://nixos.org/channels/nixpkgs-unstable
+
+
+let
+    pkgsUnstable = import <nixpkgs-unstable> {};
+in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -27,8 +38,8 @@
 	pkgs.kubectl
 	pkgs.eza
 	pkgs.entr
-	pkgs.fzf
-	pkgs.neovim
+	pkgsUnstable.fzf
+	pkgsUnstable.neovim
 	pkgs.jq
 	pkgs.rustup
 	pkgs.dig
@@ -66,17 +77,22 @@
     pkgs.xplr
     pkgs.hledger
     pkgs.kind
-    pkgs.nerdctl
+    # pkgs.nerdctl
     pkgs.delve
-    pkgs.protobuf3_20
-    pkgs.protoc-gen-go
+    # pkgs.protobuf3_20
+    # pkgs.protoc-gen-go
     pkgs.difftastic
     pkgs.btop
     pkgs.scc
     pkgs.hledger
     pkgs.ledger
-    pkgs.asciidoctor-with-extensions
+    pkgs.asciidoctor
     pkgs.gollum
+    pkgs.lima
+    pkgs.lua54Packages.luarocks
+    pkgs.yazi
+    pkgs.azure-cli
+    pkgsUnstable.hugo
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello

@@ -11,7 +11,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 250
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-vim.opt.list = true
+-- vim.opt.list = true
 vim.opt.listchars = { tab = "> ", trail = "·", nbsp = "␣", lead = "·", eol = "¬" }
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
@@ -105,6 +105,16 @@ vim.opt.rtp:prepend(lazypath)
 
 -- PLUGIN LIST
 require("lazy").setup({
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+			"3rd/image.nvim",
+		},
+	},
 	{ "numToStr/Comment.nvim", opts = {} }, -- 'gc' to auto comment
 	"sebdah/vim-delve",
 	{
@@ -132,6 +142,12 @@ require("lazy").setup({
 			vim.cmd.colorscheme("nordic")
 		end,
 	},
+	-- {
+	-- 	"ellisonleao/gruvbox.nvim",
+	-- 	priority = 1000,
+	-- 	config = true,
+	-- 	opts = ...,
+	-- },
 	-- {
 	-- 	"scebai/glacier.vim",
 	-- 	lazy = false,
@@ -174,7 +190,7 @@ require("lazy").setup({
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {
-			theme = "nordic",
+			theme = "auto",
 		},
 	},
 	{
@@ -385,11 +401,5 @@ require("lazy").setup({
 				lua = { "stylua" },
 			},
 		},
-	},
-})
-
-require("lualine").setup({
-	options = {
-		component_separators = "",
 	},
 })

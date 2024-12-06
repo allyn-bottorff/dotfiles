@@ -8,6 +8,8 @@ source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
+setopt inc_append_history
+setopt share_history
 setopt hist_ignore_all_dups
 setopt extendedglob
 setopt inc_append_history_time
@@ -18,6 +20,12 @@ bindkey -v
 zstyle :compinstall filename "$HOME/.zshrc"
 
 autoload -Uz compinit
+
+# comand line editing
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
 compinit
 # End of lines added by compinstall
 
