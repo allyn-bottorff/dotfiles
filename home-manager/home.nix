@@ -94,6 +94,8 @@ in
     pkgs.azure-cli
     pkgsUnstable.hugo
     pkgs.ghostty
+    pkgs.fish
+    pkgs.jujutsu
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
