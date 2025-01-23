@@ -1,7 +1,9 @@
-# This is Git's per-user configuration file.
 [user]
 	name = Allyn L. Bottorff
-	email = allyn.bottorff@veteransunited.com
+	email = allyn@b6f.net
+
+[core]
+	editor = nvim
 # Please adapt and uncomment the following lines:
 #	name = Allyn Bottorff
 #	email = Allyn.Bottorff@vuhl-6sllvdl.vuhl.root.mrc.local
@@ -19,6 +21,7 @@
     difftool = true
 
 [alias]
+	sw = switch
 	lg = log --pretty --oneline --graph
-    co = checkout
-    sw = switch
+[push]
+	autoSetupRemote = true

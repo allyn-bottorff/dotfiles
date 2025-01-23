@@ -1,0 +1,6 @@
+theme = Iceberg-dark
+font-family = "Berkeley Mono"
+font-size = 14
+font-thicken = false
+cursor-style-blink = true
+window-padding-balance = true

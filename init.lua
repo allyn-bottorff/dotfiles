@@ -42,6 +42,13 @@ local function settabspace2()
 	vim.o.shiftwidth = 2
 end
 
+local function insert_asciidoc_rev_line()
+	local date = os.date("%Y-%m-%d")
+	local rev_line_1 = "Allyn L. Bottorff <allyn.bottorff@veteransunited.com>"
+	local rev_line_2 = "1.0, " .. date
+	vim.api.nvim_put({ rev_line_1, rev_line_2, "" }, "l", true, true)
+end
+
 -- AUTO COMMANDS
 vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal nonumber" })
 vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal signcolumn=no" })
@@ -67,6 +74,9 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- LOCAL USER COMMAND
+vim.api.nvim_create_user_command("RevLine", function()
+	insert_asciidoc_rev_line()
+end, { desc = "Insert an AsciiDoc revision line with the current date" })
 -- vim.api.nvim_buf_create_user_command(0, 'Format', vim.lsp.buf.format, {})
 
 -- KEYMAPS
@@ -105,6 +115,16 @@ vim.opt.rtp:prepend(lazypath)
 
 -- PLUGIN LIST
 require("lazy").setup({
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+			"3rd/image.nvim",
+		},
+	},
 	{ "numToStr/Comment.nvim", opts = {} }, -- 'gc' to auto comment
 	"sebdah/vim-delve",
 	{
@@ -180,7 +200,7 @@ require("lazy").setup({
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {
-			theme = "nordic",
+			theme = "auto",
 		},
 	},
 	{
@@ -198,7 +218,6 @@ require("lazy").setup({
 				gopls = {},
 				pyright = {},
 				rust_analyzer = {},
-				tsserver = {},
 				lua_ls = {
 					settings = {
 						Lua = {
@@ -261,6 +280,7 @@ require("lazy").setup({
 			--  into multiple repos for maintenance purposes.
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
+			"kirasok/cmp-hledger",
 
 			-- If you want to add a bunch of pre-configured snippets,
 			--    you can use this plugin to help you. It even has snippets
@@ -391,11 +411,5 @@ require("lazy").setup({
 				lua = { "stylua" },
 			},
 		},
-	},
-})
-
-require("lualine").setup({
-	options = {
-		component_separators = "",
 	},
 })

@@ -65,17 +65,19 @@ in
     pkgs.unzip
     pkgs.gcc
     pkgs.gnumake
-    pkgs.netcat-openbsd
     pkgs.ansible
+    # pkgs.ansible
     pkgs.cmake
     pkgs.bat-extras.batman
     pkgs.luajit
     pkgs.fastfetch
     pkgs.tree-sitter
     pkgs.nodejs_22
-    pkgs.xplr
     pkgs.kind
-    pkgs.nerdctl
+    pkgs.xplr
+    pkgs.hledger
+    pkgs.kind
+    # pkgs.nerdctl
     pkgs.delve
     # pkgs.protobuf3_20
     # pkgs.protoc-gen-go
@@ -84,8 +86,15 @@ in
     pkgs.scc
     pkgs.hledger
     pkgs.ledger
-    pkgs.asciidoctor-with-extensions
+    pkgs.asciidoctor
     pkgs.gollum
+    pkgs.lima
+    pkgs.lua54Packages.luarocks
+    pkgs.yazi
+    pkgs.azure-cli
+    pkgsUnstable.hugo
+    pkgs.fish
+    pkgs.jujutsu
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello

@@ -14,7 +14,7 @@ config.audible_bell = "Disabled"
 config.hide_tab_bar_if_only_one_tab = true
 config.use_fancy_tab_bar = true
 config.window_frame = {
-	font_size = 11,
+	font_size = 13,
 }
 
 config.color_scheme_dirs = { "$HOME/.config/wezterm/colors" }
