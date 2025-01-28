@@ -1,6 +1,11 @@
 theme = Iceberg-dark
-font-family = "Berkeley Mono"
+font-family = "TX-02"
 font-size = 14
 font-thicken = false
 cursor-style-blink = true
 window-padding-balance = true
+
+keybind = global:cmd+grave_accent=toggle_quick_terminal
+
+quick-terminal-position = center
+
