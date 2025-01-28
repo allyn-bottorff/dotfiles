@@ -42,6 +42,13 @@ local function settabspace2()
 	vim.o.shiftwidth = 2
 end
 
+local function insert_asciidoc_rev_line()
+	local date = os.date("%Y-%m-%d")
+	local rev_line_1 = "Allyn L. Bottorff <allyn.bottorff@veteransunited.com>"
+	local rev_line_2 = "1.0, " .. date
+	vim.api.nvim_put({ rev_line_1, rev_line_2, "" }, "l", true, true)
+end
+
 -- AUTO COMMANDS
 vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal nonumber" })
 vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal signcolumn=no" })
@@ -67,6 +74,9 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- LOCAL USER COMMAND
+vim.api.nvim_create_user_command("RevLine", function()
+	insert_asciidoc_rev_line()
+end, { desc = "Insert an AsciiDoc revision line with the current date" })
 -- vim.api.nvim_buf_create_user_command(0, 'Format', vim.lsp.buf.format, {})
 
 -- KEYMAPS
