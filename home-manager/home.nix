@@ -93,7 +93,7 @@ in
     pkgs.yazi
     pkgs.azure-cli
     pkgsUnstable.hugo
-    pkgs.ghostty
+    # pkgs.ghostty
     pkgs.fish
     pkgs.jujutsu
     # # Adds the 'hello' command to your environment. It prints a friendly
