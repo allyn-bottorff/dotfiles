@@ -14,8 +14,8 @@ in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "allyn";
-  home.homeDirectory = "/Users/allyn";
+  home.username = "allyn.bottorff";
+  home.homeDirectory = "/Users/allyn.bottorff";
   nixpkgs.config.allowUnfree = true;
 
   # This value determines the Home Manager release that your configuration is
@@ -66,7 +66,6 @@ in
     pkgs.gcc
     pkgs.gnumake
     pkgs.ansible
-    pkgs.tart
     # pkgs.ansible
     pkgs.cmake
     pkgs.bat-extras.batman
@@ -89,11 +88,14 @@ in
     pkgs.ledger
     pkgs.asciidoctor
     pkgs.gollum
-    pkgs.lima
+    pkgs.lima-bin
     pkgs.lua54Packages.luarocks
     pkgs.yazi
     pkgs.azure-cli
     pkgsUnstable.hugo
+    # pkgs.ghostty
+    pkgs.fish
+    pkgs.jujutsu
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
