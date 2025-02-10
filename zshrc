@@ -47,7 +47,7 @@ export ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
 export GITLAB_HOST=https://gitlab.redchimney.com
 export LEDGER_FILE="$HOME/finance/2024.journal"
 
-export KUBECONFIG=~/.kube/config-prod:~/.kube/config-non-prod
+# export KUBECONFIG=~/.kube/config-prod:~/.kube/config-non-prod
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
