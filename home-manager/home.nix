@@ -72,7 +72,7 @@ in
     pkgs.luajit
     pkgs.fastfetch
     pkgs.tree-sitter
-    pkgs.nodejs_22
+    # pkgs.nodejs_22
     pkgs.kind
     pkgs.xplr
     pkgs.hledger
@@ -87,15 +87,25 @@ in
     pkgs.hledger
     pkgs.ledger
     pkgs.asciidoctor
-    pkgs.gollum
+    # pkgs.gollum
     pkgs.lima-bin
     pkgs.lua54Packages.luarocks
     pkgs.yazi
     pkgs.azure-cli
     pkgsUnstable.hugo
     # pkgs.ghostty
-    pkgs.fish
+    # pkgs.fish
     pkgs.jujutsu
+    pkgs.darwin.libiconv
+    pkgs.ollama
+    pkgs.aider-chat
+    pkgs.python314
+    pkgs.llama-cpp
+    pkgs.git
+    pkgs.git-lfs
+    pkgs.uv
+    pkgs.dust
+    # pkgs.atuin
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello

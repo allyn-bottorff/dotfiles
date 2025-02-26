@@ -9,3 +9,5 @@ keybind = global:cmd+grave_accent=toggle_quick_terminal
 
 quick-terminal-position = center
 
+custom-shader = ./shaders/blur.glsl
+custom-shader = shaders/bloom.glsl

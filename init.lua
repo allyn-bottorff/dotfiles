@@ -29,6 +29,8 @@ vim.g.zig_fmt_autosave = false
 
 vim.g.tex_flavor = "latex"
 
+vim.g.codeium_enabled = false
+
 -- LOCAL FUNCTIONS
 local function settabspace4()
 	vim.o.tabstop = 4
@@ -73,10 +75,18 @@ vim.api.nvim_create_autocmd("FileType", {
 	command = "setlocal tw=79",
 })
 
--- LOCAL USER COMMAND
+-- LOCAL USER COMMANDS
 vim.api.nvim_create_user_command("RevLine", function()
 	insert_asciidoc_rev_line()
 end, { desc = "Insert an AsciiDoc revision line with the current date" })
+
+vim.api.nvim_create_user_command(
+	"AsciiArchPDF",
+	"!asciidoctor-pdf -a pdf-theme=arch -a pdf-themesdir=asciidoctor-themes -a pdf-fontsdir=fonts %",
+	{
+		desc = "Generate a pdf from the currently open asciidoc file. Assumes the architecture theme and fonts dir is available",
+	}
+)
 -- vim.api.nvim_buf_create_user_command(0, 'Format', vim.lsp.buf.format, {})
 
 -- KEYMAPS
@@ -255,6 +265,20 @@ require("lazy").setup({
 				},
 			})
 		end,
+	},
+	{
+		"Exafunction/codeium.vim",
+		event = "BufEnter",
+	},
+	{
+		"joshuavial/aider.nvim",
+		opts = {
+			-- your configuration comes here
+			-- if you don't want to use the default settings
+			auto_manage_context = true, -- automatically manage buffer context
+			default_bindings = true, -- use default <leader>A keybindings
+			debug = false, -- enable debug logging
+		},
 	},
 	{ -- Autocompletion
 		"hrsh7th/nvim-cmp",
