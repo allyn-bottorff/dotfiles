@@ -38,7 +38,7 @@ alias l='eza -lhF --git'
 alias k='kubectl'
 alias cat='bat'
 alias bangcopy='op read op://work/bang/password | pbcopy'
-alias ssh='TERM=xterm-256color ssh'
+# alias ssh='TERM=xterm-256color ssh'
 alias hl='hledger'
 alias weather="curl 'wttr.in/columbia+missouri?1'"
 alias vm="/usr/bin/ssh -A -q lima"

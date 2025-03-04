@@ -94,7 +94,7 @@ in
     pkgs.azure-cli
     pkgsUnstable.hugo
     # pkgs.ghostty
-    # pkgs.fish
+    pkgs.fish
     pkgs.jujutsu
     pkgs.darwin.libiconv
     pkgs.ollama
