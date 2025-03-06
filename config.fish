@@ -7,6 +7,7 @@ if status is-interactive
     alias cat="bat"
 
     set -Ux EDITOR "nvim"
+    set -Ux SHELL "fish"
     set -Ux KUBECONFIG "$HOME/.kube/config-prod:$HOME/.kube/config-non-prod:$HOME/.kube/config-test"
     set -Ux GITLAB_HOST "https://gitlab.redchimney.com"
 

@@ -38,8 +38,8 @@ in
 	pkgs.kubectl
 	pkgs.eza
 	pkgs.entr
-	pkgsUnstable.fzf
-	pkgsUnstable.neovim
+	pkgs.fzf
+	pkgs.neovim
 	pkgs.jq
 	pkgs.rustup
 	pkgs.dig
@@ -56,7 +56,7 @@ in
     pkgs.zsh-syntax-highlighting
     pkgs.bacon
     pkgs.ripgrep
-    pkgs._1password
+    pkgs._1password-cli
     pkgs.qmk
     pkgs.opentofu
     pkgs.glab
@@ -66,7 +66,6 @@ in
     pkgs.gcc
     pkgs.gnumake
     pkgs.ansible
-    # pkgs.ansible
     pkgs.cmake
     pkgs.bat-extras.batman
     pkgs.luajit
@@ -94,7 +93,7 @@ in
     pkgs.azure-cli
     pkgsUnstable.hugo
     # pkgs.ghostty
-    pkgs.fish
+    pkgsUnstable.fish
     pkgs.jujutsu
     pkgs.darwin.libiconv
     pkgs.ollama
