@@ -1,10 +1,13 @@
-
 if status is-interactive
     # Commands to run in interactive sessions can go here
-    alias l="eza -lhF --git"
-    alias vim="nvim"
-    alias k="kubectl"
-    alias cat="bat"
+
+    fish_vi_key_bindings
+
+    abbr -a -- l eza -lhF --git
+    abbr -a -- cat bat
+    abbr -a -- vim nvim
+    abbr -a -- k kubectl
+    abbr -a -- krc kubectl resource-capacity
 
     set -Ux EDITOR "nvim"
     set -Ux SHELL "fish"
