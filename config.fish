@@ -14,6 +14,8 @@ if status is-interactive
     set -gx PATH $HOME/.cargo/bin $PATH
     set -gx PATH $HOME/.krew/bin $PATH
 
+    COMPLETE=fish jj | source
+
 
     starship init fish | source
 end

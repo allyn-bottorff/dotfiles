@@ -94,7 +94,7 @@ in
     pkgsUnstable.hugo
     # pkgs.ghostty
     pkgsUnstable.fish
-    pkgs.jujutsu
+    pkgsUnstable.jujutsu
     pkgs.darwin.libiconv
     pkgs.ollama
     pkgs.aider-chat
