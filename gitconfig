@@ -1,6 +1,6 @@
 [user]
 	name = Allyn L. Bottorff
-	email = allyn@b6f.net
+	email = allyn.bottorff@veteransunited.com
 
 [core]
 	editor = nvim
@@ -10,6 +10,10 @@
 
 [diff]
     tool = difftastic
+    algorithm = histogram
+    colorMoved = plain
+    mnemonicPrefix = true
+    renames = true
 
 [difftool]
     prompt = false
@@ -24,4 +28,19 @@
 	sw = switch
 	lg = log --pretty --oneline --graph
 [push]
-	autoSetupRemote = true
+    autoSetupRemote = true
+    followTags = true
+
+[column]
+    ui = auto
+
+[branch]
+    sort = -committerdate
+
+[tag]
+    sort = version:refname
+
+[help]
+    autocorrect = prompt
+[commit]
+    verbose = true
