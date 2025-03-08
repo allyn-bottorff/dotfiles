@@ -5,7 +5,7 @@ font-thicken = false
 cursor-style-blink = true
 window-padding-balance = true
 
-command = /Users/allyn.bottorff/.nix-profile/bin/fish --login --interactive
+command = /Users/allyn/.nix-profile/bin/fish --login --interactive
 
 keybind = global:cmd+grave_accent=toggle_quick_terminal
 
