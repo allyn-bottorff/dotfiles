@@ -15,7 +15,7 @@ in
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "allyn";
-  home.homeDirectory = "/home/allyn";
+  home.homeDirectory = "/Users/allyn";
   nixpkgs.config.allowUnfree = true;
 
   # This value determines the Home Manager release that your configuration is
@@ -38,8 +38,8 @@ in
 	pkgs.kubectl
 	pkgs.eza
 	pkgs.entr
-	pkgsUnstable.fzf
-	pkgsUnstable.neovim
+	pkgs.fzf
+	pkgs.neovim
 	pkgs.jq
 	pkgs.rustup
 	pkgs.dig
@@ -56,7 +56,7 @@ in
     pkgs.zsh-syntax-highlighting
     pkgs.bacon
     pkgs.ripgrep
-    pkgs._1password
+    pkgs._1password-cli
     pkgs.qmk
     pkgs.opentofu
     pkgs.glab
@@ -66,13 +66,12 @@ in
     pkgs.gcc
     pkgs.gnumake
     pkgs.ansible
-    # pkgs.ansible
     pkgs.cmake
     pkgs.bat-extras.batman
     pkgs.luajit
     pkgs.fastfetch
     pkgs.tree-sitter
-    pkgs.nodejs_22
+    # pkgs.nodejs_22
     pkgs.kind
     pkgs.xplr
     pkgs.hledger
@@ -87,15 +86,25 @@ in
     pkgs.hledger
     pkgs.ledger
     pkgs.asciidoctor
-    pkgs.gollum
-    pkgs.lima
+    # pkgs.gollum
+    pkgs.lima-bin
     pkgs.lua54Packages.luarocks
     pkgs.yazi
     pkgs.azure-cli
     pkgsUnstable.hugo
-    pkgs.ghostty
-    pkgs.fish
-    pkgs.jujutsu
+    # pkgs.ghostty
+    pkgsUnstable.fish
+    pkgsUnstable.jujutsu
+    pkgs.darwin.libiconv
+    pkgs.ollama
+    pkgs.aider-chat
+    pkgs.python314
+    pkgs.llama-cpp
+    pkgs.git
+    pkgs.git-lfs
+    pkgs.uv
+    pkgs.dust
+    # pkgs.atuin
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
