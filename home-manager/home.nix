@@ -15,7 +15,7 @@ in
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "allyn";
-  home.homeDirectory = "/Users/allyn";
+  home.homeDirectory = "/home/allyn";
   nixpkgs.config.allowUnfree = true;
 
   # This value determines the Home Manager release that your configuration is
@@ -87,7 +87,7 @@ in
     pkgs.ledger
     pkgs.asciidoctor
     # pkgs.gollum
-    pkgs.lima-bin
+    # pkgs.lima-bin
     pkgs.lua54Packages.luarocks
     pkgs.yazi
     pkgs.azure-cli
@@ -95,7 +95,7 @@ in
     # pkgs.ghostty
     pkgsUnstable.fish
     pkgsUnstable.jujutsu
-    pkgs.darwin.libiconv
+    # pkgs.darwin.libiconv
     pkgs.ollama
     pkgs.aider-chat
     pkgs.python314
