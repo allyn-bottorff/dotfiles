@@ -71,7 +71,7 @@ in
     pkgs.luajit
     pkgs.fastfetch
     pkgs.tree-sitter
-    # pkgs.nodejs_22
+    pkgs.nodejs_23
     pkgs.kind
     pkgs.xplr
     pkgs.hledger
@@ -104,6 +104,7 @@ in
     pkgs.git-lfs
     pkgs.uv
     pkgs.dust
+    pkgs.colima
     # pkgs.atuin
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -156,6 +157,7 @@ in
   home.sessionVariables = {
     # EDITOR = "emacs";
     ZSH_SYNTAX_HIGHLIGHTING_PATH = "${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
+    FZF_DIR = "${pkgs.fzf}";
   };
 
 
