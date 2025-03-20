@@ -5,9 +5,15 @@ font-thicken = false
 cursor-style-blink = true
 window-padding-balance = true
 
+split-divider-color=3ccce6
+
 command = /Users/allyn.bottorff/.nix-profile/bin/fish --login --interactive
 
 keybind = global:cmd+grave_accent=toggle_quick_terminal
+keybind = global:super+h=goto_split:left
+keybind = global:super+j=goto_split:down
+keybind = global:super+k=goto_split:up
+keybind = global:super+l=goto_split:right
 
 quick-terminal-position = center
 
