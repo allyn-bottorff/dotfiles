@@ -9,6 +9,7 @@ if status is-interactive
     abbr -a -- k kubectl
     abbr -a -- krc kubectl resource-capacity
     abbr -a -- ssh TERM=xterm-256color ssh
+    abbr -a -- pe petools-cli
 
     set -Ux EDITOR "nvim"
     set -Ux SHELL "fish"
