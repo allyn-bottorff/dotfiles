@@ -7,7 +7,7 @@ window-padding-balance = true
 
 split-divider-color=3ccce6
 
-command = /Users/allyn.bottorff/.nix-profile/bin/fish --login --interactive
+command = /Users/allyn/.nix-profile/bin/fish --login --interactive
 
 keybind = global:cmd+grave_accent=toggle_quick_terminal
 keybind = global:super+h=goto_split:left

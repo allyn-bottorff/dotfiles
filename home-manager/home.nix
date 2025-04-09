@@ -63,7 +63,7 @@ in
     pkgs.tmux
     pkgs.krew
     pkgs.unzip
-    pkgs.gcc
+    # pkgs.gcc
     pkgs.gnumake
     pkgs.ansible
     pkgs.cmake
