@@ -71,7 +71,7 @@ in
     pkgs.luajit
     pkgs.fastfetch
     pkgs.tree-sitter
-    pkgs.nodejs_23
+    pkgs.nodejs-slim
     pkgs.kind
     pkgs.xplr
     pkgs.hledger

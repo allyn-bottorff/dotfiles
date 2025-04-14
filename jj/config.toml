@@ -2,5 +2,11 @@
 name = "Allyn L. Bottorff"
 email = "allyn.bottorff@veteransunited.com"
 
-# [git]
+[git]
+sign-on-push = true
 # subprocess = true
+
+[signing]
+behavior = "own"
+backend = "ssh"
+key = "~/.ssh/id_ed25519.pub"
