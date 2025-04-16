@@ -4,7 +4,9 @@
 
 { config, pkgs, ... }:
 
-{
+let
+  unstable = import <unstable> {};
+in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -147,14 +149,17 @@
 	pkgs.git-lfs
 	pkgs.uv
 	pkgs.dust
-	pkgs.steam
-
-    #  thunderbird
+	pkgs.discord
+	unstable.jujutsu
+	unstable.fish
+	unstable.prusa-slicer
     ];
   };
 
   # Install firefox.
   programs.firefox.enable = true;
+  
+  # Install steam.
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
@@ -168,9 +173,10 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    curl  
-#  wget
+  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  #  wget
+  vim
+  awesome
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -185,7 +191,6 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-  
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

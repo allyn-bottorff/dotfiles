@@ -25,8 +25,6 @@ if status is-interactive
 
     source $(fzf-share)/key-bindings.fish
 
-
-    starship init fish | source
 end
 
 
