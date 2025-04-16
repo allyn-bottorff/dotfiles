@@ -45,20 +45,29 @@ in {
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
+  services.xserver = {
+    enable = true;
+    windowManager.awesome = {
+        enable = true;
+        luaModules = with pkgs.luaPackages; [
+            luarocks
+            luadbi-mysql
+        ];
+    };
+    xkbOptions = "caps:ctrl_modifier";
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
   # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+    xkb = {
+        layout = "us";
+        variant = "";
+    };
+
+    videoDrivers = ["nvidia"];
   };
 
   hardware.graphics = { enable = true; };
-  services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = false;
@@ -140,7 +149,7 @@ in {
 	pkgs.asciidoctor
 	pkgs.lua54Packages.luarocks
 	pkgs.yazi
-    	pkgs.ghostty
+    pkgs.ghostty
 	pkgs.ollama
 	pkgs.aider-chat
 	pkgs.python314
@@ -150,9 +159,19 @@ in {
 	pkgs.uv
 	pkgs.dust
 	pkgs.discord
+    pkgs.freecad
 	unstable.jujutsu
 	unstable.fish
 	unstable.prusa-slicer
+
+    # dependencies for hyprland
+    pkgs.wofi
+    pkgs.waybar
+    pkgs.eww
+    pkgs.nerdfonts
+    pkgs.wl-clipboard
+
+
     ];
   };
 
@@ -167,6 +186,12 @@ in {
     localNetworkGameTransfers.openFirewall = true;
   };
 
+  #Install hyprland
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -176,8 +201,10 @@ in {
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   vim
-  awesome
+  gnomeExtensions.appindicator
   ];
+
+  services.udev.packages = [ pkgs.gnome-settings-daemon ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -188,6 +215,7 @@ in {
   # };
 
   # List services that you want to enable:
+  services.tailscale.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
