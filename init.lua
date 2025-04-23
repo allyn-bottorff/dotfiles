@@ -55,7 +55,7 @@ end
 vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal nonumber" })
 vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal signcolumn=no" })
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "python", "go", "zig", "terraform" },
+	pattern = { "python", "go", "zig" },
 	callback = settabspace4,
 })
 vim.api.nvim_create_autocmd("FileType", {
