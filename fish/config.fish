@@ -9,6 +9,7 @@ if status is-interactive
     abbr -a -- k kubectl
     abbr -a -- krc kubectl resource-capacity
     abbr -a -- ssh TERM=xterm-256color ssh
+    abbr -a -- gpudev ssh ddl01gpudev01.vuhl.root.mrc.local
     abbr -a -- pe petools-cli
 
     set -Ux EDITOR "nvim"

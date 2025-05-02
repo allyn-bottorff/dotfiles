@@ -154,14 +154,38 @@ require("lazy").setup({
 		dependencies = { "junegunn/fzf" },
 	},
 	"tpope/vim-fugitive",
-	{
-		"AlexvZyl/nordic.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			vim.cmd.colorscheme("nordic")
-		end,
-	},
+	-- {
+	-- 	"gkeep/iceberg-dark",
+	-- 	config = function()
+	-- 		vim.cmd.colorscheme("icebergDark")
+	-- 	end,
+	-- },
+	-- {
+	-- 	"EdenEast/nightfox.nvim",
+	-- 	config = function()
+	-- 		vim.cmd.colorscheme("nightfox")
+	-- 	end,
+	-- },
+	-- {
+	-- 	"AlexvZyl/nordic.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.cmd.colorscheme("nordic")
+	-- 	end,
+	-- },
+	-- {
+	-- 	"armannikoyan/rusty",
+	-- 	config = function()
+	-- 		vim.cmd.colorscheme("rusty")
+	-- 	end,
+	-- },
+	-- {
+	-- 	"nordtheme/vim",
+	-- 	config = function()
+	-- 		vim.cmd.colorscheme("nord")
+	-- 	end,
+	-- },
 	-- {
 	-- 	"ellisonleao/gruvbox.nvim",
 	-- 	priority = 1000,
@@ -176,14 +200,25 @@ require("lazy").setup({
 	-- 		vim.cmd.colorscheme("glacier")
 	-- 	end,
 	-- },
-	-- {
-	-- 	"rebelot/kanagawa.nvim",
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	config = function()
-	-- 		vim.cmd.colorscheme("kanagawa-lotus")
-	-- 	end,
-	-- },
+	{
+		"rebelot/kanagawa.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("kanagawa").setup({
+				overrides = function(colors)
+					local theme = colors.theme
+					return {
+						Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
+						PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+						PmenuSbar = { bg = theme.ui.bg_m1 },
+						PmenuThumb = { bg = theme.ui.bg_p2 },
+					}
+				end,
+			})
+			vim.cmd.colorscheme("kanagawa-dragon")
+		end,
+	},
 	-- {
 	-- 	"sainnhe/sonokai",
 	-- 	-- lazy = false,

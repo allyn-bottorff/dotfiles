@@ -1,5 +1,11 @@
-theme = Iceberg-dark
+#theme = Iceberg-dark
+theme = Kanagawa Dragon
 font-family = "TX-02"
+font-style = "Regular"
+font-style-italic = "Oblique"
+font-style-bold = "Bold"
+font-style-bold-italic = "Bold Oblique"
+font-synthetic-style = false
 font-size = 14
 font-thicken = false
 cursor-style-blink = true
