@@ -1,6 +1,14 @@
 theme = iceberg-dark
+theme = Iceberg-dark
+# theme = Kanagawa Dragon
 font-family = "TX-02"
 font-size = 12
+font-style = "Regular"
+font-style-italic = "Oblique"
+font-style-bold = "Bold"
+font-style-bold-italic = "Bold Oblique"
+font-synthetic-style = false
+font-size = 14
 font-thicken = false
 cursor-style-blink = true
 window-padding-balance = true
@@ -10,10 +18,10 @@ split-divider-color=3ccce6
 command = fish --login --interactive
 
 keybind = global:cmd+grave_accent=toggle_quick_terminal
-keybind = global:super+h=goto_split:left
-keybind = global:super+j=goto_split:down
-keybind = global:super+k=goto_split:up
-keybind = global:super+l=goto_split:right
+keybind = super+h=goto_split:left
+keybind = super+j=goto_split:down
+keybind = super+k=goto_split:up
+keybind = super+l=goto_split:right
 
 quick-terminal-position = center
 

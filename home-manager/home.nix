@@ -65,13 +65,13 @@ in
     pkgs.unzip
     pkgs.gcc
     pkgs.gnumake
-    pkgs.ansible
+    # pkgs.ansible
     pkgs.cmake
     pkgs.bat-extras.batman
     pkgs.luajit
     pkgs.fastfetch
     pkgs.tree-sitter
-    pkgs.nodejs_23
+    # pkgs.nodejs-slim
     pkgs.kind
     pkgs.xplr
     pkgs.hledger
@@ -83,28 +83,30 @@ in
     pkgs.difftastic
     pkgs.btop
     pkgs.scc
-    pkgs.hledger
-    pkgs.ledger
+    # pkgs.hledger
+    # pkgs.ledger
     pkgs.asciidoctor
     # pkgs.gollum
     pkgs.lima-bin
     pkgs.lua54Packages.luarocks
     pkgs.yazi
     pkgs.azure-cli
-    pkgsUnstable.hugo
+    # pkgsUnstable.hugo
     # pkgs.ghostty
-    pkgsUnstable.fish
-    pkgsUnstable.jujutsu
+    pkgs.fish
+    pkgs.jujutsu
     pkgs.darwin.libiconv
     pkgs.ollama
-    pkgs.aider-chat
-    pkgs.python314
+    # pkgs.aider-chat
+    # pkgs.python314
     pkgs.llama-cpp
     pkgs.git
     pkgs.git-lfs
     pkgs.uv
     pkgs.dust
     pkgs.colima
+    pkgs.fx
+    pkgs.zed-editor
     # pkgs.atuin
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.

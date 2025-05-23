@@ -55,7 +55,7 @@ end
 vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal nonumber" })
 vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal signcolumn=no" })
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "python", "go", "zig", "terraform" },
+	pattern = { "python", "go", "zig" },
 	callback = settabspace4,
 })
 vim.api.nvim_create_autocmd("FileType", {
@@ -154,6 +154,18 @@ require("lazy").setup({
 		dependencies = { "junegunn/fzf" },
 	},
 	"tpope/vim-fugitive",
+	-- {
+	-- 	"gkeep/iceberg-dark",
+	-- 	config = function()
+	-- 		vim.cmd.colorscheme("icebergDark")
+	-- 	end,
+	-- },
+	-- {
+	-- 	"EdenEast/nightfox.nvim",
+	-- 	config = function()
+	-- 		vim.cmd.colorscheme("nightfox")
+	-- 	end,
+	-- },
 	{
 		"AlexvZyl/nordic.nvim",
 		lazy = false,
@@ -162,6 +174,18 @@ require("lazy").setup({
 			vim.cmd.colorscheme("nordic")
 		end,
 	},
+	-- {
+	-- 	"armannikoyan/rusty",
+	-- 	config = function()
+	-- 		vim.cmd.colorscheme("rusty")
+	-- 	end,
+	-- },
+	-- {
+	-- 	"nordtheme/vim",
+	-- 	config = function()
+	-- 		vim.cmd.colorscheme("nord")
+	-- 	end,
+	-- },
 	-- {
 	-- 	"ellisonleao/gruvbox.nvim",
 	-- 	priority = 1000,
@@ -181,7 +205,18 @@ require("lazy").setup({
 	-- 	lazy = false,
 	-- 	priority = 1000,
 	-- 	config = function()
-	-- 		vim.cmd.colorscheme("kanagawa-lotus")
+	-- 		require("kanagawa").setup({
+	-- 			overrides = function(colors)
+	-- 				local theme = colors.theme
+	-- 				return {
+	-- 					Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
+	-- 					PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+	-- 					PmenuSbar = { bg = theme.ui.bg_m1 },
+	-- 					PmenuThumb = { bg = theme.ui.bg_p2 },
+	-- 				}
+	-- 			end,
+	-- 		})
+	-- 		vim.cmd.colorscheme("kanagawa-dragon")
 	-- 	end,
 	-- },
 	-- {
