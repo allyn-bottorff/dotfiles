@@ -138,7 +138,6 @@ in {
     pkgs.luajit
     pkgs.fastfetch
     pkgs.tree-sitter
-    pkgs.nodejs_23
     pkgs.kind
     pkgs.xplr
     pkgs.hledger
@@ -160,20 +159,25 @@ in {
     pkgs.dust
     pkgs.discord
     pkgs.freecad
-    unstable.jujutsu
-    unstable.fish
+    pkgs.jujutsu
+    pkgs.fish
     pkgs.prusa-slicer
 
     # dependencies for hyprland
     pkgs.wofi
     pkgs.waybar
     pkgs.eww
-    pkgs.nerdfonts
     pkgs.wl-clipboard
 
 
     ];
   };
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
+
+  ];
 
   # Install firefox.
   programs.firefox.enable = true;
