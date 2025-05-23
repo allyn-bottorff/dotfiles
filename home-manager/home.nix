@@ -91,10 +91,10 @@ in
     pkgs.lua54Packages.luarocks
     pkgs.yazi
     pkgs.azure-cli
-    pkgsUnstable.hugo
+    # pkgsUnstable.hugo
     # pkgs.ghostty
-    pkgsUnstable.fish
-    pkgsUnstable.jujutsu
+    pkgs.fish
+    pkgs.jujutsu
     pkgs.darwin.libiconv
     pkgs.ollama
     # pkgs.aider-chat
@@ -106,6 +106,7 @@ in
     pkgs.dust
     pkgs.colima
     pkgs.fx
+    pkgs.zed-editor
     # pkgs.atuin
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
