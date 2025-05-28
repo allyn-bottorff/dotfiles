@@ -86,7 +86,6 @@ vim.api.nvim_create_user_command(
 		desc = "Generate a pdf from the currently open asciidoc file. Assumes the architecture theme and fonts dir is available",
 	}
 )
--- vim.api.nvim_buf_create_user_command(0, 'Format', vim.lsp.buf.format, {})
 
 -- KEYMAPS
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
