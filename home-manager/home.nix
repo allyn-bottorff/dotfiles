@@ -10,6 +10,13 @@
 
 let
     pkgsUnstable = import <nixpkgs-unstable> {};
+    pkgs_kubectl = import (builtins.fetchGit {
+         # Descriptive name to make the store path easier to identify
+         name = "kubectl-1.26.3";
+         url = "https://github.com/NixOS/nixpkgs/";
+         ref = "refs/heads/nixpkgs-24.05-darwin";
+         rev = "7ad7b570e96a3fd877e5fb08b843d66a30428f12";
+     }) {};
 in
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -30,12 +37,12 @@ in
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
+    pkgs_kubectl.kubectl
 	pkgs.curl
 	pkgs.bat
 	pkgs.gh
 	pkgs.go
 	pkgs.kubernetes-helm
-	pkgs.kubectl
 	pkgs.eza
 	pkgs.entr
 	pkgs.fzf
