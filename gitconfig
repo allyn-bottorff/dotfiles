@@ -45,6 +45,7 @@
     autocorrect = prompt
 [commit]
     verbose = true
+    gpgSign = true
 
 [gpg]
     format = ssh

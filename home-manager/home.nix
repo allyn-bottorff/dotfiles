@@ -114,6 +114,8 @@ in
     pkgs.colima
     pkgs.fx
     pkgs.zed-editor
+    pkgs.gopls
+    pkgs.ruff
     # pkgs.atuin
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.

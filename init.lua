@@ -17,7 +17,6 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.hlsearch = false
 
-vim.o.termguicolors = true
 vim.o.winblend = 20
 vim.o.cc = "80"
 vim.o.expandtab = true
@@ -125,18 +124,11 @@ vim.opt.rtp:prepend(lazypath)
 
 -- PLUGIN LIST
 require("lazy").setup({
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons",
-			"MunifTanjim/nui.nvim",
-			"3rd/image.nvim",
-		},
-	},
-	{ "numToStr/Comment.nvim", opts = {} }, -- 'gc' to auto comment
 	"sebdah/vim-delve",
+	"tpope/vim-fugitive",
+	"junegunn/fzf.vim",
+	"junegunn/fzf",
+	{ "numToStr/Comment.nvim", opts = {} }, -- 'gc' to auto comment
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {
@@ -150,23 +142,6 @@ require("lazy").setup({
 		},
 	},
 	{
-		"junegunn/fzf.vim",
-		dependencies = { "junegunn/fzf" },
-	},
-	"tpope/vim-fugitive",
-	-- {
-	-- 	"gkeep/iceberg-dark",
-	-- 	config = function()
-	-- 		vim.cmd.colorscheme("icebergDark")
-	-- 	end,
-	-- },
-	-- {
-	-- 	"EdenEast/nightfox.nvim",
-	-- 	config = function()
-	-- 		vim.cmd.colorscheme("nightfox")
-	-- 	end,
-	-- },
-	{
 		"AlexvZyl/nordic.nvim",
 		lazy = false,
 		priority = 1000,
@@ -174,67 +149,6 @@ require("lazy").setup({
 			vim.cmd.colorscheme("nordic")
 		end,
 	},
-	-- {
-	-- 	"armannikoyan/rusty",
-	-- 	config = function()
-	-- 		vim.cmd.colorscheme("rusty")
-	-- 	end,
-	-- },
-	-- {
-	-- 	"nordtheme/vim",
-	-- 	config = function()
-	-- 		vim.cmd.colorscheme("nord")
-	-- 	end,
-	-- },
-	-- {
-	-- 	"ellisonleao/gruvbox.nvim",
-	-- 	priority = 1000,
-	-- 	config = true,
-	-- 	opts = ...,
-	-- },
-	-- {
-	-- 	"scebai/glacier.vim",
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	config = function()
-	-- 		vim.cmd.colorscheme("glacier")
-	-- 	end,
-	-- },
-	-- {
-	-- 	"rebelot/kanagawa.nvim",
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	config = function()
-	-- 		require("kanagawa").setup({
-	-- 			overrides = function(colors)
-	-- 				local theme = colors.theme
-	-- 				return {
-	-- 					Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
-	-- 					PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
-	-- 					PmenuSbar = { bg = theme.ui.bg_m1 },
-	-- 					PmenuThumb = { bg = theme.ui.bg_p2 },
-	-- 				}
-	-- 			end,
-	-- 		})
-	-- 		vim.cmd.colorscheme("kanagawa-dragon")
-	-- 	end,
-	-- },
-	-- {
-	-- 	"sainnhe/sonokai",
-	-- 	-- lazy = false,
-	-- 	-- priority = 1000,
-	-- 	-- config = function()
-	-- 	-- 	vim.cmd.colorscheme("sonokai")
-	-- 	-- end,
-	-- },
-	-- {
-	-- 	"navarasu/onedark.nvim",
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	config = function()
-	-- 		vim.cmd.colorscheme("onedark")
-	-- 	end,
-	-- },
 	{
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
@@ -251,69 +165,12 @@ require("lazy").setup({
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			{ "j-hui/fidget.nvim", opts = {} },
 		},
 		config = function()
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-			local servers = {
-				gopls = {},
-				pyright = {},
-				rust_analyzer = {},
-				lua_ls = {
-					settings = {
-						Lua = {
-							runtime = { version = "LuaJIT" },
-							workspace = {
-								checkThirdParty = false,
-								library = {
-									"${3rd}/luv/library",
-									unpack(vim.api.nvim_get_runtime_file("", true)),
-								},
-								-- If lua_ls is really slow on your computer, you can try this instead:
-								-- library = { vim.env.VIMRUNTIME },
-							},
-							completion = {
-								callSnippet = "Replace",
-							},
-						},
-					},
-				},
-			}
-			require("mason").setup()
-			local ensure_installed = vim.tbl_keys(servers or {})
-			vim.list_extend(ensure_installed, {
-				"stylua",
-				"zls",
-			})
-			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-			require("mason-lspconfig").setup({
-				handlers = {
-					function(server_name)
-						local server = servers[server_name] or {}
-						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-						require("lspconfig")[server_name].setup(server)
-					end,
-				},
-			})
 		end,
-	},
-	{
-		"Exafunction/codeium.vim",
-		event = "BufEnter",
-	},
-	{
-		"joshuavial/aider.nvim",
-		opts = {
-			-- your configuration comes here
-			-- if you don't want to use the default settings
-			auto_manage_context = true, -- automatically manage buffer context
-			default_bindings = true, -- use default <leader>A keybindings
-			debug = false, -- enable debug logging
-		},
 	},
 	{ -- Autocompletion
 		"hrsh7th/nvim-cmp",
@@ -408,56 +265,6 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{ -- Highlight, edit, and navigate code
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-		config = function()
-			-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-
-			---@diagnostic disable-next-line: missing-fields
-			require("nvim-treesitter.configs").setup({
-				ensure_installed = {
-					"bash",
-					"c",
-					"html",
-					"lua",
-					"markdown",
-					"vim",
-					"vimdoc",
-					"go",
-					"python",
-					"rust",
-					"dockerfile",
-					"gitignore",
-					"hcl",
-					"json",
-					"latex",
-					"make",
-					"markdown",
-					"sql",
-					"toml",
-					"yaml",
-					"terraform",
-					"proto",
-					"kdl",
-					"javascript",
-					"typescript",
-					"zig",
-				},
-				-- Autoinstall languages that are not installed
-				-- auto_install = true,
-				highlight = { enable = true },
-				indent = { enable = true },
-			})
-
-			-- There are additional nvim-treesitter modules that you can use to interact
-			-- with nvim-treesitter. You should go explore a few and see what interests you:
-			--
-			--    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-			--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-			--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-		end,
-	},
 	{
 		"stevearc/conform.nvim",
 		opts = {
@@ -472,3 +279,19 @@ require("lazy").setup({
 		},
 	},
 })
+
+
+-- LSP Config
+
+vim.lsp.enable('rust_analyzer')
+vim.lsp.config('rust_analyzer', {
+  settings = {
+    ['rust-analyzer'] = {},
+  },
+})
+
+vim.lsp.enable('gopls')
+vim.lsp.enable('ty')
+
+vim .lsp.enable('ruff')
+
