@@ -23,10 +23,11 @@ if status is-interactive
 
     COMPLETE=fish jj | source
 
-    source $(fzf-share)/key-bindings.fish
+
+    # source $(fzf-share)/key-bindings.fish
 
 
-    starship init fish | source
+    # starship init fish | source
 end
 
 

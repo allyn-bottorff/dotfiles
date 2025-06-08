@@ -48,7 +48,7 @@ in
 	pkgs.docker
     pkgs.docker-buildx
     pkgs.docker-compose
-	pkgs.texliveMedium
+	pkgs.texliveFull
 	pkgs.zig
 	pkgs.flyctl
 	pkgs.yq-go
