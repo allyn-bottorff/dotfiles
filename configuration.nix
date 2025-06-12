@@ -163,6 +163,7 @@ in {
     pkgs.jujutsu
     pkgs.fish
     pkgs.prusa-slicer
+    unstable.zed-editor-fhs
 
     # dependencies for hyprland
     pkgs.wofi
