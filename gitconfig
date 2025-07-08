@@ -1,6 +1,6 @@
 [user]
 	name = Allyn L. Bottorff
-    email = allyn.bottorff@veteransunited.com
+    email = allyn@b6f.net
     signingkey = ~/.ssh/id_ed25519.pub
 
 [core]
@@ -45,6 +45,7 @@
     autocorrect = prompt
 [commit]
     verbose = true
+    gpgSign = true
 
 [gpg]
     format = ssh

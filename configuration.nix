@@ -164,6 +164,7 @@ in {
     pkgs.fish
     pkgs.prusa-slicer
     unstable.zed-editor-fhs
+    pkgs.texliveFull
 
     # dependencies for hyprland
     pkgs.wofi
@@ -190,6 +191,12 @@ in {
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
+  };
+
+  #Install OBS Studio
+  programs.obs-studio = {
+    enable = true;
+    enableVirtualCamera = true;
   };
 
   #Install hyprland

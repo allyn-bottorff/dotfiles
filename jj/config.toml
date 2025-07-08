@@ -12,4 +12,5 @@ backend = "ssh"
 key = "~/.ssh/id_ed25519.pub"
 
 [ui]
-paginate = "never"
+paginate = "auto"
+pager = ":builtin"

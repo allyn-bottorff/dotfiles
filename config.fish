@@ -15,7 +15,6 @@ if status is-interactive
     set -Ux SHELL "fish"
     # set -Ux KUBECONFIG "$HOME/.kube/config-prod:$HOME/.kube/config-non-prod:$HOME/.kube/config-test"
     set -Ux KUBECONFIG "$HOME/.kube/config"
-    set -Ux GITLAB_HOST "https://gitlab.redchimney.com"
     set -Ux LIBRARY_PATH "$HOME/.nix-profile/lib:$LIBRARY_PATH"
 
     set -gx PATH $HOME/.cargo/bin $PATH

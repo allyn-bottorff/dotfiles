@@ -10,12 +10,19 @@
 
 let
     pkgsUnstable = import <nixpkgs-unstable> {};
+    pkgs_kubectl = import (builtins.fetchGit {
+         # Descriptive name to make the store path easier to identify
+         name = "kubectl-1.26.3";
+         url = "https://github.com/NixOS/nixpkgs/";
+         ref = "refs/heads/nixpkgs-24.05-darwin";
+         rev = "7ad7b570e96a3fd877e5fb08b843d66a30428f12";
+     }) {};
 in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "allyn";
-  home.homeDirectory = "/Users/allyn";
+  home.homeDirectory = "/home/allyn";
   nixpkgs.config.allowUnfree = true;
 
   # This value determines the Home Manager release that your configuration is
@@ -30,12 +37,12 @@ in
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
+    pkgs_kubectl.kubectl
 	pkgs.curl
 	pkgs.bat
 	pkgs.gh
 	pkgs.go
 	pkgs.kubernetes-helm
-	pkgs.kubectl
 	pkgs.eza
 	pkgs.entr
 	pkgs.fzf
@@ -44,17 +51,13 @@ in
 	pkgs.rustup
 	pkgs.dig
 	pkgs.step-cli
-	pkgs.starship
 	pkgs.docker
     pkgs.docker-buildx
     pkgs.docker-compose
 	pkgs.texliveMedium
 	pkgs.zig
-	pkgs.flyctl
 	pkgs.yq-go
     pkgs.fd
-    pkgs.zsh-syntax-highlighting
-    pkgs.bacon
     pkgs.ripgrep
     pkgs._1password-cli
     pkgs.qmk
@@ -63,6 +66,7 @@ in
     pkgs.tmux
     pkgs.krew
     pkgs.unzip
+    pkgs.uutils-coreutils
     pkgs.gcc
     pkgs.gnumake
     # pkgs.ansible
@@ -75,30 +79,22 @@ in
     pkgs.kind
     pkgs.xplr
     pkgs.hledger
-    pkgs.kind
     # pkgs.nerdctl
     pkgs.delve
     # pkgs.protobuf3_20
     # pkgs.protoc-gen-go
     pkgs.difftastic
     pkgs.btop
-    pkgs.scc
-    # pkgs.hledger
-    # pkgs.ledger
+    pkgs.tokei
     pkgs.asciidoctor
-    # pkgs.gollum
     pkgs.lima-bin
     pkgs.lua54Packages.luarocks
     pkgs.yazi
     pkgs.azure-cli
-    # pkgsUnstable.hugo
-    # pkgs.ghostty
     pkgs.fish
     pkgs.jujutsu
     pkgs.darwin.libiconv
     pkgs.ollama
-    # pkgs.aider-chat
-    # pkgs.python314
     pkgs.llama-cpp
     pkgs.git
     pkgs.git-lfs
@@ -107,6 +103,9 @@ in
     pkgs.colima
     pkgs.fx
     pkgs.zed-editor
+    pkgs.gopls
+    pkgs.ruff
+    pkgs.lua-language-server
     # pkgs.atuin
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
