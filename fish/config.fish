@@ -14,9 +14,9 @@ if status is-interactive
 
     set -Ux EDITOR "nvim"
     set -Ux SHELL "fish"
-    set -Ux KUBECONFIG "$HOME/.kube/config-prod:$HOME/.kube/config-non-prod:$HOME/.kube/config-test"
+    set -Ux --path KUBECONFIG "$HOME/.kube/config-prod:$HOME/.kube/config-non-prod:$HOME/.kube/config-test"
     set -Ux GITLAB_HOST "https://gitlab.redchimney.com"
-    set -Ux LIBRARY_PATH "$HOME/.nix-profile/lib:$LIBRARY_PATH"
+    set -Ux --path LIBRARY_PATH "$HOME/.nix-profile/lib"
 
     set -gx PATH $HOME/.cargo/bin $PATH
     set -gx PATH $HOME/.krew/bin $PATH
@@ -25,7 +25,7 @@ if status is-interactive
     COMPLETE=fish jj | source
 
 
-    # source $(fzf-share)/key-bindings.fish
+    source $(fzf-share)/key-bindings.fish
 
 
     # starship init fish | source

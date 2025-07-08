@@ -1,7 +1,6 @@
-theme = iceberg-dark
+theme = Iceberg-dark
 # theme = Kanagawa Dragon
 font-family = "TX-02"
-font-size = 10
 font-style = "Regular"
 font-style-italic = "Oblique"
 font-style-bold = "Bold"
@@ -14,7 +13,7 @@ window-padding-balance = true
 
 split-divider-color=3ccce6
 
-command = fish --login --interactive
+command = /Users/allyn.bottorff/.nix-profile/bin/fish --login --interactive
 
 keybind = global:cmd+grave_accent=toggle_quick_terminal
 keybind = super+h=goto_split:left
@@ -24,3 +23,5 @@ keybind = super+l=goto_split:right
 
 quick-terminal-position = center
 
+#custom-shader = ./shaders/blur.glsl
+#custom-shader = shaders/bloom.glsl

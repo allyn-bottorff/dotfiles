@@ -53,6 +53,7 @@ export LEDGER_FILE="$HOME/finance/2024.journal"
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export LIBRARY_PATH="$HOME/.nix-profile/lib"
 
 ### FZF
 
@@ -62,7 +63,7 @@ source $(fzf-share)/key-bindings.zsh
 
 source <(kubectl completion zsh)
 
-eval "$(starship init zsh)"
-source $ZSH_SYNTAX_HIGHLIGHTING_PATH
+# eval "$(starship init zsh)"
+# source $ZSH_SYNTAX_HIGHLIGHTING_PATH
 
 

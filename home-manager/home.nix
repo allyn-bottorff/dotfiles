@@ -48,7 +48,6 @@ in
 	pkgs.fzf
 	pkgs.neovim
 	pkgs.jq
-	pkgs.rustup
 	pkgs.dig
 	pkgs.step-cli
 	pkgs.docker
@@ -106,6 +105,7 @@ in
     pkgs.gopls
     pkgs.ruff
     pkgs.lua-language-server
+    pkgsUnstable.claude-code
     # pkgs.atuin
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
