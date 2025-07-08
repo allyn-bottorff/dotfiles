@@ -25,4 +25,3 @@ quick-terminal-position = center
 
 #custom-shader = ./shaders/blur.glsl
 #custom-shader = shaders/bloom.glsl
-keybind = shift+enter=text:\n
