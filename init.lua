@@ -140,6 +140,22 @@ require("lazy").setup({
 			},
 		},
 	},
+  {
+    "f-person/auto-dark-mode.nvim",
+    opts = {
+      set_dark_mode = function()
+        vim.cmd.colorscheme("nightfox")
+      end,
+      set_light_mode = function()
+        vim.cmd.colorscheme("dayfox")
+      end,
+      update_interval = 3000,
+      fallback = "dark"
+    },
+  },
+  {
+    "EdenEast/nightfox.nvim",
+  },
 	-- {
 	-- 	"AlexvZyl/nordic.nvim",
 	-- 	-- lazy = false,
@@ -148,14 +164,14 @@ require("lazy").setup({
 	-- 		vim.cmd.colorscheme("nordic")
 	-- 	end,
 	-- },
-  {
-    "shaunsingh/nord.nvim",
-		-- lazy = false,
-		-- priority = 1000,
-		config = function()
-			vim.cmd.colorscheme("nord")
-		end,
-  },
+  -- {
+  --   "shaunsingh/nord.nvim",
+		-- -- lazy = false,
+		-- -- priority = 1000,
+		-- config = function()
+		-- 	vim.cmd.colorscheme("nord")
+		-- end,
+  -- },
 	{
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
