@@ -127,6 +127,7 @@ require("lazy").setup({
 	"tpope/vim-fugitive",
 	"junegunn/fzf.vim",
 	"junegunn/fzf",
+  "mfussenegger/nvim-jdtls",
 	{ "numToStr/Comment.nvim", opts = {} }, -- 'gc' to auto comment
 	{
 		"lewis6991/gitsigns.nvim",
@@ -352,14 +353,9 @@ require("lazy").setup({
 -- LSP Config
 
 vim.lsp.enable('rust_analyzer')
-vim.lsp.config('rust_analyzer', {
-  settings = {
-    ['rust-analyzer'] = {},
-  },
-})
 
 vim.lsp.enable('gopls')
 vim.lsp.enable('ty')
 
-vim .lsp.enable('ruff')
+vim.lsp.enable('ruff')
 

@@ -48,6 +48,7 @@ export EDITOR='nvim'
 export ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
 export GITLAB_HOST=https://gitlab.redchimney.com
 export LEDGER_FILE="$HOME/finance/2024.journal"
+export NIXPKGS_ALLOW_UNFREE=1
 
 # export KUBECONFIG=~/.kube/config-prod:~/.kube/config-non-prod
 

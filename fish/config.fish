@@ -14,8 +14,7 @@ if status is-interactive
 
     set -Ux EDITOR "nvim"
     set -Ux SHELL "fish"
-    set -Ux --path KUBECONFIG "$HOME/.kube/config-prod:$HOME/.kube/config-non-prod:$HOME/.kube/config-test"
-    set -Ux GITLAB_HOST "https://gitlab.redchimney.com"
+    set -Ux --path KUBECONFIG "$HOME/.kube/config"
     set -Ux --path LIBRARY_PATH "$HOME/.nix-profile/lib"
 
     set -gx PATH $HOME/.cargo/bin $PATH

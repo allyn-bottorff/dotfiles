@@ -1,5 +1,5 @@
 # theme = iceberg-light
-theme = dark:iceberg-dark, light:iceberg-light
+theme = dark:Iceberg Dark, light:Iceberg Light
 # theme = Kanagawa Dragon
 font-family = "TX-02"
 font-style = "Regular"

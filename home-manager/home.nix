@@ -37,7 +37,8 @@ in
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    pkgs_kubectl.kubectl
+    # pkgs_kubectl.kubectl
+    pkgs.kubectl
 	pkgs.curl
 	pkgs.bat
 	pkgs.gh
@@ -72,7 +73,7 @@ in
     # pkgs.ansible
     pkgs.cmake
     pkgs.bat-extras.batman
-    pkgs.luajit
+    pkgs.lua
     pkgs.fastfetch
     pkgs.tree-sitter
     # pkgs.nodejs-slim
@@ -108,7 +109,14 @@ in
     pkgs.lua-language-server
     pkgs.typst
     pkgs.presenterm
-    pkgsUnstable.claude-code
+    pkgs.jdk11
+    pkgs.nodejs-slim
+    pkgs.ty
+    pkgs.helix
+    # pkgs.gradle
+    # pkgs.jdt-language-server
+    # pkgs.rustup
+    # pkgsUnstable.claude-code
     # pkgs.atuin
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -163,8 +171,6 @@ in
     ZSH_SYNTAX_HIGHLIGHTING_PATH = "${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
     FZF_DIR = "${pkgs.fzf}";
   };
-
-
 
   nix = {
   package = pkgs.nix;
