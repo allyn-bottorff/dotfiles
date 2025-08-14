@@ -107,6 +107,11 @@ in
     pkgs.lua-language-server
     pkgs.typst
     pkgs.presenterm
+    pkgs.fx
+    pkgs.zls
+ 
+    # pkgs.helix
+    pkgsUnstable.evil-helix
     pkgsUnstable.claude-code
     # pkgs.atuin
     # # Adds the 'hello' command to your environment. It prints a friendly
