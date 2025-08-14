@@ -32,6 +32,7 @@ vim.g.codeium_enabled = false
 
 vim.g.netrw_liststyle = 3
 
+
 -- LOCAL FUNCTIONS
 local function settabspace4()
 	vim.o.tabstop = 4
@@ -81,35 +82,10 @@ vim.api.nvim_create_user_command("RevLine", function()
 	insert_asciidoc_rev_line()
 end, { desc = "Insert an AsciiDoc revision line with the current date" })
 
-vim.api.nvim_create_user_command(
-	"AsciiArchPDF",
-	"!asciidoctor-pdf -a pdf-theme=arch -a pdf-themesdir=asciidoctor-themes -a pdf-fontsdir=fonts %",
-	{
-		desc = "Generate a pdf from the currently open asciidoc file. Assumes the architecture theme and fonts dir is available",
-	}
-)
 
 -- KEYMAPS
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 vim.keymap.set("t", "fd", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 vim.keymap.set({ "n", "i", "v" }, "fd", "<ESC>", { desc = "Exit modes" })
--- vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
--- vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
--- vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
--- vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic error messages" })
-vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "[C]ode [A]ction" })
-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.rename, { desc = "[C]ode [A]ction" })
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "[G]oto [D]efinition" })
-vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "[G]oto [R]eferences" })
-vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, { desc = "Type [D]efinition" })
-vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Definition" })
-vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature Documentation" })
-vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
 vim.keymap.set("n", "<leader>f", ":Files<CR>", { silent = true, desc = "FZF Files" })
 vim.keymap.set("n", "<leader>b", ":Buffers<CR>", { silent = true, desc = "FZF Buffers" })
 vim.keymap.set("n", "<leader>g", ":GitFiles<CR>", { silent = true, desc = "FZF GitFiles" })
@@ -125,10 +101,10 @@ vim.opt.rtp:prepend(lazypath)
 
 -- PLUGIN LIST
 require("lazy").setup({
-	"sebdah/vim-delve",
-	"tpope/vim-fugitive",
-	"junegunn/fzf.vim",
-	"junegunn/fzf",
+	"sebdah/vim-delve", -- Go debugging
+	"tpope/vim-fugitive", -- Git integration (mostly just for Blame)
+	"junegunn/fzf.vim", -- fuzzy finding file/buffer stuff
+	"junegunn/fzf", -- fuzzy finding file/buffer stuff
 	{ "numToStr/Comment.nvim", opts = {} }, -- 'gc' to auto comment
 	{
 		"lewis6991/gitsigns.nvim",
@@ -143,19 +119,6 @@ require("lazy").setup({
 		},
 	},
   {
-    "f-person/auto-dark-mode.nvim",
-    opts = {
-      set_dark_mode = function()
-        vim.cmd.colorscheme("nightfox")
-      end,
-      set_light_mode = function()
-        vim.cmd.colorscheme("dayfox")
-      end,
-      update_interval = 3000,
-      fallback = "dark"
-    },
-  },
-  {
     "cocopon/iceberg.vim",
   },
   {
@@ -169,14 +132,6 @@ require("lazy").setup({
 			vim.cmd.colorscheme("nordic")
 		end,
 	},
-  {
-    "shaunsingh/nord.nvim",
-		-- lazy = false,
-		-- priority = 1000,
-		config = function()
-			vim.cmd.colorscheme("nord")
-		end,
-  },
 	{
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
@@ -224,7 +179,6 @@ require("lazy").setup({
 			--  into multiple repos for maintenance purposes.
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
-			"kirasok/cmp-hledger",
 
 			-- If you want to add a bunch of pre-configured snippets,
 			--    you can use this plugin to help you. It even has snippets
@@ -319,22 +273,6 @@ require("lazy").setup({
         })
       end
   },
-  -- {
-  --   "nvim-neo-tree/neo-tree.nvim",
-  --   branch = "v3.x",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-  --     "MunifTanjim/nui.nvim",
-  --     -- {"3rd/image.nvim", opts = {}}, -- Optional image support in preview window: See `# Preview Mode` for more information
-  --   },
-  --   lazy = false, -- neo-tree will lazily load itself
-  --   ---@module "neo-tree"
-  --   ---@type neotree.Config?
-  --   opts = {
-  --     -- fill any relevant options here
-  --   },
-  -- },
   {
     "nvim-treesitter/nvim-treesitter",
     lazy = false,
@@ -353,6 +291,7 @@ require("lazy").setup({
   }
 })
 
+vim.cmd.colorscheme("nightfox")
 
 -- LSP Config
 
