@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-
+{ config, ... }:
 
 
 # nix-channels:
@@ -9,7 +8,12 @@
 
 
 let
-    pkgsUnstable = import <nixpkgs-unstable> {};
+    pkgs = import <nixpkgs> {
+        config.allowUnfree = true;
+    };
+    pkgsUnstable = import <nixpkgs-unstable> {
+        config.allowUnfree = true;
+    };
     pkgs_kubectl = import (builtins.fetchGit {
          # Descriptive name to make the store path easier to identify
          name = "kubectl-1.26.3";
@@ -23,7 +27,7 @@ in
   # manage.
   home.username = "allyn.bottorff";
   home.homeDirectory = "/Users/allyn.bottorff";
-  nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowUnfree = true;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -107,8 +111,8 @@ in
     pkgs.lua-language-server
     pkgs.typst
     pkgs.presenterm
-    pkgs.fx
     pkgs.zls
+    pkgs.awscli2
  
     # pkgs.helix
     pkgsUnstable.evil-helix
