@@ -25,11 +25,7 @@ vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 
 vim.g.zig_fmt_autosave = false
-
 vim.g.tex_flavor = "latex"
-
-vim.g.codeium_enabled = false
-
 vim.g.netrw_liststyle = 3
 
 
@@ -46,6 +42,8 @@ local function settabspace2()
 	vim.o.shiftwidth = 2
 end
 
+
+-- Create an Asciidoctor revline with the current date and work info
 local function insert_asciidoc_rev_line()
 	local date = os.date("%Y-%m-%d")
 	local rev_line_1 = "Allyn L. Bottorff <allyn.bottorff@veteransunited.com>"
@@ -282,7 +280,7 @@ require("lazy").setup({
       indent = {
         enable = true
       },
-      ensure_installed = { 'rust', 'go', 'json', 'yaml', 'markdown', 'markdown_inline', 'typst', 'zig' },
+      ensure_installed = { 'lua', 'rust', 'go', 'json', 'yaml', 'markdown', 'markdown_inline', 'typst', 'zig' },
       auto_install = true,
       highlight = {
         enable = true
