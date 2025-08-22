@@ -113,6 +113,7 @@ in
     pkgs.presenterm
     pkgs.zls
     pkgs.awscli2
+    pkgs.jaq
  
     # pkgs.helix
     pkgsUnstable.evil-helix
