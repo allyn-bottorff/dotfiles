@@ -1,4 +1,6 @@
 theme = iceberg-dark
+# theme = iceberg-light
+theme = dark:iceberg-dark, light:iceberg-light
 # theme = Kanagawa Dragon
 font-family = "TX-02"
 font-size = 10
@@ -7,7 +9,7 @@ font-style-italic = "Oblique"
 font-style-bold = "Bold"
 font-style-bold-italic = "Bold Oblique"
 font-synthetic-style = false
-font-size = 14
+font-size = 13
 font-thicken = false
 cursor-style-blink = true
 window-padding-balance = true
@@ -24,3 +26,6 @@ keybind = super+l=goto_split:right
 
 quick-terminal-position = center
 
+#custom-shader = ./shaders/blur.glsl
+#custom-shader = shaders/bloom.glsl
+keybind = shift+enter=text:\n

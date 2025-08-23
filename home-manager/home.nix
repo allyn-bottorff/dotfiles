@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-
+{ config, ... }:
 
 
 # nix-channels:
@@ -9,7 +8,12 @@
 
 
 let
-    pkgsUnstable = import <nixpkgs-unstable> {};
+    pkgs = import <nixpkgs> {
+        config.allowUnfree = true;
+    };
+    pkgsUnstable = import <nixpkgs-unstable> {
+        config.allowUnfree = true;
+    };
     pkgs_kubectl = import (builtins.fetchGit {
          # Descriptive name to make the store path easier to identify
          name = "kubectl-1.26.3";
@@ -24,6 +28,9 @@ in
   home.username = "allyn";
   home.homeDirectory = "/home/allyn";
   nixpkgs.config.allowUnfree = true;
+  home.username = "allyn.bottorff";
+  home.homeDirectory = "/Users/allyn.bottorff";
+  # nixpkgs.config.allowUnfree = true;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -105,6 +112,15 @@ in
     pkgs.gopls
     pkgs.ruff
     pkgs.lua-language-server
+    pkgsUnstable.claude-code
+    pkgs.typst
+    pkgs.presenterm
+    pkgs.zls
+    pkgs.awscli2
+    pkgs.jaq
+ 
+    # pkgs.helix
+    pkgsUnstable.evil-helix
     pkgsUnstable.claude-code
     # pkgs.atuin
     # # Adds the 'hello' command to your environment. It prints a friendly
