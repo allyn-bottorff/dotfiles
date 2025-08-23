@@ -54,7 +54,8 @@ in {
             luadbi-mysql
         ];
     };
-    xkbOptions = "caps:ctrl_modifier";
+    xkb.options = "caps:ctrl_modifier";
+    # xkbOptions = "caps:ctrl_modifier";
   # Enable the GNOME Desktop Environment.
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
@@ -80,7 +81,8 @@ in {
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable= false;
+  # hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -165,12 +167,17 @@ in {
     pkgs.prusa-slicer
     unstable.zed-editor-fhs
     pkgs.texliveFull
+    pkgs.zls
+    pkgs.jaq
+    pkgs.typst
 
     # dependencies for hyprland
     pkgs.wofi
     pkgs.waybar
     pkgs.eww
     pkgs.wl-clipboard
+    pkgs.virt-manager
+    pkgs.libvirt
 
 
     ];
