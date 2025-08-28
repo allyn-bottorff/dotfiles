@@ -305,3 +305,9 @@ vim.lsp.enable('ty')
 vim.lsp.enable('zls')
 vim.lsp.enable('ruff')
 
+vim.lsp.enable('tinymist')
+vim.lsp.config['tinymist'] = {
+  cmd = { "tinymist" },
+  filetypes = {"typst"},
+}
+

@@ -114,6 +114,7 @@ in
     pkgs.zls
     pkgs.awscli2
     pkgs.jaq
+    pkgs.tinymist
  
     # pkgs.helix
     pkgsUnstable.evil-helix
