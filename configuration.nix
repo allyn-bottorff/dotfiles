@@ -105,7 +105,7 @@ in {
   users.users.allyn = {
     isNormalUser = true;
     description = "Allyn Bottorff";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
     pkgs.curl
     pkgs.bat
@@ -176,8 +176,6 @@ in {
     pkgs.waybar
     pkgs.eww
     pkgs.wl-clipboard
-    pkgs.virt-manager
-    pkgs.libvirt
 
 
     ];
@@ -188,6 +186,26 @@ in {
     nerd-fonts.droid-sans-mono
 
   ];
+  programs.virt-manager.enable = true;
+  users.groups.libvirtd.members = [ "allyn" ];
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+
+  # virtualisation.libvirtd =  {
+  #   enable = true;
+  #   qemu = {
+  #     package = pkgs.qemu_kvm;
+  #     runAsRoot = true;
+  #     swtpm.enable = true;
+  #     ovmf = {
+  #       enable = true;
+  #       packages = [(pkgs.OVMF.override {
+  #         secureBoot = true;
+  #         tpmSupport = true;
+  #       }).fd];
+  #     };
+  #   };
+  # };
 
   # Install firefox.
   programs.firefox.enable = true;
