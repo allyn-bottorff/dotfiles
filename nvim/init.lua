@@ -46,7 +46,7 @@ end
 -- Create an Asciidoctor revline with the current date and work info
 local function insert_asciidoc_rev_line()
 	local date = os.date("%Y-%m-%d")
-	local rev_line_1 = "Allyn L. Bottorff <allyn.bottorff@veteransunited.com>"
+	local rev_line_1 = "Allyn L. Bottorff <abottorff@paytient.com>"
 	local rev_line_2 = "1.0, " .. date
 	vim.api.nvim_put({ rev_line_1, rev_line_2, "" }, "l", true, true)
 end
@@ -258,19 +258,19 @@ require("lazy").setup({
 			},
 		},
 	},
-  {
-    "greggh/claude-code.nvim",
-      dependencies = {
-        "nvim-lua/plenary.nvim", -- Required for git operations
-      },
-      config = function()
-        require("claude-code").setup({
-          window = {
-            position = "vertical"
-          }
-        })
-      end
-  },
+  -- {
+  --   "greggh/claude-code.nvim",
+  --     dependencies = {
+  --       "nvim-lua/plenary.nvim", -- Required for git operations
+  --     },
+  --     config = function()
+  --       require("claude-code").setup({
+  --         window = {
+  --           position = "vertical"
+  --         }
+  --       })
+  --     end
+  -- },
   {
     "nvim-treesitter/nvim-treesitter",
     lazy = false,

@@ -25,11 +25,8 @@ in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "allyn";
-  home.homeDirectory = "/home/allyn";
-  nixpkgs.config.allowUnfree = true;
-  home.username = "allyn.bottorff";
-  home.homeDirectory = "/Users/allyn.bottorff";
+  home.username = "pay-mbp-abottorff";
+  home.homeDirectory = "/Users/pay-mbp-abottorff";
   # nixpkgs.config.allowUnfree = true;
 
   # This value determines the Home Manager release that your configuration is
@@ -39,38 +36,38 @@ in
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "24.11"; # Please read the comment before changing.
+  home.stateVersion = "25.05"; # Please read the comment before changing.
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    pkgs_kubectl.kubectl
-	pkgs.curl
-	pkgs.bat
-	pkgs.gh
-	pkgs.go
-	pkgs.kubernetes-helm
-	pkgs.eza
-	pkgs.entr
-	pkgs.fzf
-	pkgs.neovim
-	pkgs.jq
-	pkgs.dig
-	pkgs.step-cli
-	pkgs.docker
+    # pkgs_kubectl.kubectl
+    pkgs.curl
+    pkgs.bat
+    pkgs.gh
+    pkgs.go
+    # pkgs.kubernetes-helm
+    pkgs.eza
+    pkgs.entr
+    pkgs.fzf
+    pkgs.neovim
+    pkgs.jq
+    pkgs.dig
+    pkgs.step-cli
+    pkgs.docker
     pkgs.docker-buildx
     pkgs.docker-compose
-	pkgs.texliveMedium
-	pkgs.zig
-	pkgs.yq-go
+    # pkgs.texliveMedium
+    pkgs.zig
+    pkgs.yq-go
     pkgs.fd
     pkgs.ripgrep
-    pkgs._1password-cli
-    pkgs.qmk
-    pkgs.opentofu
-    pkgs.glab
+    # pkgs._1password-cli
+    # pkgs.qmk
+    # pkgs.opentofu
+    # pkgs.glab
     pkgs.tmux
-    pkgs.krew
+    # pkgs.krew
     pkgs.unzip
     pkgs.uutils-coreutils
     pkgs.gcc
@@ -84,7 +81,7 @@ in
     # pkgs.nodejs-slim
     pkgs.kind
     pkgs.xplr
-    pkgs.hledger
+    # pkgs.hledger
     # pkgs.nerdctl
     pkgs.delve
     # pkgs.protobuf3_20
@@ -100,28 +97,36 @@ in
     pkgs.fish
     pkgs.jujutsu
     pkgs.darwin.libiconv
-    pkgs.ollama
-    pkgs.llama-cpp
     pkgs.git
     pkgs.git-lfs
     pkgs.uv
     pkgs.dust
     pkgs.colima
     pkgs.fx
-    pkgs.zed-editor
+    # pkgs.zed-editor
     pkgs.gopls
     pkgs.ruff
     pkgs.lua-language-server
-    pkgsUnstable.claude-code
     pkgs.typst
-    pkgs.presenterm
     pkgs.zls
     pkgs.awscli2
     pkgs.jaq
+    pkgs.watch
+    pkgs.zsh-syntax-highlighting
+    pkgs.starship
+
+    #Engineering Onboarding Paytient
+    pkgs.sops
+    pkgs.libxml2
+    pkgs.tenv
+    pkgs.oras
+    pkgs.pgformatter
+    pkgs.just
+
  
     # pkgs.helix
-    pkgsUnstable.evil-helix
-    pkgsUnstable.claude-code
+    # pkgsUnstable.evil-helix
+    # pkgsUnstable.claude-code
     # pkgs.atuin
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
