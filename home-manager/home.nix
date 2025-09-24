@@ -42,6 +42,7 @@ in
   # environment.
   home.packages = [
     # pkgs_kubectl.kubectl
+    pkgs.kubectl
     pkgs.curl
     pkgs.bat
     pkgs.gh
@@ -114,6 +115,9 @@ in
     pkgs.watch
     pkgs.zsh-syntax-highlighting
     pkgs.starship
+    pkgs.terraform-ls
+    pkgs.localstack
+    pkgs.zk
 
     #Engineering Onboarding Paytient
     pkgs.sops
@@ -122,6 +126,7 @@ in
     pkgs.oras
     pkgs.pgformatter
     pkgs.just
+    pkgs.asdf-vm
 
  
     # pkgs.helix
@@ -180,6 +185,7 @@ in
     # EDITOR = "emacs";
     ZSH_SYNTAX_HIGHLIGHTING_PATH = "${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
     FZF_DIR = "${pkgs.fzf}";
+    ZSH_ASDF_VM = "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh";
   };
 
 

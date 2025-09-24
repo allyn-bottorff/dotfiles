@@ -87,6 +87,10 @@ vim.keymap.set({ "n", "i", "v" }, "fd", "<ESC>", { desc = "Exit modes" })
 vim.keymap.set("n", "<leader>f", ":Files<CR>", { silent = true, desc = "FZF Files" })
 vim.keymap.set("n", "<leader>b", ":Buffers<CR>", { silent = true, desc = "FZF Buffers" })
 vim.keymap.set("n", "<leader>g", ":GitFiles<CR>", { silent = true, desc = "FZF GitFiles" })
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic error message" })
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to definition" })
+
 
 -- PLUGINS
 -- INSTALL LAZY
@@ -286,7 +290,41 @@ require("lazy").setup({
         enable = true
       }
     }
-  }
+  },
+  {
+    "zk-org/zk-nvim",
+    config = function()
+      require("zk").setup({
+        picker = "select",
+        lsp = {
+          config = {
+            name = "zk",
+            cmd = {"zk", "lsp"},
+            filetypes = {"markdown"},
+          },
+          auto_attach = {
+            enabled = true,
+          },
+        },
+      })
+    end
+  },
+  {
+     "CopilotC-Nvim/CopilotChat.nvim",
+    dependencies = {
+      { "nvim-lua/plenary.nvim", branch = "master" },
+    },
+    build = "make tiktoken",
+    opts = {
+      -- See Configuration section for options
+    },
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
 })
 
 vim.cmd.colorscheme("nightfox")
@@ -304,4 +342,5 @@ vim.lsp.enable('gopls')
 vim.lsp.enable('ty')
 vim.lsp.enable('zls')
 vim.lsp.enable('ruff')
+vim.lsp.enable('terraform-ls')
 

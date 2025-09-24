@@ -56,7 +56,15 @@ source $(fzf-share)/key-bindings.zsh
 
 # source <(kubectl completion zsh)
 
+# source <(jj util completion zsh)
+source <(COMPLETE=zsh jj)
+
+# Paytient AWS functions
+source "$HOME/code/builds/onboarding/engineering.sh"
+
 eval "$(starship init zsh)"
+
+source $ZSH_ASDF_VM
+
+
 source $ZSH_SYNTAX_HIGHLIGHTING_PATH
-
-

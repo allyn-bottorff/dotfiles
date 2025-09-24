@@ -1,0 +1,5 @@
+[notebook]
+dir = "~/notes"
+
+[note]
+filename = "{{title}}"
