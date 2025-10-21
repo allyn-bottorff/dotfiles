@@ -120,20 +120,42 @@ require("lazy").setup({
 			},
 		},
 	},
-  {
-    "cocopon/iceberg.vim",
-  },
-  {
-    "EdenEast/nightfox.nvim",
-  },
-	{
-		"AlexvZyl/nordic.nvim",
-		-- lazy = false,
-		-- priority = 1000,
-		config = function()
-			vim.cmd.colorscheme("nordic")
-		end,
-	},
+  "cocopon/iceberg.vim",
+  "EdenEast/nightfox.nvim",
+  "tahayvr/matteblack.nvim",
+  "jacoborus/tender.vim",
+  "vague-theme/vague.nvim",
+  -- {
+  --   "navarasu/onedark.nvim",
+  --   config = function()
+  --     require('onedark').setup {
+  --       style = 'warmer'
+  --     }
+  --     require('onedark').load()
+  --   end
+  -- },
+	-- {
+	-- 	"AlexvZyl/nordic.nvim",
+	-- 	-- lazy = false,
+	-- 	-- priority = 1000,
+	-- 	config = function()
+ --      require('nordic').setup({
+ --        reduced_blue = false,
+	--
+ --      })
+ --      require('nordic').load()
+	-- 	end,
+	-- },
+  -- {
+  --   "rebelot/kanagawa.nvim",
+  --   config = function()
+  --     require('kanagawa').setup({
+  --       theme = "dragon",
+  --       background = { dark = 'dragon', },
+  --     })
+  --     require('kanagawa').load()
+  --   end
+  -- },
 	{
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
@@ -422,7 +444,7 @@ require("lazy").setup({
   },
 })
 
-vim.cmd.colorscheme("nightfox")
+vim.cmd.colorscheme('vague')
 
 -- LSP Config
 
