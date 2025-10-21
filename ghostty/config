@@ -11,6 +11,8 @@ font-style-bold-italic = "Bold Oblique"
 font-synthetic-style = false
 font-thicken = false
 cursor-style-blink = true
+cursor-style = block_hollow
+shell-integration-features = no-cursor
 window-padding-balance = true
 
 split-divider-color=3ccce6
@@ -27,4 +29,12 @@ quick-terminal-position = center
 
 #custom-shader = ./shaders/blur.glsl
 #custom-shader = shaders/bloom.glsl
+# custom-shader = ./shaders/cursor_smear_fade.glsl
+# custom-shader = ./shaders/cursor_smear.glsl
+# custom-shader = ./shaders/cursor_smear_gradient.glsl
+# custom-shader = ./shaders/synesthaxia.glsl
 keybind = shift+enter=text:\n
+
+window-inherit-working-directory = false
+
+

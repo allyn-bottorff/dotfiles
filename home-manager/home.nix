@@ -118,6 +118,13 @@ in
     pkgs.terraform-ls
     pkgs.localstack
     pkgs.zk
+    pkgs.helix
+    pkgs.copilot-language-server
+    pkgs.github-copilot-cli
+    pkgs.gemini-cli
+    pkgs.ty
+    pkgs.rustup
+    pkgs.glow
 
     #Engineering Onboarding Paytient
     pkgs.sops
@@ -129,7 +136,6 @@ in
     pkgs.asdf-vm
 
  
-    # pkgs.helix
     # pkgsUnstable.evil-helix
     # pkgsUnstable.claude-code
     # pkgs.atuin

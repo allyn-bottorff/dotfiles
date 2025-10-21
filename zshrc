@@ -40,8 +40,9 @@ alias cat='bat'
 # alias ssh='TERM=xterm-256color ssh'
 alias weather="curl 'wttr.in/columbia+missouri?1'"
 
+alias copilot="github-copilot-cli"
+
 export EDITOR='nvim'
-export LEDGER_FILE="$HOME/finance/2024.journal"
 
 # export KUBECONFIG=~/.kube/config-prod:~/.kube/config-non-prod
 
@@ -61,6 +62,9 @@ source <(COMPLETE=zsh jj)
 
 # Paytient AWS functions
 source "$HOME/code/builds/onboarding/engineering.sh"
+
+# AWS CLI Completion
+source "$HOME/.nix-profile/bin/aws_zsh_completer.sh"
 
 eval "$(starship init zsh)"
 
