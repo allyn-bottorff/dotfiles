@@ -11,7 +11,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 250
 vim.opt.splitright = true
 vim.opt.splitbelow = true
--- vim.opt.list = true
+vim.opt.list = true
 vim.opt.listchars = { tab = "> ", trail = "·", nbsp = "␣", lead = "·", eol = "¬" }
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
@@ -25,10 +25,9 @@ vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 
 vim.g.zig_fmt_autosave = false
-
 vim.g.tex_flavor = "latex"
+vim.g.netrw_liststyle = 3
 
-vim.g.codeium_enabled = false
 
 -- LOCAL FUNCTIONS
 local function settabspace4()
@@ -43,9 +42,11 @@ local function settabspace2()
 	vim.o.shiftwidth = 2
 end
 
+
+-- Create an Asciidoctor revline with the current date and work info
 local function insert_asciidoc_rev_line()
 	local date = os.date("%Y-%m-%d")
-	local rev_line_1 = "Allyn L. Bottorff <allyn.bottorff@veteransunited.com>"
+	local rev_line_1 = "Allyn L. Bottorff <abottorff@paytient.com>"
 	local rev_line_2 = "1.0, " .. date
 	vim.api.nvim_put({ rev_line_1, rev_line_2, "" }, "l", true, true)
 end
@@ -66,11 +67,11 @@ vim.api.nvim_create_autocmd("FileType", {
 	callback = settabspace2,
 })
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "asciidoc", "norg" },
+	pattern = { "asciidoc", "norg", "typst", "markdown" },
 	command = "setlocal spell",
 })
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "asciidoc", "tex" },
+	pattern = { "asciidoc", "tex", "typst", "markdown" },
 	command = "setlocal tw=79",
 })
 
@@ -79,38 +80,17 @@ vim.api.nvim_create_user_command("RevLine", function()
 	insert_asciidoc_rev_line()
 end, { desc = "Insert an AsciiDoc revision line with the current date" })
 
-vim.api.nvim_create_user_command(
-	"AsciiArchPDF",
-	"!asciidoctor-pdf -a pdf-theme=arch -a pdf-themesdir=asciidoctor-themes -a pdf-fontsdir=fonts %",
-	{
-		desc = "Generate a pdf from the currently open asciidoc file. Assumes the architecture theme and fonts dir is available",
-	}
-)
 
 -- KEYMAPS
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 vim.keymap.set("t", "fd", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 vim.keymap.set({ "n", "i", "v" }, "fd", "<ESC>", { desc = "Exit modes" })
--- vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
--- vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
--- vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
--- vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic error messages" })
-vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "[C]ode [A]ction" })
-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.rename, { desc = "[C]ode [A]ction" })
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "[G]oto [D]efinition" })
-vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "[G]oto [R]eferences" })
-vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, { desc = "Type [D]efinition" })
-vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Definition" })
-vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature Documentation" })
-vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
 vim.keymap.set("n", "<leader>f", ":Files<CR>", { silent = true, desc = "FZF Files" })
 vim.keymap.set("n", "<leader>b", ":Buffers<CR>", { silent = true, desc = "FZF Buffers" })
 vim.keymap.set("n", "<leader>g", ":GitFiles<CR>", { silent = true, desc = "FZF GitFiles" })
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic error message" })
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to definition" })
+vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "LSP Rename" })
 
 -- PLUGINS
 -- INSTALL LAZY
@@ -123,11 +103,10 @@ vim.opt.rtp:prepend(lazypath)
 
 -- PLUGIN LIST
 require("lazy").setup({
-	"sebdah/vim-delve",
-	"tpope/vim-fugitive",
-	"junegunn/fzf.vim",
-	"junegunn/fzf",
-  "mfussenegger/nvim-jdtls",
+	"sebdah/vim-delve", -- Go debugging
+	"tpope/vim-fugitive", -- Git integration (mostly just for Blame)
+	"junegunn/fzf.vim", -- fuzzy finding file/buffer stuff
+	"junegunn/fzf", -- fuzzy finding file/buffer stuff
 	{ "numToStr/Comment.nvim", opts = {} }, -- 'gc' to auto comment
 	{
 		"lewis6991/gitsigns.nvim",
@@ -141,14 +120,42 @@ require("lazy").setup({
 			},
 		},
 	},
-	{
-		"AlexvZyl/nordic.nvim",
-		-- lazy = false,
-		-- priority = 1000,
-		config = function()
-			vim.cmd.colorscheme("nordic")
-		end,
-	},
+  "cocopon/iceberg.vim",
+  "EdenEast/nightfox.nvim",
+  "tahayvr/matteblack.nvim",
+  "jacoborus/tender.vim",
+  "vague-theme/vague.nvim",
+  -- {
+  --   "navarasu/onedark.nvim",
+  --   config = function()
+  --     require('onedark').setup {
+  --       style = 'warmer'
+  --     }
+  --     require('onedark').load()
+  --   end
+  -- },
+	-- {
+	-- 	"AlexvZyl/nordic.nvim",
+	-- 	-- lazy = false,
+	-- 	-- priority = 1000,
+	-- 	config = function()
+ --      require('nordic').setup({
+ --        reduced_blue = false,
+	--
+ --      })
+ --      require('nordic').load()
+	-- 	end,
+	-- },
+  -- {
+  --   "rebelot/kanagawa.nvim",
+  --   config = function()
+  --     require('kanagawa').setup({
+  --       theme = "dragon",
+  --       background = { dark = 'dragon', },
+  --     })
+  --     require('kanagawa').load()
+  --   end
+  -- },
 	{
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
@@ -196,7 +203,6 @@ require("lazy").setup({
 			--  into multiple repos for maintenance purposes.
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
-			"kirasok/cmp-hledger",
 
 			-- If you want to add a bunch of pre-configured snippets,
 			--    you can use this plugin to help you. It even has snippets
@@ -278,35 +284,19 @@ require("lazy").setup({
 			},
 		},
 	},
-  {
-    "greggh/claude-code.nvim",
-      dependencies = {
-        "nvim-lua/plenary.nvim", -- Required for git operations
-      },
-      config = function()
-        require("claude-code").setup({
-          window = {
-            position = "vertical"
-          }
-        })
-      end
-  },
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
-      -- {"3rd/image.nvim", opts = {}}, -- Optional image support in preview window: See `# Preview Mode` for more information
-    },
-    lazy = false, -- neo-tree will lazily load itself
-    ---@module "neo-tree"
-    ---@type neotree.Config?
-    opts = {
-      -- fill any relevant options here
-    },
-  },
+  -- {
+  --   "greggh/claude-code.nvim",
+  --     dependencies = {
+  --       "nvim-lua/plenary.nvim", -- Required for git operations
+  --     },
+  --     config = function()
+  --       require("claude-code").setup({
+  --         window = {
+  --           position = "vertical"
+  --         }
+  --       })
+  --     end
+  -- },
   {
     "nvim-treesitter/nvim-treesitter",
     lazy = false,
@@ -316,22 +306,152 @@ require("lazy").setup({
       indent = {
         enable = true
       },
-      ensure_installed = { 'rust', 'go', 'json', 'yaml', 'markdown', 'markdown_inline' },
+      ensure_installed = { 'lua', 'rust', 'go', 'json', 'yaml', 'markdown', 'markdown_inline', 'typst', 'zig' },
       auto_install = true,
       highlight = {
         enable = true
       }
     }
-  }
+  },
+  {
+    "zk-org/zk-nvim",
+    config = function()
+      require("zk").setup({
+        picker = "select",
+        lsp = {
+          config = {
+            name = "zk",
+            cmd = {"zk", "lsp"},
+            filetypes = {"markdown"},
+          },
+          auto_attach = {
+            enabled = true,
+          },
+        },
+      })
+    end
+  },
+  {
+    "folke/sidekick.nvim",
+    opts = {
+      -- add any options here
+      cli = {
+        -- mux = {
+        --   backend = "zellij",
+        --   enabled = true,
+        -- },
+      },
+    },
+    keys = {
+      {
+        "<tab>",
+        function()
+          -- if there is a next edit, jump to it, otherwise apply it if any
+          if not require("sidekick").nes_jump_or_apply() then
+            return "<Tab>" -- fallback to normal tab
+          end
+        end,
+        expr = true,
+        desc = "Goto/Apply Next Edit Suggestion",
+      },
+      {
+        "<c-.>",
+        function() require("sidekick.cli").toggle() end,
+        desc = "Sidekick Toggle",
+        mode = { "n", "t", "i", "x" },
+      },
+      {
+        "<leader>aa",
+        function() require("sidekick.cli").toggle() end,
+        desc = "Sidekick Toggle CLI",
+      },
+      {
+        "<leader>as",
+        function() require("sidekick.cli").select() end,
+        -- Or to select only installed tools:
+        -- require("sidekick.cli").select({ filter = { installed = true } })
+        desc = "Select CLI",
+      },
+      {
+        "<leader>ad",
+        function() require("sidekick.cli").close() end,
+        desc = "Detach a CLI Session",
+      },
+      {
+        "<leader>at",
+        function() require("sidekick.cli").send({ msg = "{this}" }) end,
+        mode = { "x", "n" },
+        desc = "Send This",
+      },
+      {
+        "<leader>af",
+        function() require("sidekick.cli").send({ msg = "{file}" }) end,
+        desc = "Send File",
+      },
+      {
+        "<leader>av",
+        function() require("sidekick.cli").send({ msg = "{selection}" }) end,
+        mode = { "x" },
+        desc = "Send Visual Selection",
+      },
+      {
+        "<leader>ap",
+        function() require("sidekick.cli").prompt() end,
+        mode = { "n", "x" },
+        desc = "Sidekick Select Prompt",
+      },
+      -- Example of a keybinding to open Claude directly
+      {
+        "<leader>ac",
+        function() require("sidekick.cli").toggle({ name = "claude", focus = true }) end,
+        desc = "Sidekick Toggle Claude",
+      },
+    },
+  },
+    -- {
+  --    "CopilotC-Nvim/CopilotChat.nvim",
+  --   dependencies = {
+  --     { "nvim-lua/plenary.nvim", branch = "master" },
+  --   },
+  --   build = "make tiktoken",
+  --   opts = {
+  --     -- See Configuration section for options
+  --   },
+  -- },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
+  -- {
+  --   "nvimdev/indentmini.nvim",
+  --   config = function()
+  --     require("indentmini").setup { only_current = true }
+  --   end,
+  -- },
+  {
+    "nvim-mini/mini.indentscope",
+    version = "*",
+    config = function()
+      require("mini.indentscope").setup {
+        draw = {
+          animation = require("mini.indentscope").gen_animation.none()
+        },
+        symbol = "│",
+      }
+    end,
+  },
 })
 
+vim.cmd.colorscheme('vague')
 
 -- LSP Config
 
 vim.lsp.enable('rust_analyzer')
-
 vim.lsp.enable('gopls')
 vim.lsp.enable('ty')
-
+vim.lsp.enable('zls')
 vim.lsp.enable('ruff')
+vim.lsp.enable('terraformls')
 

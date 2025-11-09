@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-
+{ config, ... }:
 
 
 # nix-channels:
@@ -9,7 +8,12 @@
 
 
 let
-    pkgsUnstable = import <nixpkgs-unstable> {};
+    pkgs = import <nixpkgs> {
+        config.allowUnfree = true;
+    };
+    pkgsUnstable = import <nixpkgs-unstable> {
+        config.allowUnfree = true;
+    };
     pkgs_kubectl = import (builtins.fetchGit {
          # Descriptive name to make the store path easier to identify
          name = "kubectl-1.26.3";
@@ -21,9 +25,9 @@ in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "allyn";
-  home.homeDirectory = "/Users/allyn";
-  nixpkgs.config.allowUnfree = true;
+  home.username = "pay-mbp-abottorff";
+  home.homeDirectory = "/Users/pay-mbp-abottorff";
+  # nixpkgs.config.allowUnfree = true;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -32,7 +36,7 @@ in
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "24.11"; # Please read the comment before changing.
+  home.stateVersion = "25.05"; # Please read the comment before changing.
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -52,6 +56,37 @@ in
 	pkgs.dig
 	pkgs.step-cli
 	pkgs.docker
+	pkgs.curl
+	pkgs.bat
+	pkgs.gh
+	pkgs.go
+	pkgs.kubernetes-helm
+	pkgs.kubectl
+	pkgs.eza
+	pkgs.entr
+	pkgs.fzf
+	pkgs.neovim
+	pkgs.jq
+	pkgs.rustup
+	pkgs.dig
+	pkgs.step-cli
+	pkgs.starship
+	pkgs.docker
+    # pkgs_kubectl.kubectl
+    pkgs.kubectl
+    pkgs.curl
+    pkgs.bat
+    pkgs.gh
+    pkgs.go
+    # pkgs.kubernetes-helm
+    pkgs.eza
+    pkgs.entr
+    pkgs.fzf
+    pkgs.neovim
+    pkgs.jq
+    pkgs.dig
+    pkgs.step-cli
+    pkgs.docker
     pkgs.docker-buildx
     pkgs.docker-compose
 	pkgs.texliveFull
@@ -59,12 +94,12 @@ in
 	pkgs.yq-go
     pkgs.fd
     pkgs.ripgrep
-    pkgs._1password-cli
-    pkgs.qmk
-    pkgs.opentofu
-    pkgs.glab
+    # pkgs._1password-cli
+    # pkgs.qmk
+    # pkgs.opentofu
+    # pkgs.glab
     pkgs.tmux
-    pkgs.krew
+    # pkgs.krew
     pkgs.unzip
     # pkgs.gcc
     pkgs.uutils-coreutils
@@ -79,7 +114,7 @@ in
     # pkgs.nodejs-slim
     pkgs.kind
     pkgs.xplr
-    pkgs.hledger
+    # pkgs.hledger
     # pkgs.nerdctl
     pkgs.delve
     # pkgs.protobuf3_20
@@ -95,8 +130,6 @@ in
     pkgs.fish
     pkgs.jujutsu
     pkgs.darwin.libiconv
-    pkgs.ollama
-    pkgs.llama-cpp
     pkgs.git
     pkgs.git-lfs
     pkgs.uv
@@ -116,6 +149,20 @@ in
     # pkgs.gradle
     # pkgs.jdt-language-server
     # pkgs.rustup
+    # pkgsUnstable.claude-code
+    pkgs.glow
+
+    #Engineering Onboarding Paytient
+    pkgs.sops
+    pkgs.libxml2
+    pkgs.tenv
+    pkgs.oras
+    pkgs.pgformatter
+    pkgs.just
+    pkgs.asdf-vm
+
+ 
+    # pkgsUnstable.evil-helix
     # pkgsUnstable.claude-code
     # pkgs.atuin
     # # Adds the 'hello' command to your environment. It prints a friendly
@@ -170,6 +217,7 @@ in
     # EDITOR = "emacs";
     ZSH_SYNTAX_HIGHLIGHTING_PATH = "${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
     FZF_DIR = "${pkgs.fzf}";
+    ZSH_ASDF_VM = "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh";
   };
 
   nix = {
