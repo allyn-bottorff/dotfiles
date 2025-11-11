@@ -125,6 +125,10 @@ in
     pkgs.ty
     pkgs.rustup
     pkgs.glow
+    pkgs.devcontainer
+    pkgs.kotlin
+    pkgs.kotlin-native
+    pkgs.kotlin-language-server
 
     #Engineering Onboarding Paytient
     pkgs.sops
