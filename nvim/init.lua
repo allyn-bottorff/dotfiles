@@ -47,15 +47,7 @@ local function settabspace2()
 end
 
 
--- Create an Asciidoctor revline with the current date and work info
-local function insert_asciidoc_rev_line()
-  local date = os.date("%Y-%m-%d")
-  local rev_line_1 = "Allyn L. Bottorff <abottorff@paytient.com>"
-  local rev_line_2 = "1.0, " .. date
-  vim.api.nvim_put({ rev_line_1, rev_line_2, "" }, "l", true, true)
-end
-
--- AUTO COMMANDS
+-- AUTO COMMANDS (NON-LSP)
 vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal nonumber" })
 vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal signcolumn=no" })
 vim.api.nvim_create_autocmd("TermOpen", {
@@ -88,9 +80,6 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- LOCAL USER COMMANDS
-vim.api.nvim_create_user_command("RevLine", function()
-  insert_asciidoc_rev_line()
-end, { desc = "Insert an AsciiDoc revision line with the current date" })
 
 
 -- KEYMAPS
@@ -104,6 +93,17 @@ vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to definition" })
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "LSP Rename" })
 
+
+
+-- Old themes
+-- "vague-theme/vague.nvim",
+-- "tahayvr/matteblack.nvim",
+-- "jacoborus/tender.vim",
+-- "rebelot/kanagawa.nvim",
+-- "AlexvZyl/nordic.nvim",
+-- "navarasu/onedark.nvim",
+-- "cocopon/iceberg.vim",
+
 -- PLUGINS
 -- INSTALL LAZY
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -115,11 +115,19 @@ vim.opt.rtp:prepend(lazypath)
 
 -- PLUGIN LIST
 require("lazy").setup({
-  "sebdah/vim-delve",                     -- Go debugging
-  "tpope/vim-fugitive",                   -- Git integration (mostly just for Blame)
-  "junegunn/fzf.vim",                     -- fuzzy finding file/buffer stuff
-  "junegunn/fzf",                         -- fuzzy finding file/buffer stuff
-  { "numToStr/Comment.nvim", opts = {} }, -- 'gc' to auto comment
+  {
+    "EdenEast/nightfox.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd("colorscheme carbonfox")
+    end
+  },
+  "sebdah/vim-delve",      -- Go debugging
+  "tpope/vim-fugitive",    -- Git integration (mostly just for Blame)
+  "junegunn/fzf.vim",      -- fuzzy finding file/buffer stuff
+  "junegunn/fzf",          -- fuzzy finding file/buffer stuff
+  "numToStr/Comment.nvim", -- 'gc' to auto comment
   {
     "lewis6991/gitsigns.nvim",
     opts = {
@@ -132,56 +140,6 @@ require("lazy").setup({
       },
     },
   },
-  "cocopon/iceberg.vim",
-  {
-    "EdenEast/nightfox.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd("colorscheme carbonfox")
-    end
-  },
-  "tahayvr/matteblack.nvim",
-  "jacoborus/tender.vim",
-  -- {
-  --   "vague-theme/vague.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd('colorscheme vague')
-  --   end
-  -- },
-  -- {
-  --   "navarasu/onedark.nvim",
-  --   config = function()
-  --     require('onedark').setup {
-  --       style = 'warmer'
-  --     }
-  --     require('onedark').load()
-  --   end
-  -- },
-  -- {
-  -- 	"AlexvZyl/nordic.nvim",
-  -- 	-- lazy = false,
-  -- 	-- priority = 1000,
-  -- 	config = function()
-  --      require('nordic').setup({
-  --        reduced_blue = false,
-  --
-  --      })
-  --      require('nordic').load()
-  -- 	end,
-  -- },
-  -- {
-  --   "rebelot/kanagawa.nvim",
-  --   config = function()
-  --     require('kanagawa').setup({
-  --       theme = "dragon",
-  --       background = { dark = 'dragon', },
-  --     })
-  --     require('kanagawa').load()
-  --   end
-  -- },
   {
     "folke/todo-comments.nvim",
     event = "VimEnter",
@@ -190,9 +148,7 @@ require("lazy").setup({
   },
   {
     "neovim/nvim-lspconfig",
-    dependencies = {
-      { "j-hui/fidget.nvim", opts = {} },
-    },
+    dependencies = { "j-hui/fidget.nvim" },
   },
   {
     "stevearc/conform.nvim",
@@ -216,7 +172,7 @@ require("lazy").setup({
       indent = {
         enable = true
       },
-      ensure_installed = { 'lua', 'rust', 'go', 'json', 'yaml', 'markdown', 'markdown_inline', 'typst', 'zig' },
+      ensure_installed = { 'lua', 'rust', 'go', 'json', 'yaml', 'markdown', 'markdown_inline', 'typst', 'zig', "hcl" },
       auto_install = true,
       highlight = {
         enable = true
@@ -253,7 +209,6 @@ require("lazy").setup({
       }
     end,
   },
-
   {
     "rcarriga/nvim-dap-ui",
     dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" }
@@ -267,7 +222,6 @@ require("lazy").setup({
   }
 })
 
--- vim.cmd.colorscheme('vague')
 
 -- DAP Config
 local dap, dapui = require("dap"), require("dapui")
@@ -297,8 +251,7 @@ vim.lsp.enable({ 'terraformls' })
 vim.lsp.enable({ 'lua_ls' })
 
 
-vim.cmd [[set completeopt+=menuone,noselect,popup]]
-
+vim.cmd [[set completeopt=fuzzy,menuone,noinsert,popup]]
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
