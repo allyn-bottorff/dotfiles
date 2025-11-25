@@ -142,7 +142,7 @@ in
  
     # pkgsUnstable.evil-helix
     # pkgsUnstable.claude-code
-    # pkgs.atuin
+    pkgs.atuin
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello

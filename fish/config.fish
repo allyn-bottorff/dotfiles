@@ -13,7 +13,7 @@ if status is-interactive
     abbr -a -- opencode "$HOME/code/paytient/opencode/start"
 
     set -Ux EDITOR "nvim"
-    set -Ux SHELL "fish"
+    set -gx SHELL "fish"
     set -Ux --path LIBRARY_PATH "$HOME/.nix-profile/lib"
 
     set -gx PATH $HOME/.cargo/bin $PATH
@@ -27,8 +27,12 @@ if status is-interactive
 
     # COMPLETE=fish jj | source
 
+    # Enable AWS CLI autocompletion: github.com/aws/aws-cli/issues/1079
+    complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
 
-    source $(fzf-share)/key-bindings.fish
+
+    # source $(fzf-share)/key-bindings.fish
+    atuin init fish --disable-up-arrow | source
 
 
     # starship init fish | source
