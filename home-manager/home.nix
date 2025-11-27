@@ -25,8 +25,8 @@ in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "pay-mbp-abottorff";
-  home.homeDirectory = "/Users/pay-mbp-abottorff";
+  home.username = "allyn";
+  home.homeDirectory = "/Users/allyn";
   # nixpkgs.config.allowUnfree = true;
 
   # This value determines the Home Manager release that your configuration is
@@ -151,6 +151,10 @@ in
     # pkgs.rustup
     # pkgsUnstable.claude-code
     pkgs.glow
+    pkgs.devcontainer
+    pkgs.kotlin
+    pkgs.kotlin-native
+    pkgs.kotlin-language-server
 
     #Engineering Onboarding Paytient
     pkgs.sops
@@ -164,7 +168,7 @@ in
  
     # pkgsUnstable.evil-helix
     # pkgsUnstable.claude-code
-    # pkgs.atuin
+    pkgs.atuin
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello

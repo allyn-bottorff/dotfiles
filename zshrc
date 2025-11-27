@@ -42,6 +42,8 @@ alias weather="curl 'wttr.in/columbia+missouri?1'"
 
 alias copilot="github-copilot-cli"
 
+alias opencode="$HOME/code/paytient/opencode/start"
+
 export EDITOR='nvim'
 export ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
 export LEDGER_FILE="$HOME/finance/2024.journal"
@@ -50,6 +52,8 @@ export NIXPKGS_ALLOW_UNFREE=1
 # export KUBECONFIG=~/.kube/config-prod:~/.kube/config-non-prod
 
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 export LIBRARY_PATH="$HOME/.nix-profile/lib"
 
 ### FZF
