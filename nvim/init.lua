@@ -79,6 +79,16 @@ vim.api.nvim_create_autocmd("FileType", {
   command = "setlocal tw=79",
 })
 
+vim.api.nvim_create_autocmd("WinLeave", {
+  pattern = { "*" },
+  command = "set nocursorline",
+})
+
+vim.api.nvim_create_autocmd("WinEnter", {
+  pattern = { "*" },
+  command = "set cursorline",
+})
+
 -- LOCAL USER COMMANDS
 
 
@@ -93,7 +103,13 @@ vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to definition" })
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "LSP Rename" })
 
+-- Neovide Settins
 
+vim.g.neovide_scroll_animation_length = 0.08
+vim.g.neovide_position_animation_length = 0.08
+vim.g.neovide_cursor_animation_length = 0
+vim.g.neovide_cursor_short_animation_length = 0
+vim.o.guifont = "TX-02:h15"
 
 -- Old themes
 -- "vague-theme/vague.nvim",
@@ -221,7 +237,8 @@ require("lazy").setup({
       require("dap-go").setup()
     end,
 
-  }
+  },
+  { "tiagovla/scope.nvim", config = true },
 })
 
 

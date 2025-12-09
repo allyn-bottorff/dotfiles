@@ -127,8 +127,10 @@ in
     pkgs.glow
     pkgs.devcontainer
     pkgs.kotlin
-    pkgs.kotlin-native
+    # pkgs.kotlin-native
     pkgs.kotlin-language-server
+    pkgs.emacs-macport
+    pkgs.neovide
 
     #Engineering Onboarding Paytient
     pkgs.sops
@@ -138,6 +140,7 @@ in
     pkgs.pgformatter
     pkgs.just
     pkgs.asdf-vm
+    pkgs.javaPackages.compiler.temurin-bin.jdk-21
 
  
     # pkgsUnstable.evil-helix
