@@ -7,9 +7,16 @@
 # nixpkgs-unstable https://nixos.org/channels/nixpkgs-unstable
 
 
+
+
+
 let
+    neovim-nightly-overlay = import (builtins.fetchTarball {
+        url = "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
+    });
     pkgs = import <nixpkgs> {
         config.allowUnfree = true;
+        overlays = [ neovim-nightly-overlay ];
     };
     pkgsUnstable = import <nixpkgs-unstable> {
         config.allowUnfree = true;
@@ -23,6 +30,7 @@ let
      }) {};
 in
 {
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "pay-mbp-abottorff";
@@ -131,6 +139,7 @@ in
     pkgs.kotlin-language-server
     pkgs.emacs-macport
     pkgs.neovide
+    # pkgs.neovim-nightly
 
     #Engineering Onboarding Paytient
     pkgs.sops

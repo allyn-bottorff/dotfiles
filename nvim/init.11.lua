@@ -3,18 +3,18 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 vim.opt.number = true
-vim.opt.mouse = "a"
+-- vim.opt.mouse = "a"
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.signcolumn = "yes"
-vim.opt.updatetime = 250
+-- vim.opt.updatetime = 250
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.list = true
 vim.opt.listchars = { tab = "> ", trail = "·", nbsp = "␣", lead = "·", eol = "¬" }
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
-vim.opt.hlsearch = true
+-- vim.opt.hlsearch = true
 
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
@@ -48,6 +48,8 @@ end
 
 
 -- AUTO COMMANDS (NON-LSP)
+--
+-- Make terminals nicer
 vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal nonumber" })
 vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal signcolumn=no" })
 vim.api.nvim_create_autocmd("TermOpen", {
@@ -58,6 +60,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
   end,
 })
 
+-- Set some filetype preferences including spellchecks and tabs/spaces
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "python", "go", "zig" },
   callback = settabspace4,
@@ -79,6 +82,7 @@ vim.api.nvim_create_autocmd("FileType", {
   command = "setlocal tw=79",
 })
 
+-- Make the cursorline "move" with the focused window
 vim.api.nvim_create_autocmd("WinLeave", {
   pattern = { "*" },
   command = "set nocursorline",
@@ -101,14 +105,15 @@ vim.keymap.set("n", "<leader>g", ":GitFiles<CR>", { silent = true, desc = "FZF G
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic error message" })
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to definition" })
-vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "LSP Rename" })
+vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "LSP Rename" }) -- Default was 'grn'. I can't make that stick in my head
 
 -- Neovide Settins
 
 vim.g.neovide_scroll_animation_length = 0.08
-vim.g.neovide_position_animation_length = 0.08
+vim.g.neovide_position_animation_length = 0.2
 vim.g.neovide_cursor_animation_length = 0
 vim.g.neovide_cursor_short_animation_length = 0
+vim.g.neovide_floating_z_height = 20
 vim.o.guifont = "TX-02:h15"
 
 -- Old themes
@@ -197,24 +202,7 @@ require("lazy").setup({
       }
     }
   },
-  {
-    "zk-org/zk-nvim",
-    config = function()
-      require("zk").setup({
-        picker = "select",
-        lsp = {
-          config = {
-            name = "zk",
-            cmd = { "zk", "lsp" },
-            filetypes = { "markdown" },
-          },
-          auto_attach = {
-            enabled = true,
-          },
-        },
-      })
-    end
-  },
+  { "zk-org/zk-nvim" },
   {
     "nvim-mini/mini.indentscope",
     version = "*",
@@ -238,7 +226,7 @@ require("lazy").setup({
     end,
 
   },
-  { "tiagovla/scope.nvim", config = true },
+  -- { "tiagovla/scope.nvim", config = true },
 })
 
 
@@ -261,13 +249,15 @@ end
 
 -- LSP Config
 
-vim.lsp.enable({ 'rust_analyzer' })
-vim.lsp.enable({ 'gopls' })
-vim.lsp.enable({ 'ty' })
-vim.lsp.enable({ 'zls' })
-vim.lsp.enable({ 'ruff' })
-vim.lsp.enable({ 'terraformls' })
-vim.lsp.enable({ 'lua_ls' })
+vim.lsp.enable({
+  'rust_analyzer',
+  'gopls',
+  'ty',
+  'zls',
+  'ruff',
+  'terraformls',
+  'lua_ls',
+})
 
 
 vim.cmd [[set completeopt=fuzzy,menuone,noinsert,popup]]
