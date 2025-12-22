@@ -35,15 +35,15 @@ vim.g.netrw_liststyle = 3
 
 -- LOCAL FUNCTIONS
 local function settabspace4()
-  vim.o.tabstop = 4
-  vim.o.softtabstop = 4
-  vim.o.shiftwidth = 4
+    vim.o.tabstop = 4
+    vim.o.softtabstop = 4
+    vim.o.shiftwidth = 4
 end
 
 local function settabspace2()
-  vim.o.tabstop = 2
-  vim.o.softtabstop = 2
-  vim.o.shiftwidth = 2
+    vim.o.tabstop = 2
+    vim.o.softtabstop = 2
+    vim.o.shiftwidth = 2
 end
 
 
@@ -53,44 +53,44 @@ end
 vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal nonumber" })
 vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal signcolumn=no" })
 vim.api.nvim_create_autocmd("TermOpen", {
-  pattern = "*",
-  callback = function()
-    -- This buffer-local variable tells mini.indentscope to disable itself
-    vim.b.miniindentscope_disable = true
-  end,
+    pattern = "*",
+    callback = function()
+        -- This buffer-local variable tells mini.indentscope to disable itself
+        vim.b.miniindentscope_disable = true
+    end,
 })
 
 -- Set some filetype preferences including spellchecks and tabs/spaces
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "python", "go", "zig" },
-  callback = settabspace4,
+    pattern = { "python", "go", "zig" },
+    callback = settabspace4,
 })
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "python", "yaml", "zig", "terraform" },
-  command = "setlocal expandtab",
+    pattern = { "python", "yaml", "zig", "terraform" },
+    command = "setlocal expandtab",
 })
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "yaml", "terraform", "lua", "json" },
-  callback = settabspace2,
+    pattern = { "yaml", "terraform", "lua", "json" },
+    callback = settabspace2,
 })
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "asciidoc", "norg", "typst", "markdown" },
-  command = "setlocal spell",
+    pattern = { "asciidoc", "norg", "typst", "markdown" },
+    command = "setlocal spell",
 })
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "asciidoc", "tex", "typst", "markdown" },
-  command = "setlocal tw=79",
+    pattern = { "asciidoc", "tex", "typst", "markdown" },
+    command = "setlocal tw=79",
 })
 
 -- Make the cursorline "move" with the focused window
 vim.api.nvim_create_autocmd("WinLeave", {
-  pattern = { "*" },
-  command = "set nocursorline",
+    pattern = { "*" },
+    command = "set nocursorline",
 })
 
 vim.api.nvim_create_autocmd("WinEnter", {
-  pattern = { "*" },
-  command = "set cursorline",
+    pattern = { "*" },
+    command = "set cursorline",
 })
 -- LOCAL USER COMMANDS
 
@@ -117,67 +117,83 @@ vim.o.guifont = "TX-02:h15"
 
 
 vim.pack.add({
-  { src = "https://github.com/EdenEast/nightfox.nvim" },
-  { src = "https://github.com/sebdah/vim-delve" },      -- Go debugging
-  { src = "https://github.com/tpope/vim-fugitive" },    -- Git integration (mostly just for Blame)
-  { src = "https://github.com/junegunn/fzf.vim" },      -- fuzzy finding file/buffer stuff
-  { src = "https://github.com/junegunn/fzf" },          -- fuzzy finding file/buffer stuff
-  { src = "https://github.com/numToStr/Comment.nvim" }, -- 'gc' to auto comment
-  { src = "https://github.com/rcarriga/nvim-dap-ui" },
-  { src = "https://github.com/mfussenegger/nvim-dap" },
-  { src = "https://github.com/nvim-neotest/nvim-nio" },
-  { src = "https://github.com/leoluz/nvim-dap-go" },
-  { src = "https://github.com/zk-org/zk-nvim" },
-  { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
-  { src = "https://github.com/stevearc/conform.nvim" },
-  { src = "https://github.com/neovim/nvim-lspconfig" },
-  { src = "https://github.com/j-hui/fidget.nvim" },
-  { src = "https://github.com/folke/todo-comments.nvim" },
-  { src = "https://github.com/lewis6991/gitsigns.nvim" },
-  { src = "https://github.com/nvim-mini/mini.indentscope" },
+    "https://github.com/EdenEast/nightfox.nvim",
+    "https://github.com/sebdah/vim-delve",      -- Go debugging
+    "https://github.com/tpope/vim-fugitive",    -- Git integration (mostly just for Blame)
+    "https://github.com/junegunn/fzf.vim",      -- fuzzy finding file/buffer stuff
+    "https://github.com/junegunn/fzf",          -- fuzzy finding file/buffer stuff
+    "https://github.com/numToStr/Comment.nvim", -- 'gc' to auto comment
+    "https://github.com/rcarriga/nvim-dap-ui",
+    "https://github.com/mfussenegger/nvim-dap",
+    "https://github.com/nvim-neotest/nvim-nio",
+    "https://github.com/leoluz/nvim-dap-go",
+    "https://github.com/zk-org/zk-nvim",
+    "https://github.com/nvim-treesitter/nvim-treesitter",
+    "https://github.com/stevearc/conform.nvim",
+    "https://github.com/neovim/nvim-lspconfig",
+    "https://github.com/j-hui/fidget.nvim",
+    "https://github.com/folke/todo-comments.nvim",
+    "https://github.com/lewis6991/gitsigns.nvim",
+    "https://github.com/nvim-mini/mini.indentscope",
 })
 
-vim.cmd( "colorscheme carbonfox" )
+vim.cmd("colorscheme carbonfox")
 
-
+-- PLUGIN SETUP
+require("fidget").setup()
+require("dap-go").setup()
+require("mini.indentscope").setup {
+    draw = { animation = require("mini.indentscope").gen_animation.none() },
+    symbol = "│",
+}
+require("conform").setup {
+    notify_on_error = false,
+    format_on_save = {
+        timeout_ms = 500,
+        lsp_fallback = true,
+    },
+    formatters_by_ft = {
+        lua = { "stylua" },
+    },
+}
 
 -- DAP Config
 local dap, dapui = require("dap"), require("dapui")
 dap.listeners.before.attach.dapui_config = function()
-  dapui.setup()
-  dapui.open()
+    dapui.setup()
+    dapui.open()
 end
 dap.listeners.before.launch.dapui_config = function()
-  dapui.setup()
-  dapui.open()
+    dapui.setup()
+    dapui.open()
 end
 dap.listeners.before.event_terminated.dapui_config = function()
-  dapui.close()
+    dapui.close()
 end
 dap.listeners.before.event_exited.dapui_config = function()
-  dapui.close()
+    dapui.close()
 end
 
 -- LSP Config
 
 vim.lsp.enable({
-  'rust_analyzer',
-  'gopls',
-  'ty',
-  'zls',
-  'ruff',
-  'terraformls',
-  'lua_ls',
+    'rust_analyzer',
+    'gopls',
+    'ty',
+    'zls',
+    'ruff',
+    'terraformls',
+    'lua_ls',
 })
 
 
 vim.cmd [[set completeopt=fuzzy,menuone,noinsert,popup]]
 
 vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(ev)
-    local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    if client:supports_method('textDocument/completion') then
-      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-    end
-  end,
+    callback = function(ev)
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        if client:supports_method('textDocument/completion') then
+            vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+        end
+    end,
 })
