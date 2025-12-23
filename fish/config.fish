@@ -17,11 +17,11 @@ if status is-interactive
     set -gx SHELL "fish"
     set -Ux --path LIBRARY_PATH "$HOME/.nix-profile/lib"
 
-    set -gx PATH $HOME/.cargo/bin $PATH
     set -gx PATH $HOME/.local/bin $PATH
     set -gx PATH $HOME/go/bin $PATH
     set -gx PATH /nix/var/nix/profiles/default/bin $PATH
     set -gx PATH $HOME/.nix-profile/bin $PATH
+    set -gx PATH $HOME/.cargo/bin $PATH
 
     set -gx NIX_PROFILES /nix/var/nix/profiles/default /Users/pay-mbp-abottorff/.nix-profile
     set -gx NIX_SSL_CERT_FILE /nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt
