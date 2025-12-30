@@ -1,33 +1,30 @@
 { config, ... }:
 
-
 # nix-channels:
 # home-manager https://github.com/nix-community/home-manager/archive/release-24.05.tar.gz
 # nixpkgs https://nixos.org/channels/nixos-24.05
 # nixpkgs-unstable https://nixos.org/channels/nixpkgs-unstable
 
-
-
-
-
 let
-    neovim-nightly-overlay = import (builtins.fetchTarball {
-        url = "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
-    });
-    pkgs = import <nixpkgs> {
-        config.allowUnfree = true;
-        overlays = [ neovim-nightly-overlay ];
-    };
-    pkgsUnstable = import <nixpkgs-unstable> {
-        config.allowUnfree = true;
-    };
-    pkgs_kubectl = import (builtins.fetchGit {
-         # Descriptive name to make the store path easier to identify
-         name = "kubectl-1.26.3";
-         url = "https://github.com/NixOS/nixpkgs/";
-         ref = "refs/heads/nixpkgs-24.05-darwin";
-         rev = "7ad7b570e96a3fd877e5fb08b843d66a30428f12";
-     }) {};
+  neovim-nightly-overlay = import (
+    builtins.fetchTarball {
+      url = "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
+    }
+  );
+  pkgs = import <nixpkgs> {
+    config.allowUnfree = true;
+    overlays = [ neovim-nightly-overlay ];
+  };
+  pkgsUnstable = import <nixpkgs-unstable> {
+    config.allowUnfree = true;
+  };
+  pkgs_kubectl = import (builtins.fetchGit {
+    # Descriptive name to make the store path easier to identify
+    name = "kubectl-1.26.3";
+    url = "https://github.com/NixOS/nixpkgs/";
+    ref = "refs/heads/nixpkgs-24.05-darwin";
+    rev = "7ad7b570e96a3fd877e5fb08b843d66a30428f12";
+  }) { };
 in
 {
 
@@ -37,6 +34,27 @@ in
   home.homeDirectory = "/Users/pay-mbp-abottorff";
   # nixpkgs.config.allowUnfree = true;
 
+  # import paytient packages, if they exist
+  # imports =
+  #   [ ]
+  #   ++ (
+  #     let
+  #       p = home.homeDirectory + "/.config/home-manager/paytient.nix";
+  #     in
+  #     if builtins.pathExists p then [ (/. + p) ] else [ ]
+  #   );
+  # imports = pkgs.lib.optional (builtins.pathExists (
+  #   config.home.homeDirectory + "/.config/home-manager/packages.nix"
+  # )) (/. + config.home.homeDirectory + "/.config/home-manager/packages.nix");
+
+  imports =
+    [ ]
+    ++ (
+      let
+        p = (builtins.getEnv "HOME") + "/.config/home-manager/paytient.nix";
+      in
+      if builtins.pathExists p then [ (/. + p) ] else [ ]
+    );
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -58,7 +76,7 @@ in
     # pkgs.kubernetes-helm
     pkgs.eza
     pkgs.entr
-    pkgs.fzf
+    # pkgs.fzf
     pkgs.neovim
     pkgs.jq
     pkgs.dig
@@ -99,7 +117,7 @@ in
     pkgs.btop
     pkgs.tokei
     pkgs.asciidoctor
-    pkgs.lima-bin
+    pkgs.lima
     pkgs.lua54Packages.luarocks
     pkgs.yazi
     pkgs.azure-cli
@@ -139,19 +157,15 @@ in
     pkgs.kotlin-language-server
     pkgs.emacs-macport
     pkgs.neovide
+    pkgs.viu
+    pkgs.nixfmt
     # pkgs.neovim-nightly
 
-    #Engineering Onboarding Paytient
-    pkgs.sops
-    pkgs.libxml2
-    pkgs.tenv
-    pkgs.oras
-    pkgs.pgformatter
-    pkgs.just
-    pkgs.asdf-vm
-    pkgs.javaPackages.compiler.temurin-bin.jdk-21
+    pkgs.podman
+    pkgs.podman-compose
+    pkgs.podman-tui
+    pkgs.krunkit
 
- 
     # pkgsUnstable.evil-helix
     # pkgsUnstable.claude-code
     pkgs.atuin
@@ -210,13 +224,23 @@ in
     ZSH_ASDF_VM = "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh";
   };
 
-
-
   nix = {
-  package = pkgs.nix;
-  settings.experimental-features = [ "nix-command" "flakes" ];
+    package = pkgs.nix;
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  programs.mise.enable = true;
+  programs.mise.enableFishIntegration = true;
+  programs.fzf = {
+    enable = true;
+    enableFishIntegration = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+  };
+
 }
