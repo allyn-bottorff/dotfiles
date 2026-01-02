@@ -66,86 +66,84 @@ in
     # pkgs.kubernetes-helm
 
     # TOOLS
-    pkgs.curl
-    pkgs.jq
-    pkgs.jaq
-    pkgs.dig
-    pkgs.step-cli
-    pkgs.fastfetch
-    pkgs.typst
+    pkgs.asciidoctor
     pkgs.awscli2
-    pkgs.watch
-    pkgs.fx
-    pkgs.tmux
-    pkgs.yq-go
+    pkgs.btop
+    pkgs.curl
+    pkgs.dig
+    pkgs.dust
+    pkgs.fastfetch
     pkgs.fd
+    pkgs.fx
+    pkgs.glow
+    pkgs.jaq
+    pkgs.jq
+    pkgs.step-cli
+    pkgs.tmux
+    pkgs.typst
     pkgs.unzip
     pkgs.uutils-coreutils
-    pkgs.asciidoctor
-    pkgs.btop
-    pkgs.yazi
-    pkgs.dust
-    pkgs.zk
-    pkgs.glow
     pkgs.viu
+    pkgs.watch
+    pkgs.yazi
+    pkgs.yq-go
+    pkgs.zk
 
     # REQUIREMENTS
+    pkgs.atuin
     pkgs.bat
-    pkgs.eza
-    pkgs.fzf
-    pkgs.fish
     pkgs.bat-extras.batman
+    pkgs.eza
+    pkgs.fish
+    pkgs.fzf
     pkgs.git
     pkgs.jujutsu
-    pkgs.zsh-syntax-highlighting
-    pkgs.starship
     pkgs.ripgrep
-    pkgs.atuin
+    pkgs.starship
+    pkgs.zsh-syntax-highlighting
 
     # EDITOR + LANGUAGE SERVERS
-    pkgs.neovim
-    pkgs.tree-sitter
-    # pkgs.luajit
-    # pkgs.lua54Packages.luarocks
+    pkgs.copilot-language-server
+    pkgs.gopls
     pkgs.helix
+    pkgs.lua-language-server
+    pkgs.neovim
     pkgs.nixfmt
     pkgs.ruff
-    pkgs.lua-language-server
-    pkgs.gopls
-    pkgs.zls
     pkgs.terraform-ls
-    pkgs.copilot-language-server
+    pkgs.tree-sitter
     pkgs.ty
+    pkgs.zls
 
     # DEV TOOLS
-    pkgs.gh
-    pkgs.go
+    pkgs.cmake
+    pkgs.darwin.libiconv
     pkgs.delve
+    pkgs.difftastic
     pkgs.entr
     pkgs.gcc
+    pkgs.gemini-cli
+    pkgs.gh
+    pkgs.git-lfs
+    pkgs.github-copilot-cli
     pkgs.gnumake
-    pkgs.cmake
+    pkgs.go
+    pkgs.rustup
+    pkgs.tokei
     pkgs.uv
     pkgs.zig
-    pkgs.git-lfs
-    pkgs.darwin.libiconv
-    pkgs.difftastic
-    pkgs.tokei
-    pkgs.github-copilot-cli
-    pkgs.gemini-cli
-    pkgs.rustup
 
     # VIRTUALIZATION
+    pkgs.colima
+    pkgs.devcontainer
     pkgs.docker
     pkgs.docker-buildx
     pkgs.docker-compose
-    pkgs.colima
+    pkgs.krunkit
     pkgs.lima
-    pkgs.devcontainer
     pkgs.podman
     pkgs.podman-compose
     pkgs.podman-tui
-    pkgs.krunkit
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
