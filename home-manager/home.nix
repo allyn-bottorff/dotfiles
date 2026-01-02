@@ -34,24 +34,17 @@ in
   home.homeDirectory = "/Users/pay-mbp-abottorff";
   # nixpkgs.config.allowUnfree = true;
 
-  # import paytient packages, if they exist
-  # imports =
-  #   [ ]
-  #   ++ (
-  #     let
-  #       p = home.homeDirectory + "/.config/home-manager/paytient.nix";
-  #     in
-  #     if builtins.pathExists p then [ (/. + p) ] else [ ]
-  #   );
-  # imports = pkgs.lib.optional (builtins.pathExists (
-  #   config.home.homeDirectory + "/.config/home-manager/packages.nix"
-  # )) (/. + config.home.homeDirectory + "/.config/home-manager/packages.nix");
-
   imports =
     [ ]
     ++ (
       let
         p = (builtins.getEnv "HOME") + "/.config/home-manager/paytient.nix";
+      in
+      if builtins.pathExists p then [ (/. + p) ] else [ ]
+    )
+    ++ (
+      let
+        p = (builtins.getEnv "HOME") + "/.config/home-manager/personal.nix";
       in
       if builtins.pathExists p then [ (/. + p) ] else [ ]
     );
@@ -67,108 +60,93 @@ in
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    # pkgs_kubectl.kubectl
+    # KUBERNETES
     pkgs.kubectl
-    pkgs.curl
-    pkgs.bat
-    pkgs.gh
-    pkgs.go
+    pkgs.kind
     # pkgs.kubernetes-helm
-    pkgs.eza
-    pkgs.entr
-    # pkgs.fzf
-    pkgs.neovim
+
+    # TOOLS
+    pkgs.curl
     pkgs.jq
+    pkgs.jaq
     pkgs.dig
     pkgs.step-cli
+    pkgs.fastfetch
+    pkgs.typst
+    pkgs.awscli2
+    pkgs.watch
+    pkgs.fx
+    pkgs.tmux
+    pkgs.yq-go
+    pkgs.fd
+    pkgs.unzip
+    pkgs.uutils-coreutils
+    pkgs.asciidoctor
+    pkgs.btop
+    pkgs.yazi
+    pkgs.dust
+    pkgs.zk
+    pkgs.glow
+    pkgs.viu
+
+    # REQUIREMENTS
+    pkgs.bat
+    pkgs.eza
+    pkgs.fzf
+    pkgs.fish
+    pkgs.bat-extras.batman
+    pkgs.git
+    pkgs.jujutsu
+    pkgs.zsh-syntax-highlighting
+    pkgs.starship
+    pkgs.ripgrep
+    pkgs.atuin
+
+    # EDITOR + LANGUAGE SERVERS
+    pkgs.neovim
+    pkgs.tree-sitter
+    # pkgs.luajit
+    # pkgs.lua54Packages.luarocks
+    pkgs.helix
+    pkgs.nixfmt
+    pkgs.ruff
+    pkgs.lua-language-server
+    pkgs.gopls
+    pkgs.zls
+    pkgs.terraform-ls
+    pkgs.copilot-language-server
+    pkgs.ty
+
+    # DEV TOOLS
+    pkgs.gh
+    pkgs.go
+    pkgs.delve
+    pkgs.entr
+    pkgs.gcc
+    pkgs.gnumake
+    pkgs.cmake
+    pkgs.uv
+    pkgs.zig
+    pkgs.git-lfs
+    pkgs.darwin.libiconv
+    pkgs.difftastic
+    pkgs.tokei
+    pkgs.github-copilot-cli
+    pkgs.gemini-cli
+    pkgs.rustup
+
+    # VIRTUALIZATION
     pkgs.docker
     pkgs.docker-buildx
     pkgs.docker-compose
-    # pkgs.texliveMedium
-    pkgs.zig
-    pkgs.yq-go
-    pkgs.fd
-    pkgs.ripgrep
-    # pkgs._1password-cli
-    # pkgs.qmk
-    # pkgs.opentofu
-    # pkgs.glab
-    pkgs.tmux
-    # pkgs.krew
-    pkgs.unzip
-    pkgs.uutils-coreutils
-    pkgs.gcc
-    pkgs.gnumake
-    # pkgs.ansible
-    pkgs.cmake
-    pkgs.bat-extras.batman
-    pkgs.luajit
-    pkgs.fastfetch
-    pkgs.tree-sitter
-    # pkgs.nodejs-slim
-    pkgs.kind
-    pkgs.xplr
-    # pkgs.hledger
-    # pkgs.nerdctl
-    pkgs.delve
-    # pkgs.protobuf3_20
-    # pkgs.protoc-gen-go
-    pkgs.difftastic
-    pkgs.btop
-    pkgs.tokei
-    pkgs.asciidoctor
-    pkgs.lima
-    pkgs.lua54Packages.luarocks
-    pkgs.yazi
-    pkgs.azure-cli
-    pkgs.fish
-    pkgs.jujutsu
-    pkgs.darwin.libiconv
-    pkgs.git
-    pkgs.git-lfs
-    pkgs.uv
-    pkgs.dust
     pkgs.colima
-    pkgs.fx
-    # pkgs.zed-editor
-    pkgs.gopls
-    pkgs.ruff
-    pkgs.lua-language-server
-    pkgs.typst
-    pkgs.zls
-    pkgs.awscli2
-    pkgs.jaq
-    pkgs.watch
-    pkgs.zsh-syntax-highlighting
-    pkgs.starship
-    pkgs.terraform-ls
-    pkgs.localstack
-    pkgs.zk
-    pkgs.helix
-    pkgs.copilot-language-server
-    pkgs.github-copilot-cli
-    pkgs.gemini-cli
-    pkgs.ty
-    pkgs.rustup
-    pkgs.glow
+    pkgs.lima
     pkgs.devcontainer
-    pkgs.kotlin
-    # pkgs.kotlin-native
-    pkgs.kotlin-language-server
-    pkgs.emacs-macport
-    pkgs.neovide
-    pkgs.viu
-    pkgs.nixfmt
-    # pkgs.neovim-nightly
-
     pkgs.podman
     pkgs.podman-compose
     pkgs.podman-tui
     pkgs.krunkit
 
-    # pkgsUnstable.evil-helix
-    # pkgsUnstable.claude-code
-    pkgs.atuin
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -234,13 +212,4 @@ in
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  programs.mise.enable = true;
-  programs.mise.enableFishIntegration = true;
-  programs.fzf = {
-    enable = true;
-    enableFishIntegration = true;
-    enableBashIntegration = true;
-    enableZshIntegration = true;
-  };
-
 }
