@@ -1,33 +1,30 @@
 { config, ... }:
 
-
 # nix-channels:
 # home-manager https://github.com/nix-community/home-manager/archive/release-24.05.tar.gz
 # nixpkgs https://nixos.org/channels/nixos-24.05
 # nixpkgs-unstable https://nixos.org/channels/nixpkgs-unstable
 
-
-
-
-
 let
-    neovim-nightly-overlay = import (builtins.fetchTarball {
-        url = "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
-    });
-    pkgs = import <nixpkgs> {
-        config.allowUnfree = true;
-        overlays = [ neovim-nightly-overlay ];
-    };
-    pkgsUnstable = import <nixpkgs-unstable> {
-        config.allowUnfree = true;
-    };
-    pkgs_kubectl = import (builtins.fetchGit {
-         # Descriptive name to make the store path easier to identify
-         name = "kubectl-1.26.3";
-         url = "https://github.com/NixOS/nixpkgs/";
-         ref = "refs/heads/nixpkgs-24.05-darwin";
-         rev = "7ad7b570e96a3fd877e5fb08b843d66a30428f12";
-     }) {};
+  neovim-nightly-overlay = import (
+    builtins.fetchTarball {
+      url = "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
+    }
+  );
+  pkgs = import <nixpkgs> {
+    config.allowUnfree = true;
+    overlays = [ neovim-nightly-overlay ];
+  };
+  pkgsUnstable = import <nixpkgs-unstable> {
+    config.allowUnfree = true;
+  };
+  pkgs_kubectl = import (builtins.fetchGit {
+    # Descriptive name to make the store path easier to identify
+    name = "kubectl-1.26.3";
+    url = "https://github.com/NixOS/nixpkgs/";
+    ref = "refs/heads/nixpkgs-24.05-darwin";
+    rev = "7ad7b570e96a3fd877e5fb08b843d66a30428f12";
+  }) { };
 in
 {
 
@@ -37,6 +34,20 @@ in
   home.homeDirectory = "/Users/allyn";
   # nixpkgs.config.allowUnfree = true;
 
+  imports =
+    [ ]
+    ++ (
+      let
+        p = (builtins.getEnv "HOME") + "/.config/home-manager/paytient.nix";
+      in
+      if builtins.pathExists p then [ (/. + p) ] else [ ]
+    )
+    ++ (
+      let
+        p = (builtins.getEnv "HOME") + "/.config/home-manager/personal.nix";
+      in
+      if builtins.pathExists p then [ (/. + p) ] else [ ]
+    );
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -49,136 +60,93 @@ in
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    # pkgs_kubectl.kubectl
+    # KUBERNETES
     pkgs.kubectl
-	pkgs.curl
-	pkgs.bat
-	pkgs.gh
-	pkgs.go
-	pkgs.kubernetes-helm
-	pkgs.eza
-	pkgs.entr
-	pkgs.fzf
-	pkgs.neovim
-	pkgs.jq
-	pkgs.dig
-	pkgs.step-cli
-	pkgs.docker
-	pkgs.curl
-	pkgs.bat
-	pkgs.gh
-	pkgs.go
-	pkgs.kubernetes-helm
-	pkgs.kubectl
-	pkgs.eza
-	pkgs.entr
-	pkgs.fzf
-	pkgs.neovim
-	pkgs.jq
-	pkgs.rustup
-	pkgs.dig
-	pkgs.step-cli
-	pkgs.starship
-	pkgs.docker
-    # pkgs_kubectl.kubectl
-    pkgs.kubectl
-    pkgs.curl
-    pkgs.bat
-    pkgs.gh
-    pkgs.go
+    pkgs.kind
     # pkgs.kubernetes-helm
-    pkgs.eza
-    pkgs.entr
-    pkgs.fzf
-    pkgs.neovim
+
+    # TOOLS
+    pkgs.curl
     pkgs.jq
+    pkgs.jaq
     pkgs.dig
     pkgs.step-cli
+    pkgs.fastfetch
+    pkgs.typst
+    pkgs.awscli2
+    pkgs.watch
+    pkgs.fx
+    pkgs.tmux
+    pkgs.yq-go
+    pkgs.fd
+    pkgs.unzip
+    pkgs.uutils-coreutils
+    pkgs.asciidoctor
+    pkgs.btop
+    pkgs.yazi
+    pkgs.dust
+    pkgs.zk
+    pkgs.glow
+    pkgs.viu
+
+    # REQUIREMENTS
+    pkgs.bat
+    pkgs.eza
+    pkgs.fzf
+    pkgs.fish
+    pkgs.bat-extras.batman
+    pkgs.git
+    pkgs.jujutsu
+    pkgs.zsh-syntax-highlighting
+    pkgs.starship
+    pkgs.ripgrep
+    pkgs.atuin
+
+    # EDITOR + LANGUAGE SERVERS
+    pkgs.neovim
+    pkgs.tree-sitter
+    # pkgs.luajit
+    # pkgs.lua54Packages.luarocks
+    pkgs.helix
+    pkgs.nixfmt
+    pkgs.ruff
+    pkgs.lua-language-server
+    pkgs.gopls
+    pkgs.zls
+    pkgs.terraform-ls
+    pkgs.copilot-language-server
+    pkgs.ty
+
+    # DEV TOOLS
+    pkgs.gh
+    pkgs.go
+    pkgs.delve
+    pkgs.entr
+    pkgs.gcc
+    pkgs.gnumake
+    pkgs.cmake
+    pkgs.uv
+    pkgs.zig
+    pkgs.git-lfs
+    pkgs.darwin.libiconv
+    pkgs.difftastic
+    pkgs.tokei
+    pkgs.github-copilot-cli
+    pkgs.gemini-cli
+    pkgs.rustup
+
+    # VIRTUALIZATION
     pkgs.docker
     pkgs.docker-buildx
     pkgs.docker-compose
-	pkgs.texliveFull
-	pkgs.zig
-	pkgs.yq-go
-    pkgs.fd
-    pkgs.ripgrep
-    # pkgs._1password-cli
-    # pkgs.qmk
-    # pkgs.opentofu
-    # pkgs.glab
-    pkgs.tmux
-    # pkgs.krew
-    pkgs.unzip
-    # pkgs.gcc
-    pkgs.uutils-coreutils
-    pkgs.gcc
-    pkgs.gnumake
-    # pkgs.ansible
-    pkgs.cmake
-    pkgs.bat-extras.batman
-    pkgs.lua
-    pkgs.fastfetch
-    pkgs.tree-sitter
-    # pkgs.nodejs-slim
-    pkgs.kind
-    pkgs.xplr
-    # pkgs.hledger
-    # pkgs.nerdctl
-    pkgs.delve
-    # pkgs.protobuf3_20
-    # pkgs.protoc-gen-go
-    pkgs.difftastic
-    pkgs.btop
-    pkgs.tokei
-    pkgs.asciidoctor
-    pkgs.lima-bin
-    pkgs.lua54Packages.luarocks
-    pkgs.yazi
-    pkgs.azure-cli
-    pkgs.fish
-    pkgs.jujutsu
-    pkgs.darwin.libiconv
-    pkgs.git
-    pkgs.git-lfs
-    pkgs.uv
-    pkgs.dust
     pkgs.colima
-    pkgs.fx
-    pkgs.zed-editor
-    pkgs.gopls
-    pkgs.ruff
-    pkgs.lua-language-server
-    pkgs.typst
-    pkgs.presenterm
-    pkgs.jdk11
-    pkgs.nodejs-slim
-    pkgs.ty
-    pkgs.helix
-    # pkgs.gradle
-    # pkgs.jdt-language-server
-    # pkgs.rustup
-    # pkgsUnstable.claude-code
-    pkgs.glow
+    pkgs.lima
     pkgs.devcontainer
-    pkgs.kotlin
-    # pkgs.kotlin-native
-    pkgs.kotlin-language-server
-    pkgs.emacs-macport
-    # pkgs.neovide
-    # pkgs.neovim-nightly
+    pkgs.podman
+    pkgs.podman-compose
+    pkgs.podman-tui
+    pkgs.krunkit
 
-    #Engineering Onboarding Paytient
-    pkgs.sops
-    pkgs.libxml2
-    pkgs.tenv
-    pkgs.oras
-    pkgs.pgformatter
-    pkgs.just
-
- 
-    # pkgsUnstable.evil-helix
-    # pkgsUnstable.claude-code
-    pkgs.atuin
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -235,8 +203,11 @@ in
   };
 
   nix = {
-  package = pkgs.nix;
-  settings.experimental-features = [ "nix-command" "flakes" ];
+    package = pkgs.nix;
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
 
   # Let Home Manager install and manage itself.
