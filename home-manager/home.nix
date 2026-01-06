@@ -13,6 +13,11 @@ let
   );
   pkgs = import <nixpkgs> {
     config.allowUnfree = true;
+    # config.allowUnfreePredicate =
+    #   pkg:
+    #   builtins.elem (lib.getName pkg) [
+    #     "tart"
+    #   ];
     overlays = [ neovim-nightly-overlay ];
   };
   pkgsUnstable = import <nixpkgs-unstable> {
@@ -27,6 +32,7 @@ let
   }) { };
 in
 {
+  nixpkgs.config.allowUnfree = true;
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
