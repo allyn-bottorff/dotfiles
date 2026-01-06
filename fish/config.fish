@@ -9,6 +9,7 @@ if status is-interactive
     # abbr -a -- k kubectl
     # abbr -a -- krc kubectl resource-capacity
     # abbr -a -- ssh TERM=xterm-256color ssh
+    abbr -a -- nix-garbage nix-collect-garbage --delete-old
     
     abbr -a -- opencode "$HOME/code/paytient/opencode/start"
 
