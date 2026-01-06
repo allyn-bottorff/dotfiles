@@ -118,6 +118,7 @@ vim.o.guifont = "TX-02:h15"
 
 vim.pack.add({
   "https://github.com/EdenEast/nightfox.nvim",
+  "https://github.com/ellisonleao/gruvbox.nvim",
   "https://github.com/sebdah/vim-delve",      -- Go debugging
   "https://github.com/tpope/vim-fugitive",    -- Git integration (mostly just for Blame)
   "https://github.com/junegunn/fzf.vim",      -- fuzzy finding file/buffer stuff
@@ -137,7 +138,6 @@ vim.pack.add({
   "https://github.com/nvim-mini/mini.indentscope",
 })
 
-vim.cmd("colorscheme carbonfox")
 
 -- PLUGIN SETUP
 require("fidget").setup()
@@ -166,7 +166,14 @@ require("gitsigns").setup {
     changedelete = { text = "~" },
   }
 }
+require("gruvbox").setup {
+  contrast = "hard",
+  overrides = {
+    SignColumn = { bg = "#1d2021" }
+  },
+}
 
+vim.cmd("colorscheme gruvbox")
 -- DAP Config
 local dap, dapui = require("dap"), require("dapui")
 dap.listeners.before.attach.dapui_config = function()
