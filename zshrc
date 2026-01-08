@@ -55,24 +55,24 @@ export LIBRARY_PATH="$HOME/.nix-profile/lib"
 
 ### FZF
 
-source $(fzf-share)/completion.zsh
-source $(fzf-share)/key-bindings.zsh
+# source $(fzf-share)/completion.zsh
+# source $(fzf-share)/key-bindings.zsh
 
 
 # source <(kubectl completion zsh)
 
 # source <(jj util completion zsh)
-source <(COMPLETE=zsh jj)
+# source <(COMPLETE=zsh jj)
 
 # Paytient AWS functions
-source "$HOME/code/builds/onboarding/engineering.sh"
+# source "$HOME/code/builds/onboarding/engineering.sh"
 
 # AWS CLI Completion
-source "$HOME/.nix-profile/bin/aws_zsh_completer.sh"
+# source "$HOME/.nix-profile/bin/aws_zsh_completer.sh"
 
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
 
-source $ZSH_ASDF_VM
+# source $ZSH_ASDF_VM
 
 
-source $ZSH_SYNTAX_HIGHLIGHTING_PATH
+# source $ZSH_SYNTAX_HIGHLIGHTING_PATH

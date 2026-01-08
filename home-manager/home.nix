@@ -110,9 +110,11 @@ in
 
     # EDITOR + LANGUAGE SERVERS
     pkgs.copilot-language-server
+    pkgs.emacs
     pkgs.gopls
     pkgs.helix
     pkgs.lua-language-server
+    pkgs.neovide
     pkgs.neovim
     pkgs.nixfmt
     pkgs.ruff
@@ -132,8 +134,10 @@ in
     pkgs.gh
     pkgs.git-lfs
     pkgs.github-copilot-cli
+    pkgs.glibtool
     pkgs.gnumake
     pkgs.go
+    pkgs.libtool
     pkgs.rustup
     pkgs.tokei
     pkgs.uv
@@ -146,7 +150,6 @@ in
     pkgs.docker-buildx
     pkgs.docker-compose
     pkgs.krunkit
-    pkgs.lima
     pkgs.podman
     pkgs.podman-compose
     pkgs.podman-tui

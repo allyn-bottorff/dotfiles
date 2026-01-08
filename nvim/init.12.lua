@@ -16,6 +16,10 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 -- vim.opt.hlsearch = true
 
+-- force the NVIM env var to be present no matter how we're creating the subshell
+-- i.e. both terminal buffers as well as normal mode shell commands
+vim.env.NVIM = vim.v.servername
+
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldenable = false
@@ -136,6 +140,7 @@ vim.pack.add({
   "https://github.com/folke/todo-comments.nvim",
   "https://github.com/lewis6991/gitsigns.nvim",
   "https://github.com/nvim-mini/mini.indentscope",
+  "https://github.com/willothy/flatten.nvim",
 })
 
 
@@ -157,6 +162,8 @@ require("conform").setup {
     nix = { "nixfmt" },
   },
 }
+vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+
 require("gitsigns").setup {
   signs = {
     add = { text = "+" },
@@ -172,6 +179,7 @@ require("gruvbox").setup {
     SignColumn = { bg = "#1d2021" }
   },
 }
+require("flatten").setup()
 
 vim.cmd("colorscheme gruvbox")
 -- DAP Config
@@ -201,6 +209,7 @@ vim.lsp.enable({
   'ruff',
   'terraformls',
   'lua_ls',
+  -- 'kotlin_language_server',
 })
 
 

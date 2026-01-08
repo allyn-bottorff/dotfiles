@@ -10,6 +10,7 @@ if status is-interactive
     # abbr -a -- krc kubectl resource-capacity
     # abbr -a -- ssh TERM=xterm-256color ssh
     abbr -a -- nix-garbage nix-collect-garbage --delete-old
+    abbr -a -- emc emacsclient -c
     
     abbr -a -- opencode "$HOME/code/paytient/opencode/start"
 
@@ -23,6 +24,7 @@ if status is-interactive
     set -gx PATH /nix/var/nix/profiles/default/bin $PATH
     set -gx PATH $HOME/.nix-profile/bin $PATH
     set -gx XDG_CONFIG_HOME $HOME/.config
+    set -gx GITHUB_PAT $(echo $HOME/temp/github_package_pull_token)
 
     set -gx NIX_PROFILES /nix/var/nix/profiles/default /Users/pay-mbp-abottorff/.nix-profile
     set -gx NIX_SSL_CERT_FILE /nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt
