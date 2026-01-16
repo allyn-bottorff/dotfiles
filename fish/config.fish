@@ -15,14 +15,15 @@ if status is-interactive
     abbr -a -- opencode "$HOME/code/paytient/opencode/start"
 
     set -Ux EDITOR "nvim"
+    set -Ux --path KUBECONFIG "$HOME/.kube/config"
     set -gx SHELL "fish"
     set -Ux --path LIBRARY_PATH "$HOME/.nix-profile/lib"
 
-    set -gx PATH $HOME/.cargo/bin $PATH
     set -gx PATH $HOME/.local/bin $PATH
     set -gx PATH $HOME/go/bin $PATH
     set -gx PATH /nix/var/nix/profiles/default/bin $PATH
     set -gx PATH $HOME/.nix-profile/bin $PATH
+    set -gx PATH $HOME/.cargo/bin $PATH
     set -gx XDG_CONFIG_HOME $HOME/.config
     set -gx GITHUB_PAT $(echo $HOME/temp/github_package_pull_token)
 

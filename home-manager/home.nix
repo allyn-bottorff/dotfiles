@@ -36,8 +36,8 @@ in
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "pay-mbp-abottorff";
-  home.homeDirectory = "/Users/pay-mbp-abottorff";
+  home.username = "allyn";
+  home.homeDirectory = "/Users/allyn";
   # nixpkgs.config.allowUnfree = true;
 
   imports =
