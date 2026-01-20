@@ -121,6 +121,7 @@ in
     pkgs.terraform-ls
     pkgs.tree-sitter
     pkgs.ty
+    pkgs.yamlfmt
     pkgs.zls
 
     # DEV TOOLS

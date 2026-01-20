@@ -34,6 +34,7 @@ vim.o.shiftwidth = 4
 vim.g.zig_fmt_autosave = false
 vim.g.tex_flavor = "latex"
 vim.g.netrw_liststyle = 3
+vim.g.netrw_winsize = 30
 
 
 
@@ -153,13 +154,14 @@ require("mini.indentscope").setup {
 }
 require("conform").setup {
   notify_on_error = false,
-  format_on_save = {
-    timeout_ms = 500,
-    lsp_fallback = true,
-  },
   formatters_by_ft = {
     lua = { "stylua" },
     nix = { "nixfmt" },
+    go = { "gofmt" },
+    hcl = { "terraform_fmt" },
+    terraform = { "terraform_fmt" },
+    rust = { "rustfmt" },
+    yaml = { "yamlfmt" },
   },
 }
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
@@ -202,12 +204,12 @@ end
 -- LSP Config
 
 vim.lsp.enable({
-  'rust_analyzer',
+  -- 'rust_analyzer',
   'gopls',
   'ty',
   'zls',
   'ruff',
-  'terraformls',
+  -- 'terraformls',
   'lua_ls',
   -- 'kotlin_language_server',
 })
