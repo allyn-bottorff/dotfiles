@@ -17,6 +17,7 @@ shell-integration-features = no-cursor
 window-padding-balance = true
 
 split-divider-color=3ccce6
+unfocused-split-opacity=1
 
 command = /Users/pay-mbp-abottorff/.nix-profile/bin/fish --interactive
 
@@ -36,5 +37,8 @@ quick-terminal-position = center
 # custom-shader = ./shaders/synesthaxia.glsl
 keybind = shift+enter=text:\n
 
+split-inherit-working-directory = true
+tab-inherit-working-directory = false
 window-inherit-working-directory = false
 
+auto-update-channel = tip

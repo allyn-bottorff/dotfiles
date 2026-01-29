@@ -100,6 +100,31 @@ vim.api.nvim_create_autocmd("WinEnter", {
 -- LOCAL USER COMMANDS
 
 
+-- Formatting
+vim.api.nvim_create_user_command("Format", function()
+-- Define your formatters here: [filetype] = "shell command"
+    local formatters = {
+        go = "gofmt -w %",
+        python = "black %",
+        lua = "stylua %",
+        rust = "rustfmt %",
+        terraform = "terraform fmt %",
+        hcl = "terraform fmt %",
+    }
+    local ft = vim.bo.filetype
+    local cmd = formatters[ft]
+
+    if cmd then
+        vim.cmd("silent write") -- write the file
+        vim.cmd("silent !" .. cmd) -- auto-format
+        vim.cmd("edit!") -- reload from disk
+        print("Formatted with " .. ft .. " formatter")
+    else
+        print("No formatter configured for filetype: " .. ft)
+    end
+end, { desc = "Format current file based on filetype" })
+
+
 -- KEYMAPS
 vim.keymap.set("t", "fd", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 vim.keymap.set({ "n", "i", "v" }, "fd", "<ESC>", { desc = "Exit modes" })
@@ -135,36 +160,25 @@ vim.pack.add({
   "https://github.com/leoluz/nvim-dap-go",
   "https://github.com/zk-org/zk-nvim",
   "https://github.com/nvim-treesitter/nvim-treesitter",
-  "https://github.com/stevearc/conform.nvim",
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/j-hui/fidget.nvim",
   "https://github.com/folke/todo-comments.nvim",
   "https://github.com/lewis6991/gitsigns.nvim",
   "https://github.com/nvim-mini/mini.indentscope",
   "https://github.com/willothy/flatten.nvim",
+  "https://github.com/krisajenkins/neojj",
+  "https://github.com/nvim-lua/plenary.nvim",
 })
 
 
 -- PLUGIN SETUP
+require("neojj").setup()
 require("fidget").setup()
 require("dap-go").setup()
 require("mini.indentscope").setup {
   draw = { animation = require("mini.indentscope").gen_animation.none() },
   symbol = "│",
 }
-require("conform").setup {
-  notify_on_error = false,
-  formatters_by_ft = {
-    lua = { "stylua" },
-    nix = { "nixfmt" },
-    go = { "gofmt" },
-    hcl = { "terraform_fmt" },
-    terraform = { "terraform_fmt" },
-    rust = { "rustfmt" },
-    yaml = { "yamlfmt" },
-  },
-}
-vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
 require("gitsigns").setup {
   signs = {
