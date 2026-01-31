@@ -67,11 +67,13 @@ in
   # environment.
   home.packages = [
     # KUBERNETES
+
     pkgs.kubectl
     pkgs.kind
     # pkgs.kubernetes-helm
 
     # TOOLS
+
     pkgs.asciidoctor
     pkgs.awscli2
     pkgs.btop
@@ -84,6 +86,8 @@ in
     pkgs.glow
     pkgs.jaq
     pkgs.jq
+    pkgs.mosh
+    pkgs.shellcheck
     pkgs.step-cli
     pkgs.tmux
     pkgs.typst
@@ -96,6 +100,7 @@ in
     pkgs.zk
 
     # REQUIREMENTS
+
     pkgs.atuin
     pkgs.bat
     pkgs.bat-extras.batman
@@ -109,6 +114,7 @@ in
     pkgs.zsh-syntax-highlighting
 
     # EDITOR + LANGUAGE SERVERS
+    
     pkgs.copilot-language-server
     pkgs.emacs
     pkgs.gopls
@@ -121,9 +127,11 @@ in
     pkgs.terraform-ls
     pkgs.tree-sitter
     pkgs.ty
+    pkgs.yamlfmt
     pkgs.zls
 
     # DEV TOOLS
+
     pkgs.cmake
     pkgs.darwin.libiconv
     pkgs.delve
@@ -144,8 +152,8 @@ in
     pkgs.zig
 
     # VIRTUALIZATION
+    
     pkgs.colima
-    pkgs.devcontainer
     pkgs.docker
     pkgs.docker-buildx
     pkgs.docker-compose

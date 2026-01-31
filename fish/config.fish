@@ -25,7 +25,7 @@ if status is-interactive
     set -gx PATH $HOME/.nix-profile/bin $PATH
     set -gx PATH $HOME/.cargo/bin $PATH
     set -gx XDG_CONFIG_HOME $HOME/.config
-    # set -gx GITHUB_PAT $(echo $HOME/temp/github_package_pull_token)
+    set -gx GITHUB_PAT $(cat $HOME/temp/github_package_pull_token)
 
     set -gx NIX_PROFILES /nix/var/nix/profiles/default /Users/pay-mbp-abottorff/.nix-profile
     set -gx NIX_SSL_CERT_FILE /nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt
