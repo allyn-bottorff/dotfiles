@@ -6,7 +6,11 @@
 
 let
   unstable = import <unstable> {};
+  neovim-overlay = import (builtins.fetchTarball {
+    url = "https:///github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
+  });
 in {
+  nixpkgs.overlays = [ neovim-overlay ];
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -170,6 +174,8 @@ in {
     pkgs.zls
     pkgs.jaq
     pkgs.typst
+    pkgs.atuin
+    pkgs.nasm
 
     # dependencies for hyprland
     pkgs.wofi
