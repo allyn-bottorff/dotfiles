@@ -36,8 +36,8 @@ in
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "allyn";
-  home.homeDirectory = "/Users/allyn";
+  home.username = "pay-mbp-abottorff";
+  home.homeDirectory = "/Users/pay-mbp-abottorff";
   # nixpkgs.config.allowUnfree = true;
 
   imports =
@@ -146,6 +146,8 @@ in
     pkgs.gnumake
     pkgs.go
     pkgs.libtool
+    pkgs.odin
+    pkgs.ols
     pkgs.rustup
     pkgs.tokei
     pkgs.uv
