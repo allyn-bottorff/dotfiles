@@ -3,10 +3,10 @@ if status is-interactive
 
     fish_vi_key_bindings
 
-    abbr -a -- l eza -lhF --git
+    abbr -a -- l eza -lhF
     abbr -a -- cat bat
     abbr -a -- vim nvim
-    # abbr -a -- k kubectl
+    abbr -a -- k kubectl
     # abbr -a -- krc kubectl resource-capacity
     # abbr -a -- ssh TERM=xterm-256color ssh
     abbr -a -- nix-garbage nix-collect-garbage --delete-old
@@ -29,6 +29,7 @@ if status is-interactive
 
     set -gx NIX_PROFILES /nix/var/nix/profiles/default /Users/pay-mbp-abottorff/.nix-profile
     set -gx NIX_SSL_CERT_FILE /nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt
+    set -gx SSL_CERT_FILE /etc/ssl/certs/ca-bundle.crt
 
     # COMPLETE=fish jj | source
 

@@ -51,6 +51,12 @@ local function settabspace2()
   vim.o.shiftwidth = 2
 end
 
+local function cleanmode()
+  vim.o.cc = "0"
+  vim.o.list = false
+  vim.o.number = false
+end
+
 
 -- AUTO COMMANDS (NON-LSP)
 --
@@ -86,6 +92,10 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = { "asciidoc", "tex", "typst", "markdown" },
   command = "setlocal tw=79",
 })
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "odin" },
+  callback = cleanmode,
+})
 
 -- Make the cursorline "move" with the focused window
 vim.api.nvim_create_autocmd("WinLeave", {
@@ -110,6 +120,7 @@ vim.api.nvim_create_user_command("Format", function()
         rust = "rustfmt %",
         terraform = "terraform fmt %",
         hcl = "terraform fmt %",
+        odin = "odinfmt % -w",
     }
     local ft = vim.bo.filetype
     local cmd = formatters[ft]
@@ -225,6 +236,7 @@ vim.lsp.enable({
   'ruff',
   -- 'terraformls',
   'lua_ls',
+  'ols',
   -- 'kotlin_language_server',
 })
 

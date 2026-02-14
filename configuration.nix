@@ -61,8 +61,11 @@ in {
     xkb.options = "caps:ctrl_modifier";
     # xkbOptions = "caps:ctrl_modifier";
   # Enable the GNOME Desktop Environment.
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
+    # displayManager.gdm.enable = true;
+    # desktopManager.gnome.enable = true;
+    displayManager.sddm.enable = true;
+    desktopManager.plasma6.enable = true;
+
   # Configure keymap in X11
     xkb = {
         layout = "us";
@@ -111,71 +114,74 @@ in {
     description = "Allyn Bottorff";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
-    pkgs.curl
-    pkgs.bat
-    pkgs.gh
-    pkgs.go
-    pkgs.kubernetes-helm
-    pkgs.kubectl
-    pkgs.eza
-    pkgs.entr
-    pkgs.fzf
-    pkgs.neovim
-    pkgs.jq
-    pkgs.rustup
-    pkgs.dig
-    pkgs.step-cli
-    pkgs.zig
-    pkgs.flyctl
-    pkgs.yq-go
-    pkgs.fd
-    pkgs.zsh-syntax-highlighting
-    pkgs.bacon
-    pkgs.ripgrep
+
+
     pkgs._1password-cli
-    pkgs.opentofu
-    pkgs.tmux
-    pkgs.krew
-    pkgs.unzip
-    pkgs.gcc
-    pkgs.gnumake
     pkgs.ansible
-    pkgs.cmake
+    pkgs.asciidoctor
+    pkgs.atuin
+    pkgs.bacon
+    pkgs.bat
     pkgs.bat-extras.batman
-    pkgs.luajit
-    pkgs.fastfetch
-    pkgs.tree-sitter
-    pkgs.kind
-    pkgs.xplr
-    pkgs.hledger
+    pkgs.btop
+    pkgs.cmake
+    pkgs.curl
     pkgs.delve
     pkgs.difftastic
-    pkgs.btop
-    pkgs.scc
-    pkgs.asciidoctor
-    pkgs.lua54Packages.luarocks
-    pkgs.yazi
+    pkgs.dig
+    pkgs.discord
+    pkgs.dust
+    pkgs.entr
+    pkgs.eza
+    pkgs.fastfetch
+    pkgs.fd
+    pkgs.fish
+    pkgs.flyctl
+    pkgs.freecad
+    pkgs.fzf
+    pkgs.gcc
+    pkgs.gh
     pkgs.ghostty
-    pkgs.ollama
-    pkgs.aider-chat
-    pkgs.python314
-    pkgs.llama-cpp
     pkgs.git
     pkgs.git-lfs
-    pkgs.uv
-    pkgs.dust
-    pkgs.discord
-    pkgs.freecad
-    pkgs.jujutsu
-    pkgs.fish
-    pkgs.prusa-slicer
-    unstable.zed-editor-fhs
-    pkgs.texliveFull
-    pkgs.zls
+    pkgs.gnumake
+    pkgs.go
+    pkgs.hledger
     pkgs.jaq
-    pkgs.typst
-    pkgs.atuin
+    pkgs.jq
+    pkgs.jujutsu
+    pkgs.kind
+    pkgs.krew
+    pkgs.kubectl
+    pkgs.kubernetes-helm
+    pkgs.llama-cpp
+    pkgs.lua54Packages.luarocks
+    pkgs.luajit
     pkgs.nasm
+    pkgs.neovim
+    pkgs.odin
+    pkgs.ollama
+    pkgs.ols
+    pkgs.opentofu
+    pkgs.prusa-slicer
+    pkgs.python314
+    pkgs.ripgrep
+    pkgs.rustup
+    pkgs.scc
+    pkgs.step-cli
+    pkgs.texliveFull
+    pkgs.tmux
+    pkgs.tree-sitter
+    pkgs.typst
+    pkgs.unzip
+    pkgs.uv
+    pkgs.xplr
+    pkgs.yazi
+    pkgs.yq-go
+    pkgs.zig
+    pkgs.zls
+    pkgs.zsh-syntax-highlighting
+    unstable.zed-editor-fhs
 
     # dependencies for hyprland
     pkgs.wofi
@@ -246,6 +252,7 @@ in {
   #  wget
   vim
   gnomeExtensions.appindicator
+  cacert
   ];
 
   services.udev.packages = [ pkgs.gnome-settings-daemon ];
