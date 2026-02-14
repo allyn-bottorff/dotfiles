@@ -10,11 +10,12 @@ vim.opt.signcolumn = "yes"
 -- vim.opt.updatetime = 250
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-vim.opt.list = true
+-- vim.opt.list = true
 vim.opt.listchars = { tab = "> ", trail = "·", nbsp = "␣", lead = "·", eol = "¬" }
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 -- vim.opt.hlsearch = true
+vim.o.statuscolumn = "%s%l  "
 
 -- force the NVIM env var to be present no matter how we're creating the subshell
 -- i.e. both terminal buffers as well as normal mode shell commands
@@ -25,7 +26,7 @@ vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldenable = false
 
 vim.o.winblend = 20
-vim.o.cc = "80"
+-- vim.o.cc = "80"
 vim.o.expandtab = true
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
@@ -120,6 +121,7 @@ vim.api.nvim_create_user_command("Format", function()
         rust = "rustfmt %",
         terraform = "terraform fmt %",
         hcl = "terraform fmt %",
+        ["terraform-vars"] = "terraform fmt %",
         odin = "odinfmt % -w",
     }
     local ft = vim.bo.filetype

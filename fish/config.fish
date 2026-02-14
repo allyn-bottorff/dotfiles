@@ -12,7 +12,7 @@ if status is-interactive
     abbr -a -- nix-garbage nix-collect-garbage --delete-old
     abbr -a -- emc emacsclient -c
     
-    abbr -a -- opencode "$HOME/code/paytient/opencode/start"
+    abbr -a -- oc "$HOME/code/paytient/opencode/start"
 
     set -Ux EDITOR "nvim"
     set -Ux --path KUBECONFIG "$HOME/.kube/config"
@@ -26,6 +26,8 @@ if status is-interactive
     set -gx PATH $HOME/.cargo/bin $PATH
     set -gx XDG_CONFIG_HOME $HOME/.config
     set -gx GITHUB_PAT $(cat $HOME/temp/github_package_pull_token)
+    set -gx DD_API_KEY $(cat $HOME/temp/dd_api_key)
+    set -gx DD_APP_KEY $(cat $HOME/temp/dd_app_key)
 
     set -gx NIX_PROFILES /nix/var/nix/profiles/default /Users/pay-mbp-abottorff/.nix-profile
     set -gx NIX_SSL_CERT_FILE /nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt
