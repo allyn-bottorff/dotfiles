@@ -53,53 +53,43 @@ local function settabspace2()
 end
 
 
+-- Open docs in a split instead of a hover (like :help)
+-- This exists to make lsp docs more usable like an actual manual
 local function open_lsp_docs_in_split()
-    local params = vim.lsp.util.make_position_params()
-    
-    vim.lsp.buf_request(0, 'textDocument/hover', params, function(err, result, ctx, config)
-        if err or not result or not result.contents then
-            vim.notify("No documentation available", vim.log.levels.INFO)
-            return
-        end
+    -- 1. Get position encoding for 0.12
+    local client = vim.lsp.get_clients({ bufnr = 0 })[1]
+    if not client then return end
+    local params = vim.lsp.util.make_position_params(0, client.offset_encoding)
 
-        local contents = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
-        if vim.tbl_isempty(contents) then return end
+    -- 2. Request and process
+    vim.lsp.buf_request(0, 'textDocument/hover', params, function(err, result)
+        if err or not result or not result.contents then return end
 
-        -- 1. Create the buffer
+        local lines = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
+
+        -- 3. Create scratch buffer
         local buf = vim.api.nvim_create_buf(false, true)
-        vim.api.nvim_buf_set_lines(buf, 0, -1, false, contents)
-        
-        -- 2. Set BUFFER-local options (using buf = buf)
+        vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+
+        -- 4. Set buffer-local options (Modern API)
         local b_opts = { buf = buf }
         vim.api.nvim_set_option_value('filetype', 'markdown', b_opts)
         vim.api.nvim_set_option_value('buftype', 'nofile', b_opts)
         vim.api.nvim_set_option_value('bufhidden', 'wipe', b_opts)
         vim.api.nvim_set_option_value('modifiable', false, b_opts)
 
-        -- 3. Open the split and set the buffer
-        local line_count = #contents
-        local split_height = math.min(math.max(line_count, 5), 20)
-        vim.cmd('topleft ' .. split_height .. 'split')
+        -- 5. Open split and apply Treesitter
+        vim.cmd('topleft 15split')
         vim.api.nvim_set_current_buf(buf)
+        vim.treesitter.start(buf, 'markdown')
 
-        -- 4. Set WINDOW-local options (using win = 0 for current window)
-        local w_opts = { win = 0 }
-        vim.api.nvim_set_option_value('wrap', true, w_opts)
-        vim.api.nvim_set_option_value('spell', false, w_opts) -- Bonus: disable spellcheck in docs
-
-        -- 5. Map 'q' to close
-        vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = buf, silent = true })
+        -- 6. Quick close
+        vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = buf })
     end)
 end
 
-vim.keymap.set('n', '<leader>k', open_lsp_docs_in_split, { desc = 'LSP docs in dynamic split' })
+vim.keymap.set('n', '<leader>k', open_lsp_docs_in_split)
 
-vim.keymap.set('n', '<leader>k', open_lsp_docs_in_split, { desc = 'LSP docs in dynamic split' })
-
-
-
--- Map this to <leader>k (leaving K free for your usual hover)
-vim.keymap.set('n', '<leader>k', open_lsp_docs_in_split, { desc = 'LSP docs in split' })
 
 
 -- AUTO COMMANDS (NON-LSP)
