@@ -6,11 +6,11 @@
 # nixpkgs-unstable https://nixos.org/channels/nixpkgs-unstable
 
 let
-  neovim-nightly-overlay = import (
-    builtins.fetchTarball {
-      url = "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
-    }
-  );
+  # neovim-nightly-overlay = import (
+  #   builtins.fetchTarball {
+  #     url = "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
+  #   }
+  # );
   pkgs = import <nixpkgs> {
     config.allowUnfree = true;
     # config.allowUnfreePredicate =
@@ -18,7 +18,7 @@ let
     #   builtins.elem (lib.getName pkg) [
     #     "tart"
     #   ];
-    overlays = [ neovim-nightly-overlay ];
+    # overlays = [ neovim-nightly-overlay ];
   };
   pkgsUnstable = import <nixpkgs-unstable> {
     config.allowUnfree = true;
@@ -121,7 +121,7 @@ in
     pkgs.helix
     pkgs.lua-language-server
     pkgs.neovide
-    pkgs.neovim
+    pkgsUnstable.neovim
     pkgs.nixfmt
     pkgs.ruff
     pkgs.terraform-ls
@@ -155,7 +155,7 @@ in
 
     # VIRTUALIZATION
     
-    pkgs.colima
+    # pkgs.colima
     pkgs.docker
     pkgs.docker-buildx
     pkgs.docker-compose

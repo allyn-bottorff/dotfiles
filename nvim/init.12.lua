@@ -264,7 +264,7 @@ vim.lsp.enable({
   'ty',
   'zls',
   'ruff',
-  -- 'terraformls',
+  'terraformls',
   'lua_ls',
   -- 'kotlin_language_server',
 })
