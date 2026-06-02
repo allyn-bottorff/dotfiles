@@ -1,5 +1,6 @@
 # theme = Atom One Dark
-theme = Gruvbox Dark Hard
+# theme = Gruvbox Dark Hard
+# theme = Monokai Pro
 # theme = iceberg-light
 # theme = dark:Iceberg Dark, light:Iceberg Light
 # theme = dark:Iceberg Dark, light:Iceberg Light
@@ -11,7 +12,8 @@ font-style-italic = "Oblique"
 font-style-bold = "Bold"
 font-style-bold-italic = "Bold Oblique"
 font-synthetic-style = false
-# font-thicken = true
+font-thicken = true
+font-thicken-strength = 0
 cursor-style-blink = true
 cursor-style = block_hollow
 shell-integration-features = no-cursor

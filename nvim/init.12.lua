@@ -186,10 +186,16 @@ vim.g.neovide_cursor_short_animation_length = 0
 vim.g.neovide_floating_z_height = 20
 vim.o.guifont = "TX-02:h15"
 
+if vim.g.neovide then
+    vim.keymap.set({ "n", "v" }, "<C-+>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>")
+    vim.keymap.set({ "n", "v" }, "<C-->", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>")
+    vim.keymap.set({ "n", "v" }, "<C-0>", ":lua vim.g.neovide_scale_factor = 1<CR>")
+end
+
 
 vim.pack.add({
-  "https://github.com/EdenEast/nightfox.nvim",
-  "https://github.com/ellisonleao/gruvbox.nvim",
+  -- "https://github.com/EdenEast/nightfox.nvim",
+  -- "https://github.com/ellisonleao/gruvbox.nvim",
   "https://github.com/sebdah/vim-delve",      -- Go debugging
   "https://github.com/tpope/vim-fugitive",    -- Git integration (mostly just for Blame)
   "https://github.com/junegunn/fzf.vim",      -- fuzzy finding file/buffer stuff
@@ -230,15 +236,15 @@ require("gitsigns").setup {
     changedelete = { text = "~" },
   }
 }
-require("gruvbox").setup {
-  contrast = "hard",
-  overrides = {
-    SignColumn = { bg = "#1d2021" }
-  },
-}
+-- require("gruvbox").setup {
+--   contrast = "hard",
+--   overrides = {
+--     SignColumn = { bg = "#1d2021" }
+--   },
+-- }
 require("flatten").setup()
 
-vim.cmd("colorscheme gruvbox")
+vim.cmd("colorscheme habamax")
 -- DAP Config
 local dap, dapui = require("dap"), require("dapui")
 dap.listeners.before.attach.dapui_config = function()
@@ -259,14 +265,15 @@ end
 -- LSP Config
 
 vim.lsp.enable({
-  -- 'rust_analyzer',
+  'rust_analyzer',
   'gopls',
   'ty',
   'zls',
   'ruff',
-  'terraformls',
+  -- 'terraformls',
   'lua_ls',
-  -- 'kotlin_language_server',
+  'kotlin_language_server',
+  'jdtls',
 })
 
 

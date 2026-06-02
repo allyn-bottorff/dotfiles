@@ -87,6 +87,7 @@ in
     pkgs.jaq
     pkgs.jq
     pkgs.mosh
+    pkgs.nh
     pkgs.shellcheck
     pkgs.step-cli
     pkgs.tmux
@@ -97,6 +98,7 @@ in
     pkgs.watch
     pkgs.yazi
     pkgs.yq-go
+    pkgs.zellij
     pkgs.zk
 
     # REQUIREMENTS
@@ -105,13 +107,13 @@ in
     pkgs.bat
     pkgs.bat-extras.batman
     pkgs.eza
-    pkgs.fish
     pkgs.fzf
     pkgs.git
     pkgs.jujutsu
     pkgs.ripgrep
     pkgs.starship
     pkgs.zsh-syntax-highlighting
+    pkgs.fish
 
     # EDITOR + LANGUAGE SERVERS
     
@@ -120,8 +122,6 @@ in
     pkgs.gopls
     pkgs.helix
     pkgs.lua-language-server
-    pkgs.neovide
-    pkgsUnstable.neovim
     pkgs.nixfmt
     pkgs.ruff
     pkgs.terraform-ls
@@ -129,6 +129,8 @@ in
     pkgs.ty
     pkgs.yamlfmt
     pkgs.zls
+    pkgs.neovide
+    pkgs.neovim
 
     # DEV TOOLS
 
@@ -146,8 +148,8 @@ in
     pkgs.gnumake
     pkgs.go
     pkgs.libtool
-    pkgs.odin
-    pkgs.ols
+    # pkgs.odin
+    # pkgs.ols
     pkgs.rustup
     pkgs.tokei
     pkgs.uv

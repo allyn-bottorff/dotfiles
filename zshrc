@@ -33,7 +33,7 @@ bindkey '^r' history-incremental-pattern-search-backward
 
 # ALIASES
 
-alias vim='nvim'
+#alias vim='nvim'
 alias l='eza -lhF --git'
 alias k='kubectl'
 alias cat='bat'

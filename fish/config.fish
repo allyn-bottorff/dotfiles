@@ -3,7 +3,7 @@ if status is-interactive
 
     fish_vi_key_bindings
 
-    abbr -a -- l eza -lhF --git
+    abbr -a -- l eza -lh
     abbr -a -- cat bat
     abbr -a -- vim nvim
     # abbr -a -- k kubectl
@@ -11,8 +11,10 @@ if status is-interactive
     # abbr -a -- ssh TERM=xterm-256color ssh
     abbr -a -- nix-garbage nix-collect-garbage --delete-old
     abbr -a -- emc emacsclient -c
+    abbr -a -- neo neovide --fork --reuse-instance --new-window --system-native-tabs
     
-    abbr -a -- oc "$HOME/code/paytient/opencode/start"
+    # abbr -a -- oc "$HOME/code/paytient/opencode/start"
+    abbr -a -- oc sandbox-agent opencode
 
     set -Ux EDITOR "nvim"
     set -Ux --path KUBECONFIG "$HOME/.kube/config"
